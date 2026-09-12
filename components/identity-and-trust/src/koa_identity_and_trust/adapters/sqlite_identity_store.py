@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import sqlite3
+from dataclasses import asdict, is_dataclass
 from collections.abc import Iterable, Mapping
 from contextlib import contextmanager
 from pathlib import Path
@@ -31,6 +32,8 @@ def _mapping(record: Mapping[str, Any] | object) -> dict[str, Any]:
         converted = record.to_record()  # type: ignore[attr-defined]
         if isinstance(converted, Mapping):
             return dict(converted)
+    if is_dataclass(record):
+        return asdict(record)
     if hasattr(record, "__dict__"):
         return dict(vars(record))
     raise TypeError("record must be a mapping or expose to_record()")
@@ -48,17 +51,15 @@ class SQLiteIdentityStore:
     ) -> None:
         self.database = Path(database).expanduser().resolve()
         self.timeout = timeout
-        self.migration = (
-            Path(migration).expanduser().resolve()
-            if migration is not None
-            else Path(__file__).resolve().parents[3] / "migrations" / "0001_initial.sql"
-        )
+        self.migration = Path(migration).expanduser().resolve() if migration is not None else None
+        self.migrations_dir = Path(__file__).resolve().parents[3] / "migrations"
 
     def initialize(self) -> None:
         self.database.parent.mkdir(parents=True, exist_ok=True)
-        script = self.migration.read_text(encoding="utf-8")
+        migrations = [self.migration] if self.migration is not None else sorted(self.migrations_dir.glob("*.sql"))
         with self._connect() as connection:
-            connection.executescript(script)
+            for migration in migrations:
+                connection.executescript(migration.read_text(encoding="utf-8"))
         try:
             self.database.chmod(0o600)
         except OSError as exc:
@@ -117,6 +118,46 @@ class SQLiteIdentityStore:
             "evidence_refs_json": "evidence_refs",
             "public_attributes_json": "public_attributes",
         })
+
+
+    def put_external_identity_binding(self, record: Mapping[str, Any] | object) -> None:
+        data = _mapping(record)
+        fields = {
+            "binding_id": data["binding_id"],
+            "provider_type": data.get("provider_type", "oidc"),
+            "provider_id": data["provider_id"],
+            "issuer": data["issuer"],
+            "subject": data["subject"],
+            "local_identity_id": data["local_identity_id"],
+            "tenant_ref": data.get("tenant_ref") or "",
+            "environment": data["environment"],
+            "created_at": data["created_at"],
+            "evidence_refs_json": _json(data.get("evidence_refs", [])),
+        }
+        self._insert("external_identity_bindings", fields)
+
+    def get_external_identity_binding(
+        self,
+        *,
+        provider_id: str,
+        issuer: str,
+        subject: str,
+        tenant_ref: str | None,
+        environment: str,
+    ) -> dict[str, Any] | None:
+        with self._connect() as connection:
+            row = connection.execute(
+                """SELECT * FROM external_identity_bindings
+                   WHERE provider_id = ? AND issuer = ? AND subject = ?
+                     AND tenant_ref = ? AND environment = ?
+                   LIMIT 1""",
+                (provider_id, issuer, subject, tenant_ref or "", environment),
+            ).fetchone()
+        if row is None:
+            return None
+        result = self._decode(dict(row), {"evidence_refs_json": "evidence_refs"})
+        result["tenant_ref"] = result["tenant_ref"] or None
+        return result
 
     def put_credential(self, record: Mapping[str, Any] | object, *, expected_revision: int | None = None) -> int:
         data = _mapping(record)

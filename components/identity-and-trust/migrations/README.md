@@ -24,3 +24,8 @@ must not activate a partially restored or partially migrated store.
 - Never edit a migration after it has been released; add a new numbered
   migration instead.
 - Never grant another component direct write access to these tables.
+
+
+## `0002_external_identity_bindings.sql`
+
+Adds the local federation map used by `koa-common-oidc-v1`. The unique external identity key is the exact `provider_id + issuer + subject + tenant_ref + environment` tuple. Email and display name are deliberately absent. The row points to a local `identities.identity_id`; owner applications still make their own authorization decisions.

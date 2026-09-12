@@ -64,3 +64,10 @@ A missing optional or online-only capability degrades only the affected capabili
 Critical identity and trust transitions require machine-readable receipts. Receipt identifiers are deterministic for a fixed canonical envelope, enabling idempotent retry detection. Ordinary receipt views exclude evidence details and reject secret-bearing context keys.
 
 The Audit Broker may collect and disclose these receipts, but it does not become the owner of identity, credential, trust-root, revocation, or verification state.
+
+
+## Common OIDC federation binding
+
+The component supports the ecosystem profile `koa-common-oidc-v1` through a local external identity binding. The external key is the exact OIDC `issuer + subject (sub)` pair, scoped by provider, tenant and environment, and it resolves to a stable local `identity_id`. Email and display name are not federation keys.
+
+The binding is internal identity evidence supporting the existing authentication boundary. It does not create owner-application sessions, propagate roles, share passwords, or grant business authorization. Machine/service authentication remains separate from human OIDC SSO.

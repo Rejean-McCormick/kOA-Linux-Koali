@@ -767,3 +767,12 @@ A sovereign node receives a signed revocation update through an offline bundle. 
 ### 11.5 Protected signing unavailable
 
 A hardware-backed key provider becomes unavailable. New credential issuance and signing stop. Existing public-key verification and authorized public identity queries continue while the component reports the signing capability as degraded.
+
+
+## Common OIDC federation profile
+
+`koa-common-oidc-v1` maps an externally verified OIDC subject to a local Identity and Trust identity without transferring application authorization. The federation key is the exact `issuer + subject (sub)` pair. Email, username and display name are descriptive attributes and MUST NOT be used for silent linking.
+
+The local binding stores provider identity, issuer, subject, local identity reference, tenant/environment scope, creation time and evidence references. It does not store the external IdP source record or owner-application roles.
+
+When the IdP is unavailable, external-provider authentication may degrade or be denied according to profile/offline state; local identity and local authentication capabilities remain separately evaluated.

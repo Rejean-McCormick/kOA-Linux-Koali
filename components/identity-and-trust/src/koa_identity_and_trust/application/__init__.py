@@ -92,6 +92,14 @@ def unreachable(message: str) -> NoReturn:
     raise IdentityAndTrustApplicationError(message, reason_code="invalid_internal_state")
 
 
+from .external_identity import (  # noqa: E402
+    BindExternalIdentity,
+    BindExternalIdentityCommand,
+    BindExternalIdentityResult,
+    ResolveExternalIdentity,
+    ResolveExternalIdentityCommand,
+    ResolveExternalIdentityResult,
+)
 from .issue_local_identity import (  # noqa: E402
     IssueLocalIdentity,
     IssueLocalIdentityCommand,
@@ -115,6 +123,9 @@ from .verify_credential import (  # noqa: E402
 )
 
 __all__ = [
+    "BindExternalIdentity",
+    "BindExternalIdentityCommand",
+    "BindExternalIdentityResult",
     "Conflict",
     "DependencyUnavailable",
     "IdentityAndTrustApplicationError",
@@ -123,6 +134,9 @@ __all__ = [
     "IssueLocalIdentityCommand",
     "IssueLocalIdentityResult",
     "NotFound",
+    "ResolveExternalIdentity",
+    "ResolveExternalIdentityCommand",
+    "ResolveExternalIdentityResult",
     "ResolveSession",
     "ResolveSessionCommand",
     "ResolveSessionResult",

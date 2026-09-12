@@ -2,6 +2,7 @@
 
 from .audit_sink import AuditEvent, AuditSink
 from .clock import Clock
+from .external_identity_store import ExternalIdentityBindingRecord, ExternalIdentityBindingStore
 from .identity_store import (
     CredentialRecord,
     CredentialState,
@@ -27,6 +28,8 @@ __all__ = [
     "Clock",
     "CredentialRecord",
     "CredentialState",
+    "ExternalIdentityBindingRecord",
+    "ExternalIdentityBindingStore",
     "IdempotencyRecord",
     "IdentityRecord",
     "IdentityResult",
