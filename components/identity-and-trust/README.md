@@ -4,18 +4,20 @@ Identity and Trust is the kOA-Linux component that establishes bounded identity 
 
 The component authenticates and verifies. It does **not** authorize application actions, governance decisions, publication, resource admission, release activation, or host mutation.
 
-## This bundle
+## Current implementation
 
-This initial bundle provides:
+The current component includes substantially more than bootstrap and health scaffolding:
 
-- package and component metadata;
-- strict, secret-free configuration loading;
-- deterministic bootstrap state;
-- bounded liveness, health, and readiness evaluation;
-- immutable identity-and-trust receipt envelopes;
-- a local diagnostic CLI.
+- domain records for identities, credentials, external identity bindings, role bindings, session context, and trust roots;
+- application use cases for local identity issuance, credential verification/revocation, trust-root rotation, session resolution, and external identity binding;
+- explicit ports for identity/external-identity stores, protected key storage, audit delivery, and time;
+- SQLite identity storage, filesystem and TPM-backed key-store adapters, audit, and clock adapters;
+- bounded API models and routes;
+- `0001_initial.sql` and `0002_external_identity_bindings.sql` migrations;
+- packaging metadata;
+- unit, contract, failure, and integration tests.
 
-Domain records, application use cases, ports, adapters, APIs, migrations, packaging payloads, and service integration are owned by later bundles.
+The diagnostic CLI remains a bounded observation surface. Its non-mutating behavior must not be read as a claim that the component lacks the application, persistence, or trust-management layers listed above.
 
 ## Configuration
 

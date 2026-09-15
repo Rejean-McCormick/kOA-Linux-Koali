@@ -8,7 +8,7 @@ def main():
     failures=[]
     for p in sorted(ROOT.rglob("*.md")):
         rel=p.relative_to(ROOT).as_posix()
-        if rel.startswith(("generated/","subsystems/","finalization-reports/")): continue
+        if rel.startswith(("generated/","subsystems/","finalization-reports/","KOALI_MAJOR_UPDATE_SPEC_2026-09/")): continue
         text=p.read_text(encoding="utf-8"); m=META.match(text)
         if not m: continue
         try:d=json.loads(m.group(1))

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "koa-mediatheque"
 version = "1.0.0"
-description = "kOA-Linux authoritative local and offline Mediatheque bootstrap surface"
+description = "kOA-Linux authoritative local and offline Mediatheque component"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 license = { text = "Proprietary" }

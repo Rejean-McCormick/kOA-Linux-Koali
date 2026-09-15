@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "koa-resource-governor"
 version = "1.0.0"
-description = "kOA-Linux deterministic Resource Governor bootstrap surface"
+description = "kOA-Linux deterministic resource admission and enforcement coordination component"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 license = { text = "Proprietary" }

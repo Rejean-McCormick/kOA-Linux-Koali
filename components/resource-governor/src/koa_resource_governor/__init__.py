@@ -1,8 +1,9 @@
-"""Resource Governor component bootstrap surface.
+"""Public Resource Governor runtime surface.
 
-This package establishes metadata, strict configuration, bounded startup
-observations, health/readiness evaluation, and deterministic receipts. Resource
-domain logic and enforcement adapters are implemented by later bundles.
+The package contains domain, application, port, adapter, API, packaging, and
+test layers in addition to bounded bootstrap, configuration, health, and
+receipt primitives. This module intentionally exports the narrow bootstrap
+surface rather than every implementation layer.
 """
 
 from .bootstrap import BootstrapResult, RuntimeObservation, bootstrap

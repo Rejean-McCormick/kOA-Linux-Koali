@@ -20,7 +20,16 @@ def main():
   if d.get("generated") is not True:errors.append(f"{p}: generated marker missing")
  for p in sorted((ROOT/"generated").glob("*.md")):
   text=p.read_text(encoding="utf-8")
-  if not text.startswith("# "):errors.append(f"{p}: generated Markdown heading missing")
+  lines=text.splitlines()
+  heading_first=bool(lines and lines[0].startswith("# "))
+  generated_marker_then_heading=bool(
+   len(lines)>=3
+   and lines[0].startswith("<!-- KOA:GENERATED ")
+   and lines[1]==""
+   and lines[2].startswith("# ")
+  )
+  if not (heading_first or generated_marker_then_heading):
+   errors.append(f"{p}: generated Markdown heading missing")
  for e in errors:print("FAIL:",e)
  print("check_generated_blocks:","fail" if errors else "pass")
  return 1 if errors else 0

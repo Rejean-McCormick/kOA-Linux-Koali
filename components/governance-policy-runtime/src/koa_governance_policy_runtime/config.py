@@ -36,7 +36,7 @@ class GovernancePolicyRuntimeConfig:
 
     The configuration never contains policy source, evaluation context, raw
     assertions, credentials, signatures, or secrets. Profile and release logic
-    provide those values through registered interfaces in later bundles.
+    provide those values through registered interfaces rather than configuration fields.
     """
 
     COMPONENT_ID: ClassVar[str] = "governance_policy_runtime"

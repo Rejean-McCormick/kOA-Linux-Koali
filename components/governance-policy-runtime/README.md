@@ -19,11 +19,24 @@ It does **not**:
 
 A policy decision never transfers data ownership, component authority, publication authority, or privilege ownership.
 
-## Package scope
+## Current implementation
 
-This initial package implements only component metadata, strict configuration, bootstrap orchestration, health/readiness projections, and deterministic receipts. Domain evaluation, policy-bundle loading, persistence adapters, public routes, migrations, and packaging payloads belong to later bundles.
+The current package contains the policy runtime layers that earlier bootstrap-only documentation described as future work:
 
-The bootstrap accepts explicit observations from deployment adapters. It performs no filesystem discovery, network probing, signature verification, policy evaluation, activation, or foreign-state write. Missing observations remain unknown and fail closed.
+- domain objects for policy bundles, rules, evaluation context, and decisions;
+- application use cases for bundle loading, evaluation, activation, and revocation;
+- ports for bundle storage, decision receipts, signature verification, audit delivery, and time;
+- filesystem bundle and receipt stores, identity-signature verification, audit, and clock adapters;
+- bounded API models and routes;
+- a documented versioned filesystem-state migration contract;
+- packaging metadata;
+- unit, contract, failure, and integration tests.
+
+Bootstrap remains observational and fail-closed by design. It does not discover authority, silently activate policy, or write foreign state. Missing observations remain unknown rather than becoming permissive defaults.
+
+### Version identifiers
+
+The Python runtime/package currently uses `0.1.0`, while the component contract, public interfaces, and packaging payload use `1.0.0`. These fields are reported as distinct version namespaces; this README does not infer release compatibility from numeric equality or inequality. Any unification requires an explicit versioning decision.
 
 ## Health and readiness
 

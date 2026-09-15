@@ -27,7 +27,7 @@ from .health import (
 
 @dataclass(frozen=True, slots=True)
 class RuntimeObservation:
-    """Bounded observations supplied by adapters implemented in later bundles."""
+    """Bounded observations supplied by runtime adapters and orchestration layers."""
 
     runtime_ready: CheckState = CheckState.UNKNOWN
     profile_resolved: CheckState = CheckState.UNKNOWN

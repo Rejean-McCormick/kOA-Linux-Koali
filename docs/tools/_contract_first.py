@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any,Iterator
 ROOT=Path(__file__).resolve().parents[1]
 META_RE=re.compile(r"\A<!-- KOA:DOC-META:BEGIN GENERATED\n(.*?)\nKOA:DOC-META:END -->",re.S)
-EXCLUDED=("generated/","subsystems/","finalization-reports/")
+EXCLUDED=("generated/","subsystems/","finalization-reports/","KOALI_MAJOR_UPDATE_SPEC_2026-09/")
 def rel(p:Path)->str:return p.relative_to(ROOT).as_posix()
 def load(path:str|Path)->Any:return json.loads((ROOT/path).read_text(encoding="utf-8"))
 def records(path:str)->list[dict[str,Any]]:

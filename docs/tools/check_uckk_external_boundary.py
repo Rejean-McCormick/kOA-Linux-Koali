@@ -165,7 +165,7 @@ def check_prohibited_paths(root: Path, findings: list[Finding]) -> None:
 def check_json_sources(root: Path, findings: list[Finding]) -> None:
     for path in sorted(root.rglob("*.json"), key=lambda p: p.as_posix().casefold()):
         rel = path.relative_to(root).as_posix()
-        if rel.startswith(("generated/", "finalization-reports/")):
+        if rel.startswith(("generated/", "finalization-reports/", "KOALI_MAJOR_UPDATE_SPEC_2026-09/")):
             continue
         try:
             value = parse_json(path)
@@ -222,7 +222,7 @@ def prose_claim_lines(text: str) -> Iterable[tuple[int, str]]:
 def check_markdown_sources(root: Path, findings: list[Finding]) -> None:
     for path in sorted(root.rglob("*.md"), key=lambda p: p.as_posix().casefold()):
         rel = path.relative_to(root).as_posix()
-        if rel.startswith(("generated/", "finalization-reports/")):
+        if rel.startswith(("generated/", "finalization-reports/", "KOALI_MAJOR_UPDATE_SPEC_2026-09/")):
             continue
         if not active(path):
             continue

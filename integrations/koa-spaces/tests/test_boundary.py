@@ -108,6 +108,7 @@ def test_only_declared_bundle_files_exist():
         'integrations/koa-spaces/adapter/src/koa_spaces_adapter/receipts.py',
         'integrations/koa-spaces/adapter/src/koa_spaces_adapter/route_bridge.py',
         'integrations/koa-spaces/adapter/src/koa_spaces_adapter/space_activation.py',
+        'integrations/koa-spaces/adapter/src/koa_spaces_adapter/unix_transport.py',
         'integrations/koa-spaces/backup.toml',
         'integrations/koa-spaces/compatibility.json',
         'integrations/koa-spaces/degradation.toml',

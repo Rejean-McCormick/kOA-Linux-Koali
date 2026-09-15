@@ -1,6 +1,6 @@
 # kOA Mediatheque
 
-`koa_mediatheque` is the authoritative private local and offline Mediatheque component of kOA-Linux. This package establishes only its process metadata, strict configuration, bootstrap evaluation, health/readiness model, receipt construction, and registered worker identities.
+`koa_mediatheque` is the authoritative private local and offline Mediatheque component of kOA-Linux. The current package includes domain models, application use cases, ports, storage/job/publication adapters, API routes, a component-owned SQLite migration, concrete rendition workers, packaging metadata, health/readiness, receipts, and integration/unit/failure/contract tests.
 
 ## Authority boundary
 
@@ -10,9 +10,9 @@ A shared Mediatheque frame is an interchange contract. It does not create shared
 
 ## Bootstrap behavior
 
-Bootstrap is observational and fail-closed. It does not create directories, initialize SQLite, start workers, accept media, activate restored state, publish content, or mutate authoritative records. Those behaviors belong to later domain, application, port, adapter, API, migration, and worker bundles.
+Bootstrap is observational and fail-closed. It does not create directories, initialize SQLite, start workers, accept media, activate restored state, publish content, or mutate authoritative records. Those mutations are implemented behind the component's application, port, adapter, API, migration, and worker layers and must be invoked through their explicit lifecycle boundaries rather than as bootstrap side effects.
 
-The default configuration reports the component as not ready because stores, queues, receipt delivery, and implementation layers have not been verified. UCKK unavailability does not make the local Mediatheque unhealthy. Optional rendition and publication work is blocked before local catalog and accepted-content access.
+The default configuration reports the component as not ready until stores, queues, receipt delivery, local authority, and required runtime adapters have been verified. UCKK unavailability does not make the local Mediatheque unhealthy. Optional rendition and publication work is blocked before local catalog and accepted-content access.
 
 ## Configuration
 
@@ -45,7 +45,7 @@ No rights grant, publication decision, consent, remote credential, resource enve
 
 The seven health dimensions are exactly: database, managed-content root, integrity queue, rendition queue, publication queue, backup checkpoint, and storage pressure. Operational metrics contain counts and byte totals only; health output never includes media payloads or restricted metadata.
 
-Liveness means the diagnostic process can respond. Readiness additionally requires supported contracts, loaded local authority, a durable receipt path, and the implementation layers supplied by subsequent bundles.
+Liveness means the diagnostic process can respond. Readiness additionally requires supported contracts, loaded local authority, a durable receipt path, and the required stores, queues, and runtime adapters to be wired and verified.
 
 ## Receipts
 
@@ -53,7 +53,7 @@ Liveness means the diagnostic process can respond. Readiness additionally requir
 
 ## Workers
 
-`koa_mediatheque.workers` registers thumbnail, preview, and text-extraction identities. It deliberately does not import or execute their future modules. Workers are bounded Resource Governor-controlled task processors and never become a second metadata authority.
+`koa_mediatheque.workers` registers thumbnail, preview, and text-extraction identities without starting work as an import side effect. Concrete worker modules are present in the package and remain bounded Resource Governor-controlled task processors; they never become a second metadata authority.
 
 ## Diagnostic CLI
 

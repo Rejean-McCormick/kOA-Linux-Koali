@@ -137,3 +137,26 @@ Product user interfaces should support independent product lifecycle and integra
 A product such as Orgo or Konnaxion can expose a standalone application entry point and also publish declarative surfaces, routes, navigation, commands, inspectors, and capability metadata for an admitted composition host such as kOA Spaces. Installed-product selection should be registry-driven so removing one product does not require source changes to unrelated product interfaces.
 
 For Orgo, the full Control Panel can act as the reference maximal surface while reduced surfaces reuse the same product capabilities and pages rather than becoming independent frontends.
+
+## 13. Keep component package documentation synchronized with implemented layers
+
+A component README must distinguish the narrow behavior of bootstrap/diagnostic entry points from the implementation state of the complete package. It must not describe domain, application, port, adapter, API, migration, worker, broker, or test layers as future work when those layers are present in the repository.
+
+The 2026-09-15 alignment pass corrects this drift for Audit Broker, Governance Policy Runtime, Identity and Trust, Resource Governor, kOA Node Agent, and kOA Mediatheque. Remaining limitations must be expressed narrowly: for example, missing durable Resource Governor queue persistence or unqualified Node Agent production wiring, rather than relabeling the whole component as bootstrap-only.
+
+## 14. Keep proposed architecture packages outside canonical authority until adoption
+
+`docs/KOALI_MAJOR_UPDATE_SPEC_2026-09/` explicitly declares itself a standalone proposed target and says the existing repository documentation/contracts remain authoritative until adoption. Canonical documentation scanners must therefore exclude that package until an explicit adoption/change-control step assigns canonical metadata and authority.
+
+Generated navigation already follows this rule; shared source enumeration must use the same boundary.
+
+## 15. Do not infer one version lifecycle from unrelated version fields
+
+Package/runtime, component-contract, interface, and packaging-payload version fields may currently differ. Tooling and documentation must report the concrete field and namespace being evaluated rather than presenting one number as a universal component maturity or release version. Where Audit Broker or Governance Policy Runtime expose both `0.1.0` and `1.0.0`, convergence requires an explicit versioning decision rather than a documentation-only renumbering.
+
+## 16. Keep generated-content validators aligned with their generators
+
+Generated-content checks must validate the format actually emitted by the canonical generator. `build_indexes.py` prefixes generated Markdown with a `KOA:GENERATED` comment and then emits the document heading; `check_generated_blocks.py` must accept that exact marker-plus-heading structure rather than requiring the heading to be byte zero.
+
+A validator/generator disagreement is documentation-tooling drift, not evidence that the generated catalog content is semantically invalid.
+

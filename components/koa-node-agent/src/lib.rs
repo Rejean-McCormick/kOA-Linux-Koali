@@ -1,11 +1,11 @@
 #![forbid(unsafe_code)]
 
-//! kOA Node Agent foundational crate.
+//! kOA Node Agent bounded library surface.
 //!
-//! This bundle establishes configuration, bootstrap, health/readiness, and
-//! receipt primitives only. It deliberately does not expose host mutation,
-//! arbitrary command execution, service-manager control, path operations, or
-//! private-key access.
+//! The crate also contains private broker, transport, and fixed host-adapter
+//! layers used by dedicated binaries. This library root intentionally exposes
+//! only bounded domain/application/configuration/health/receipt APIs and never
+//! a generic shell or arbitrary privileged-operation interface.
 
 pub mod application;
 pub mod config;

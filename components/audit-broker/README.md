@@ -4,22 +4,26 @@ The Audit Broker is the kOA component responsible for bounded audit-record custo
 
 It does **not** own source-component state, identity, authorization policy, consent policy, privilege, resource allocation, release activation, publication authority, test definitions, or evidence-validity decisions.
 
-## This bundle
+## Current implementation
 
-This package establishes only:
+The current component is no longer limited to bootstrap scaffolding. The repository snapshot includes:
 
-- immutable component metadata;
-- strict configuration loading and validation;
-- startup/readiness evaluation;
-- bounded health snapshots;
-- receipt construction for Audit Broker-owned transitions;
-- a small command-line entry point for configuration and health checks.
+- domain models for audit events, evidence scope, redaction, and retention policy;
+- application use cases for append, query, disclosure/export, and retention actions;
+- explicit ports for the event store, identity context, policy decisions, and clock;
+- SQLite and PostgreSQL event-store adapters plus identity, governance, journal-export, and clock adapters;
+- bounded API models and routes;
+- the `0001_initial.sql` component-owned migration;
+- packaging metadata;
+- unit, contract, failure, and integration tests.
 
-Domain records, use cases, persistence adapters, HTTP routes, migrations, and integration tests belong to later bundles.
+Bootstrap, health, configuration, and CLI probes remain deliberately bounded and do not by themselves imply that every production deployment path has been qualified. The component must still be activated through the applicable profile, dependency, storage, recovery, and release gates.
 
 ## Runtime contract
 
 The component identity is `audit_broker`; the active component contract is `contracts/components/audit-broker.component.json` version `1.0.0`.
+
+Version identifiers are currently separate repository fields: `component.toml` and the Python package identify the implementation as `0.1.0`, while the component contract, public interfaces, and packaging payload use `1.0.0`. This README records those values without treating them as interchangeable lifecycle claims. Renumbering or unifying them requires an explicit versioning decision.
 
 Startup validates configuration and the declared dependency states before exposing readiness. The startup preconditions are:
 

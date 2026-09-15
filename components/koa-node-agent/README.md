@@ -2,7 +2,7 @@
 
 The kOA Node Agent is the node-local owner of privileged-operation execution state, staging state, activation and recovery execution state, idempotency records, and node-operation receipts. It is a narrow broker, not a general administration service.
 
-This bundle establishes only the component metadata, Rust crate, strict configuration, process entry point, bootstrap, health/readiness evaluation, and receipt primitives. Domain requests, validation, ports, adapters, broker operations, host backends, sockets, packaging, and integration/security tests belong to later bundles.
+The current crate includes domain requests and authorization models, request validation and dispatch, explicit ports, a fixed privileged-operation broker, systemd/mount/network host backends, a bounded Unix-socket transport, packaging metadata, and contract/integration/security tests in addition to bootstrap, health, and receipt primitives. The service remains fail-closed: a production `serve` path is not considered ready until peer authentication, durable idempotency/receipt state, fixed adapter wiring, and the applicable profile/release qualification are configured and verified.
 
 ## Authority boundary
 
@@ -32,7 +32,7 @@ The registered queries are:
 - `get_node_operation_status`;
 - `get_node_agent_health`.
 
-Bundle B-0039 does not execute these commands. It exposes only local process commands for `describe`, `check-config`, `health`, and `readiness`. There is no shell, generic service-manager, generic file-transfer, package-manager, container, device, or private-key interface.
+The registered command/query identities are modeled by the crate and constrained to a fixed operation catalog. The privileged broker can validate and dispatch bounded registered operations through fixed backends; it does not expose a shell, arbitrary command runner, generic service-manager, generic file-transfer, package-manager, container, device, or private-key interface. The production socket service remains fail-closed until its authenticated transport and durable runtime wiring are configured.
 
 ## Configuration
 
@@ -96,4 +96,4 @@ cargo check --manifest-path components/koa-node-agent/Cargo.toml
 cargo test --manifest-path components/koa-node-agent/Cargo.toml
 ```
 
-The crate declares B-0018 through the public `interfaces/rust` Cargo package and contains no private component dependency. These foundational files do not call cross-component APIs; later request and transport bundles consume the generated public bindings.
+The crate declares B-0018 through the public `interfaces/rust` Cargo package and contains no private component dependency. Request, transport, broker, and fixed backend layers are present in the current crate; cross-component authority still flows only through registered public interfaces and production activation remains subject to system qualification.

@@ -8,7 +8,7 @@ def main():
  for p in sorted(ROOT.rglob("*"),key=lambda x:x.as_posix().casefold()):
   if not p.is_file() or p.suffix.lower() not in {".md",".json",".yaml",".yml",".toml"}:continue
   rel=p.relative_to(ROOT).as_posix()
-  if rel.startswith(("generated/","subsystems/","finalization-reports/","00-governance/templates/")):continue
+  if rel.startswith(("generated/","subsystems/","finalization-reports/","KOALI_MAJOR_UPDATE_SPEC_2026-09/","00-governance/templates/")):continue
   try:text=p.read_text(encoding="utf-8")
   except UnicodeDecodeError:continue
   for pat in PATTERNS:

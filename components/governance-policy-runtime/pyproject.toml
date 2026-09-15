@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "koa-governance-policy-runtime"
 version = "0.1.0"
-description = "Bounded bootstrap, health, configuration, and receipts for kOA Governance Policy Runtime"
+description = "Local governance policy evaluation and lifecycle runtime for kOA"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Proprietary" }

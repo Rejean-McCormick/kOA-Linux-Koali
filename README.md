@@ -315,6 +315,8 @@ A passing validator proves the constraints implemented by the current validators
 
 ## Implementation status
 
+Detailed current evidence and qualification blockers are maintained in [`docs/status/README.md`](docs/status/README.md). The living status intentionally separates specification/contracts, functional implementation, integration, runtime qualification, and release readiness instead of publishing one scalar current-maturity percentage.
+
 This repository now represents an **advanced engineering beta**, not only a normative target architecture.
 
 Architecture, contracts, profiles, first-party component builds, development-environment automation, diagnostics, Koali Spaces, and the Koali ↔ Konnaxion browser integration are substantially implemented and exercised. The current supported development stack can start Konnaxion API, Konnaxion Web, and the packaged Koali Spaces runtime, admit Konnaxion into the Koali Space, resolve `/apps/konnaxion`, and support interactive browser navigation between Koali and Konnaxion.

@@ -4,19 +4,19 @@ Resource Governor is the kOA-Linux component authority for deterministic resourc
 
 Resource availability is **not** business authorization. This component does not decide identity, consent, disclosure, privilege, publication, governed exceptions, or application-domain mutations. A workload that requires both policy authorization and resource admission proceeds only after the two independent authorities pass.
 
-## This bundle
+## Current implementation
 
-This initial bundle provides:
+The current Resource Governor implementation includes:
 
-- package and component metadata;
-- strict, secret-free configuration loading;
-- non-mutating bootstrap and reconciliation observations;
-- separate liveness, health, and readiness evaluation;
-- capability-specific blocked and degraded states;
-- deterministic resource-decision and transition receipts;
-- a bounded local diagnostic CLI.
+- domain models for resource claims, envelopes, admission decisions, and degradation state;
+- application use cases for admission, envelope application, degradation, usage reconciliation, and workload restoration;
+- explicit ports for profile resolution, usage probes, Node Agent execution, audit delivery, and time;
+- profile-file, procfs, systemd-usage, Node Agent, audit, and clock adapters;
+- bounded API models and routes;
+- packaging metadata;
+- unit, contract, failure, and integration tests.
 
-Resource-envelope domain objects, admission algorithms, queue persistence, enforcement adapters, APIs, migrations, packaging payloads, and system integration are owned by later bundles.
+There is intentionally no SQL migration for the current adapter bundle. Durable allocation/queue persistence remains a separately inventoried future persistence boundary and must not be inferred from the presence of runtime adapters. Bootstrap and local diagnostics remain observational and do not themselves admit work or mutate host controls.
 
 ## Configuration
 

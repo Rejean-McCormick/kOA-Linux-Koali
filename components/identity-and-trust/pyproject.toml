@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "koa-identity-and-trust"
 version = "1.0.0"
-description = "kOA-Linux bounded identity and trust component bootstrap"
+description = "kOA-Linux bounded identity and trust authority component"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 license = { text = "Proprietary" }

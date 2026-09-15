@@ -1,8 +1,8 @@
-"""Identity and Trust component bootstrap surface.
+"""Public Identity and Trust runtime surface.
 
-This package establishes component metadata, strict configuration, health and
-readiness evaluation, and receipt construction. Domain and adapter behavior is
-implemented by later component bundles.
+The component also contains domain, application, port, adapter, API, migration,
+and integration layers. This module intentionally re-exports only the bounded
+bootstrap, configuration, health, and receipt surface.
 """
 
 from .bootstrap import BootstrapResult, RuntimeObservation, bootstrap

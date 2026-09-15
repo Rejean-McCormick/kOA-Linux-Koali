@@ -1,4 +1,4 @@
-"""Registered bounded worker identities; execution is implemented in later bundles."""
+"""Registered bounded worker identities for the implemented worker modules."""
 
 from __future__ import annotations
 
@@ -48,7 +48,7 @@ WORKERS: Mapping[WorkerKind, WorkerDescriptor] = MappingProxyType(
 
 
 def get_worker_descriptor(kind: WorkerKind | str) -> WorkerDescriptor:
-    """Return a registered descriptor without importing a future worker module."""
+    """Return a registered descriptor without importing or starting a worker module."""
     return WORKERS[WorkerKind(kind)]
 
 
