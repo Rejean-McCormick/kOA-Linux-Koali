@@ -17,7 +17,7 @@ semantik_architect = "koa_semantik_architect_adapter.bootstrap:create_adapter"
 
 [dependency-groups]
 dev = [
-  "pytest>=8.2,<9",
+  "pytest>=8.2,<10",
 ]
 
 [tool.hatch.build.targets.wheel]
