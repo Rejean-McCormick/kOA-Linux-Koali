@@ -298,6 +298,8 @@ Activation uses a complete-state mechanism such as an atomic pointer, boot slot,
 
 The resulting state is either the previous valid state or the complete new state. Recovery follows the artifact contract through rollback, revert, restore, forward repair, or reconstruction.
 
+The Node Agent owns the privileged **host operation and its receipt**, not the semantic active state of every artifact class. For example, Kristal Runtime owns `kristal_activation_state`; a service owner owns service lifecycle state; and kOA Spaces owns its validated presentation activation state. The Node Agent MUST NOT infer artifact selection, business authority, or epistemic/reference authority from its ability to perform a privileged switch.
+
 ### 4.9 Security and privilege
 
 The Node Agent uses a profile-defined privileged execution identity and minimum required privilege. Operation, path, service-group, parameter, and device allowlists constrain the execution path.

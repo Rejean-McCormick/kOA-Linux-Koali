@@ -183,6 +183,8 @@ A release-grade language pack identifies at least:
 
 A GF-backed pack additionally identifies the GF/PGF-specific assets/toolchain it uses.
 
+The canonical kOA-Linux artifact-class discriminator is `language_pack`. The historical `language_runtime_pack` value is a historical compatibility alias only; new manifests, examples, validators, release records, and activation records MUST emit `language_pack`. A compatibility reader may accept the historical value only through an explicit boundary mapping and must normalize it before canonical validation or persistence.
+
 ## 5. Build and publication
 
 Language asset construction occurs inside the owning SemantiK Architect development/build workflow. kOA-Linux does not define one universal compiler. GF tooling can be used for a GF-backed profile; other backends can use their declared build/resource process.

@@ -349,6 +349,21 @@ The sender owns:
 
 A transport owns delivery mechanics only. It does not own business authority, data semantics, or authorization.
 
+### 4.3.1 Interaction Kernel adoption boundary
+
+Interaction Kernel (IK) can be used as a system-of-systems interoperability protocol at declared subsystem boundaries, but it is **not implicitly activated by this document** and it does not replace the canonical kOA-Linux component/subsystem contracts.
+
+When an accepted integration contract explicitly adopts an IK Profile:
+
+- the IK `command`, `query`, and `event` classes map onto the corresponding kOA-Linux interaction classes in this document;
+- the receiving kOA-Linux component or subsystem still performs local authentication, authorization, admission, compatibility checks, and domain commit;
+- IK receipts or delivery status do not replace the receiving owner's domain state or kOA-Linux critical-transition receipts;
+- ArtifactRef/Export-style references do not transfer artifact or business ownership;
+- Kristal-facing IK Profiles terminate at a declared adapter/ACL boundary before Kristal-native contracts are invoked;
+- existing kOA-Linux integration contracts remain canonical until change control explicitly registers the IK Profile and its mapping.
+
+Therefore documentation may describe IK as a **target or adopted integration protocol only where a concrete contract says so**. A reference to IK in ecosystem documentation must not be interpreted as a silent global replacement for `contracts/integration-types.contract.json`, component contracts, subsystem contracts, or artifact contracts.
+
 ### 4.4 Communication envelope
 
 A component contract identifies the fields required by each interface. Cross-boundary messages and artifacts provide enough information to resolve:

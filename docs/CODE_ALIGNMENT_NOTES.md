@@ -57,9 +57,9 @@ The updated `language-pack.schema.json` permits a declared generic backend asset
 
 ## 4. Align language-pack discriminator and artifact class
 
-The previous language-pack schema used `artifact_class = language_runtime_pack` while the artifact-class registry and example used `language_pack`. The updated contract uses `language_pack`.
+The previous language-pack schema used `artifact_class = language_runtime_pack` while the artifact-class registry and example used `language_pack`. The updated contract uses `language_pack`. **The documentation/contract side is now aligned on `language_pack`.**
 
-Any pack builder, verifier, fixture, release validator, database enum or activation service still using `language_runtime_pack` as the kOA artifact-class discriminator should be updated or given an explicit compatibility mapping at the boundary.
+Any implementation-side pack builder, verifier, fixture, release validator, database enum or activation service still using `language_runtime_pack` as the kOA artifact-class discriminator should be updated or given an explicit compatibility mapping at the boundary. New canonical records must emit `language_pack`.
 
 ## 5. Preserve Kristal system vs local Kristal Runtime distinction
 
@@ -100,6 +100,8 @@ Any implementation that reads `module_interface_manifest` or renders the module 
 The validator currently reports absent reserved mounts for independently owned subsystems. The final development/release workspace should mount/link the official docs for Konnaxion, Orgo, SemantiK Architect, Ariane, SenTient and kOA Spaces at the reserved `docs/subsystems/*` paths.
 
 Do not copy internal subsystem documentation into kOA-Linux and then evolve it independently.
+
+This remains an **operational/repository-layout completion item**, not a missing authority model: the subsystem contracts and conformance rules already define the reserved mounts and ownership boundary. Final aligned release workspaces should run subsystem alignment with mounted documentation required.
 
 ## 9. Keep host authorization, resource admission and business authority separate
 
@@ -159,4 +161,19 @@ Package/runtime, component-contract, interface, and packaging-payload version fi
 Generated-content checks must validate the format actually emitted by the canonical generator. `build_indexes.py` prefixes generated Markdown with a `KOA:GENERATED` comment and then emits the document heading; `check_generated_blocks.py` must accept that exact marker-plus-heading structure rather than requiring the heading to be byte zero.
 
 A validator/generator disagreement is documentation-tooling drift, not evidence that the generated catalog content is semantically invalid.
+
+## 17. 2026-09-16 ecosystem-alignment clarification
+
+The current kOA-Linux contracts already provide the canonical local model for Runtime Pack identity, Release Sets, critical-transition receipts, subsystem ownership, and Kristal Runtime activation state. Ecosystem-level documentation should reference those contracts rather than create competing release or activation authorities.
+
+The remaining cross-system clarification is Interaction Kernel adoption. Interaction Kernel may be used as the target/adopted protocol at subsystem boundaries, but it is not globally normative in kOA-Linux merely because another ecosystem document names it. Until a change-controlled integration contract registers an IK Profile and its mapping, the canonical kOA-Linux communication, subsystem, integration, receipt, and artifact contracts remain authoritative.
+
+Activation terminology is also now explicit:
+
+- Space activation = kOA Spaces presentation/configuration state;
+- Runtime Pack activation = Kristal Runtime state, with narrow privileged host execution delegated to kOA Node Agent when required;
+- service activation = service-owner lifecycle state;
+- Release Set activation = coordinated multi-channel release transaction.
+
+These transitions may be correlated, but they are not synonyms and do not transfer ownership between components.
 

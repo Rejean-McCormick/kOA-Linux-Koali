@@ -47,6 +47,17 @@ KOA:DOC-META:END -->
 
 # Documentation Changelog
 
+## 1.4.0 — 2026-09-16
+
+Aligned kOA-Linux documentation with the current ecosystem boundary model without changing existing machine-readable authority contracts:
+
+- clarified that Kristal Runtime owns local Runtime Pack verification/compatibility/active-pack/rollback state while kOA Node Agent performs only the declared narrow privileged host transition;
+- distinguished Space activation, service activation, Runtime Pack activation, and Release Set activation as separately owned transitions;
+- documented Interaction Kernel as an adoptable system-of-systems protocol only when a change-controlled integration contract explicitly registers the Profile/mapping;
+- strengthened final subsystem-documentation alignment to require official mounted/linked docs rather than independently evolved copies;
+- made `language_pack` the explicit canonical discriminator and documented `language_runtime_pack` as a historical compatibility alias only;
+- updated the kOA Spaces activation recipe to prevent confusion with service, knowledge, governance, or Release Set activation.
+
 
 ## 1.3.0 — 2026-09-08
 

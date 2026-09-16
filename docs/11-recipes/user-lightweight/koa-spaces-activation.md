@@ -45,6 +45,8 @@ KOA:DOC-META:END -->
 
 This recipe describes a safe activation pattern for one kOA Space on a lightweight local installation.
 
+**Terminology boundary:** “Space activation” in this recipe means selecting and committing a validated presentation/composition definition in kOA Spaces. It does **not** mean starting a service, activating a Kristal Runtime Pack, activating a governance bundle, or committing a complete Release Set. Those transitions remain owned by their respective contracts and components.
+
 ## Preconditions
 
 - kOA Spaces is installed as an optional subsystem;

@@ -64,7 +64,7 @@ External-platform interactions are declared under `contracts/integrations/`. Pub
 
 kOA-Linux owns installation, activation, runtime dependencies, identity and authorization boundaries, data exchange, resources, health, offline availability, degradation, update compatibility, and backup or recovery boundaries.
 
-Each mounted subsystem owns its internal domain model and product behavior. kOA Spaces owns only its presentation implementation and validated activation state; contributing modules continue to own their pages, actions, authorization, workflows, and business data.
+Each mounted subsystem owns its internal domain model and product behavior. kOA Spaces owns only its presentation implementation and validated **Space activation** state; contributing modules continue to own their pages, actions, authorization, workflows, and business data. Space activation is a presentation/configuration transition and MUST NOT be confused with service activation, Kristal Runtime Pack activation, or Release Set activation.
 
 The kOA Mediatheque owns local kOA media records and storage state. The UCKK Mediatheque owns its separate Moodle-side records and storage state. A compatible Mediatheque frame does not create shared authority or shared storage.
 
@@ -74,7 +74,9 @@ Executable assertions are carried by source contracts and validators rather than
 
 ## 6. Procedures or State Transitions
 
-A subsystem documentation link can be installed later at its reserved path without changing the kOA-Linux boundary model.
+A subsystem documentation link can be installed later at its reserved path without changing the kOA-Linux boundary model. For a **final aligned development/release workspace**, the official documentation MUST be mounted or linked at the reserved path and validated with the mounted-alignment control; copying the subsystem documentation into kOA-Linux and then evolving the copy independently is not an acceptable final alignment mechanism.
+
+The mount is documentary authority only. It does not transfer runtime, business, release, or activation ownership to kOA-Linux.
 
 Publishing to UCKK follows a separate controlled transition: explicit selection, disclosure authorization, rights and restriction checks, Moodle destination selection, package and manifest production, authenticated transfer, result handling, and publication receipt preservation.
 

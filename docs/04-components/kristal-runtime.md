@@ -174,6 +174,10 @@ Its owned responsibilities are:
 
 The component does not own application workflows, tenant state, component business state, policy, resources, privilege, external AI, or release-channel definitions.
 
+For Runtime Pack deployment, Kristal Runtime is the authoritative owner of the **local Kristal runtime state**: verification outcome, compatibility state, active-pack identity, rollback target, runtime indexes/provenance, revocation state, and query-contract state. When a host mutation requires privilege, Kristal Runtime requests the declared narrow transition through kOA Node Agent; that privileged execution does not transfer `kristal_activation_state` ownership to the Node Agent.
+
+This ownership is scoped to Kristal Runtime Packs. It does not make Kristal Runtime the owner of Space activation, service activation, governance activation, system-image activation, or Release Set composition.
+
 ### 4.2 Identity model
 
 Kristal identity is based on canonical epistemic content.

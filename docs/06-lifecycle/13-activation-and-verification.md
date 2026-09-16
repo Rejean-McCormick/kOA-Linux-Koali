@@ -266,6 +266,21 @@ The lifecycle separates these responsibilities:
 
 No single successful check replaces the others.
 
+### 4.3.1 Activation vocabulary and owner scoping
+
+The word **activation** is always scoped to a contract and MUST NOT be treated as one global state transition. In particular:
+
+| Activation term | Meaning | Authoritative owner |
+| --- | --- | --- |
+| Space activation | Makes one validated kOA Spaces definition/presentation composition current | kOA Spaces control/runtime boundary |
+| Service activation | Starts/switches a service artifact or service bundle according to its component/service contract | Service artifact owner through the selected service activator |
+| Runtime Pack activation | Changes the active Kristal Runtime Pack after verification/authorization | Kristal Runtime for `kristal_activation_state`; kOA Node Agent performs only the declared privileged host transition when required |
+| Release Set activation | Coordinates one compatible `system` + `services` + `governance` + `knowledge` combination | Release lifecycle transaction with channel-owner adapters; no single channel acquires the others' authority |
+
+A Space becoming active does not activate a Runtime Pack. A Runtime Pack becoming active does not imply that a complete Release Set changed. A Release Set activation does not transfer component-owned active-state records to the kOA Node Agent.
+
+The kOA Node Agent is the narrow privileged executor for host mutations. It is not the semantic owner of every activated artifact and does not select knowledge, governance, service, or presentation state on its own.
+
 ### 4.4 Lifecycle states
 
 The activation transaction uses:
