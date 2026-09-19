@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Installer les essentiels
+Comment=Applications tierces via Flatpak et Flathub
+Exec=/usr/bin/python3 /usr/libexec/koa/third-party-store.py essentials
+Icon=system-software-install
+Terminal=false
+Categories=System;PackageManager;
+StartupNotify=false

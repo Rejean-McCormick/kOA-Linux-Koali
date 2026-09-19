@@ -330,3 +330,8 @@ A requirement is still not an implementation claim, and a passing development in
 ## Modular product interfaces
 
 Koali product interfaces are autonomous and composable. Orgo, Konnaxion, and other independently packaged products own their standalone application entry points. Shared Koali UI primitives provide a common interaction grammar, while an optional host such as Koali Spaces can compose installed product manifests into one integrated experience. The integrated registry is dynamic: removing a product removes its routes, navigation, commands, inspectors, and widgets without requiring changes to unrelated products.
+
+## Optional third-party application store
+
+The Linux user profile offers GNOME Software / Flatpak and an opt-in essentials installer.
+See [setup, package requirements and validation limits](host/store/README.md).

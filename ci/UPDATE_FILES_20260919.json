@@ -1,0 +1,21 @@
+{
+  "base_snapshot": "Code_snapshot_koa-linux(20260919-115125).zip",
+  "changed_or_added_sha256": {
+    "ci/UPDATE_20260919.md": "2b8fa977ee4ef1f93a8230184f115489ca289feec79c74e8df27f5e1c82add3a",
+    "docs/generated/document-index.json": "11caf6805ab9c2ebf849c0d90e3a9ae775e8f7a61630ed25ec2efcd7ece96b62",
+    "docs/generated/document-index.md": "6744ee44804e238733b172e7a9638b7ed91849034a900fdf9b9679305b8674b9",
+    "docs/tools/_contract_first.py": "8317d078d016a329f48fd37f82b85183fd58c5a85cf4fecd491d218bb2a2a74e",
+    "docs/generated/ai-context/koa-navigation.json": "7c7a72c581df8d5fab457d8941a5dfa6f1b77486ce9c027e91812ab207b6f5c1",
+    "docs/generated/ai-context/subsystem-sentient.json": "9cf09c794eb654bea50d3728eff707a2c1038de1c23c6a7d70eb3b05176e4ba7",
+    "docs/generated/ai-context/subsystem-koa_spaces.json": "168e9063d7668d8866f10f37c909af64a263087afbd5300513f3dbb994a6c67c",
+    "docs/generated/ai-context/subsystem-konnaxion.json": "da630f0088a4120f0231b7b027d7bf7c7c0d5291a41f38ac7821d904ded3c48a",
+    "docs/generated/ai-context/subsystem-orgo.json": "9c1206f2a06b460f4b751f16f50f52ead0b80102815b2f65ed42ee2a7f386857",
+    "docs/generated/ai-context/subsystem-semantik_architect.json": "44f65500b9fd9f8d184d8b24b94cb463991d31038d9b0065b65516e9dda58f13",
+    "docs/generated/ai-context/subsystem-ariane.json": "35810c29fc21160538c0facfd6b762447c506908d5a39a5ff7756fcfaf91840b",
+    "ci/tests/test_gate_scopes.py": "684c55ba1cf3b4b5a9a579423134c02feda527ecc89cb27a5a8536fd808ca216",
+    "ci/scripts/run-security.py": "b45da71c3496ddda85163c992fd8e3fa01826f86166cc5615d8156d8edb4139a",
+    "ci/scripts/gate_scope.py": "7c7ceddf4713cb94556dcd46c13e3c114615f260954e2a02520ca2f78245aaf0",
+    "ci/scripts/run-system-tests.py": "4b3a5292ad7fc7b12b2f9a0be8a02c90f293be6143ab55f89846acc998874c1e",
+    "ci/scripts/run-offline.py": "04f935180e9a8c1fb689aacf1a1f007027cdae34f4ddd9a55e0c959c43407e61"
+  }
+}

@@ -39,6 +39,18 @@
     {
       "id": "native-thunderbird",
       "purpose": "Thunderbird conformance application for mail and cross-application handoff"
+    },
+    {
+      "id": "third-party-flatpak",
+      "purpose": "Flatpak user installations, bubblewrap and desktop portal backend for third-party applications"
+    },
+    {
+      "id": "third-party-software-store",
+      "purpose": "GNOME Software with its Flatpak plugin; external application store"
+    },
+    {
+      "id": "desktop-install-dialogs",
+      "purpose": "Zenity dialogs for explicit optional essentials selection and installation results"
     }
   ],
   "prohibited_contents": [

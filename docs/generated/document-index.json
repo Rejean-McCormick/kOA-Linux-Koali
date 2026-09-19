@@ -15452,15 +15452,6 @@
       "decision_ids": []
     },
     {
-      "path": "CODE_SNAPSHOT_MANIFEST.md",
-      "doc_id": null,
-      "document_class": null,
-      "status": null,
-      "requirement_ids": [],
-      "assertion_ids": [],
-      "decision_ids": []
-    },
-    {
       "path": "contracts/examples/README.md",
       "doc_id": "DOC-ARTIFACT-EXAMPLES-README",
       "document_class": "non_normative_readme",

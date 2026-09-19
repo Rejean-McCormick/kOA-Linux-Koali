@@ -287,7 +287,6 @@
 | DOC-AI-CONTEXT | AI_CONTEXT.md | active | explanatory_markdown |
 | DOC-ROOT-CHANGELOG-001 | CHANGELOG.md | active | explanatory_markdown |
 | DOC-ROOT-CODE-ALIGNMENT | CODE_ALIGNMENT_NOTES.md | active | explanatory_markdown |
-|  | CODE_SNAPSHOT_MANIFEST.md | None | None |
 | DOC-ARTIFACT-EXAMPLES-README | contracts/examples/README.md | active | non_normative_readme |
 | DOC-CONTRIBUTING | CONTRIBUTING.md | active | explanatory_markdown |
 | DOC-ROOT-README | README.md | active | explanatory_markdown |

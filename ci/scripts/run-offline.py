@@ -15,6 +15,9 @@ import sys
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gate_scope import partition, is_qemu
+
 SUITE_ID = "offline"
 TEST_TYPE = "offline_operation"
 EVIDENCE_TYPE = "offline_operation_test"
@@ -262,6 +265,7 @@ def main() -> int:
     parser.add_argument("--policy", type=Path)
     parser.add_argument("--evidence-dir", type=Path)
     parser.add_argument("--check-config", action="store_true")
+    parser.add_argument("--scope", choices=("all", "local", "qemu"), default=os.environ.get("KOA_TEST_SCOPE", "all"))
     parser.add_argument("--qemu-image")
     parser.add_argument("--qemu-image-format", choices=("raw", "qcow2"))
     parser.add_argument("--qemu-active-profile")
@@ -291,7 +295,8 @@ def main() -> int:
         print(f"{SUITE_ID}: invalid gate configuration: {exc}", file=sys.stderr)
         return 2
 
-    qemu_required = _commands_include_qemu(root, commands)
+    commands, required, omitted = partition(root, commands, required, args.scope)
+    qemu_required = any(is_qemu(command) for command in commands)
     if qemu_required:
         required = sorted(set([*required, *QEMU_SUPPORT_PATHS]))
     missing = sorted(path for path in required if not (root / path).exists())
@@ -299,7 +304,7 @@ def main() -> int:
         print(
             json.dumps(
                 {
-                    "suite_id": SUITE_ID,
+                    "suite_id": SUITE_ID, "scope": args.scope, "omitted_commands": omitted, "full_gate": args.scope == "all",
                     "commands": commands,
                     "required_paths": required,
                     "missing_paths": missing,
@@ -329,14 +334,14 @@ def main() -> int:
     records: list[dict[str, Any]] = []
     qemu_environment: dict[str, str] = {}
     blocked_reasons: list[str] = []
-    if not missing and qemu_required:
+    if qemu_required:
         try:
             qemu_environment, blocked_reasons = _qemu_runtime_environment(root, args)
         except (OSError, RuntimeError, ValueError) as exc:
             print(f"{SUITE_ID}: invalid QEMU validation configuration: {exc}", file=sys.stderr)
-            return 2
+            blocked_reasons = [str(exc)]
 
-    outcome = "blocked" if missing or blocked_reasons else "passed"
+    outcome = "blocked" if missing or blocked_reasons or not commands else "passed"
     environment = os.environ.copy()
     environment.update(
         {
@@ -351,8 +356,11 @@ def main() -> int:
     environment.update(policy_env)
     environment.update(qemu_environment)
 
-    if not missing and not blocked_reasons:
+    if not [p for p in missing if p not in QEMU_SUPPORT_PATHS and not Path(p).name.startswith("test_qemu_")]:
         for argv in commands:
+            if (blocked_reasons or missing) and is_qemu(argv):
+                records.append({"argv": argv, "exit_code": None, "outcome": "blocked", "reasons": blocked_reasons})
+                continue
             print(f"[{SUITE_ID}] $ {' '.join(argv)}", flush=True)
             try:
                 result = subprocess.run(
@@ -368,13 +376,12 @@ def main() -> int:
             records.append(_command_record(argv, code))
             if code != 0:
                 outcome = "failed"
-                break
 
     core = {
         "format_version": "1.0.0",
         "report_kind": "ci_gate_candidate_evidence",
         "authoritative": False,
-        "suite_id": SUITE_ID,
+        "suite_id": SUITE_ID, "scope": args.scope, "omitted_commands": omitted, "full_gate": args.scope == "all",
         "test_type": TEST_TYPE,
         "evidence_type": EVIDENCE_TYPE,
         "source_revision": revision,

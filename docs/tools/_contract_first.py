@@ -6,6 +6,8 @@ from typing import Any,Iterator
 ROOT=Path(__file__).resolve().parents[1]
 META_RE=re.compile(r"\A<!-- KOA:DOC-META:BEGIN GENERATED\n(.*?)\nKOA:DOC-META:END -->",re.S)
 EXCLUDED=("generated/","subsystems/","finalization-reports/","KOALI_MAJOR_UPDATE_SPEC_2026-09/")
+# Export inventory is not an authored normative document. Exact filename only.
+EXPORT_ARTIFACTS={"CODE_SNAPSHOT_MANIFEST.md"}
 def rel(p:Path)->str:return p.relative_to(ROOT).as_posix()
 def load(path:str|Path)->Any:return json.loads((ROOT/path).read_text(encoding="utf-8"))
 def records(path:str)->list[dict[str,Any]]:
@@ -17,7 +19,7 @@ def records(path:str)->list[dict[str,Any]]:
 def source_files(pattern:str)->Iterator[Path]:
  for p in sorted(ROOT.rglob(pattern),key=lambda x:x.as_posix().casefold()):
   r=rel(p)
-  if p.is_file() and not r.startswith(EXCLUDED):yield p
+  if p.is_file() and not r.startswith(EXCLUDED) and r not in EXPORT_ARTIFACTS:yield p
 def metadata(p:Path)->dict[str,Any]|None:
  m=META_RE.match(p.read_text(encoding="utf-8"))
  if not m:return None

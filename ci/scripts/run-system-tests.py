@@ -15,6 +15,9 @@ import sys
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gate_scope import partition, is_qemu
+
 SUITE_ID = 'system'
 TEST_TYPE = 'system'
 EVIDENCE_TYPE = 'automated_test_run'
@@ -35,6 +38,11 @@ DEFAULT_PATHS = [
     'tests/system/test_backup_coordination.py',
     'tests/system/test_restore_coordination.py',
     'tests/system/test_appliance_session.py',
+    'tests/system/test_third_party_store.py',
+    'tests/system/test_native_workspace.py',
+    'tests/system/test_native_workspace_package_set.py',
+    'tests/system/test_rootfs_materialization.py',
+    'tests/system/test_system_image_build.py',
     *QEMU_TEST_PATHS,
     'tests/recovery/test_recovery_boot.py',
     'tests/recovery/test_restore_last_known_good.py',
@@ -185,6 +193,7 @@ def main() -> int:
     parser.add_argument("--policy", type=Path)
     parser.add_argument("--evidence-dir", type=Path)
     parser.add_argument("--check-config", action="store_true")
+    parser.add_argument("--scope", choices=("all", "local", "qemu"), default=os.environ.get("KOA_TEST_SCOPE", "all"))
     parser.add_argument("--qemu-image")
     parser.add_argument("--qemu-image-format", choices=("raw", "qcow2"))
     parser.add_argument("--qemu-network", choices=("on", "off"))
@@ -204,12 +213,13 @@ def main() -> int:
     except (OSError, json.JSONDecodeError, ValueError) as exc:
         print(f"{SUITE_ID}: invalid gate configuration: {exc}", file=sys.stderr)
         return 2
-    qemu_required = _commands_include_qemu(commands)
+    commands, required, omitted = partition(root, commands, required, args.scope)
+    qemu_required = any(is_qemu(command) for command in commands)
     if qemu_required:
         required = sorted(set([*required, *QEMU_SUPPORT_PATHS]))
     missing = sorted(path for path in required if not (root / path).exists())
     if args.check_config:
-        print(json.dumps({"suite_id": SUITE_ID, "commands": commands, "required_paths": required, "missing_paths": missing, "policy_digest": policy_digest, "qemu_machine_validation": qemu_required}, indent=2, sort_keys=True))
+        print(json.dumps({"suite_id": SUITE_ID, "scope": args.scope, "omitted_commands": omitted, "full_gate": args.scope == "all", "commands": commands, "required_paths": required, "missing_paths": missing, "policy_digest": policy_digest, "qemu_machine_validation": qemu_required}, indent=2, sort_keys=True))
         return 1 if missing else 0
 
     revision = os.environ.get("GITHUB_SHA") or _git(root, "rev-parse", "HEAD") or "unversioned"
@@ -222,13 +232,13 @@ def main() -> int:
     records: list[dict[str, Any]] = []
     qemu_environment: dict[str, str] = {}
     blocked_reasons: list[str] = []
-    if not missing and qemu_required:
+    if qemu_required:
         try:
             qemu_environment, blocked_reasons = _qemu_runtime_environment(root, args)
         except (OSError, RuntimeError, ValueError) as exc:
             print(f"{SUITE_ID}: invalid QEMU validation configuration: {exc}", file=sys.stderr)
-            return 2
-    outcome = "blocked" if missing or blocked_reasons else "passed"
+            blocked_reasons = [str(exc)]
+    outcome = "blocked" if missing or blocked_reasons or not commands else "passed"
     environment = os.environ.copy()
     environment.update({
         "PYTHONDONTWRITEBYTECODE": "1",
@@ -239,20 +249,22 @@ def main() -> int:
     environment.update(policy_env)
     environment.update(qemu_environment)
 
-    if not missing and not blocked_reasons:
+    if not [p for p in missing if p not in QEMU_SUPPORT_PATHS and not Path(p).name.startswith("test_qemu_")]:
         for argv in commands:
+            if (blocked_reasons or missing) and is_qemu(argv):
+                records.append({"argv": argv, "exit_code": None, "outcome": "blocked", "reasons": blocked_reasons})
+                continue
             print(f"[{SUITE_ID}] $ {' '.join(argv)}", flush=True)
             result = subprocess.run(argv, cwd=root, env=environment, check=False)
             records.append(_command_record(argv, result.returncode))
             if result.returncode != 0:
                 outcome = "failed"
-                break
 
     core = {
         "format_version": "1.0.0",
         "report_kind": "ci_gate_candidate_evidence",
         "authoritative": False,
-        "suite_id": SUITE_ID,
+        "suite_id": SUITE_ID, "scope": args.scope, "omitted_commands": omitted, "full_gate": args.scope == "all",
         "test_type": TEST_TYPE,
         "evidence_type": EVIDENCE_TYPE,
         "source_revision": revision,

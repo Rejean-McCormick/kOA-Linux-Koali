@@ -93,7 +93,10 @@
         "/usr/libexec/koa/koa-native-workspace-broker",
         "/usr/share/koa/native-workspace/",
         "/usr/share/koa/native-apps/admission/",
-        "/usr/share/koa/native-apps/data/"
+        "/usr/share/koa/native-apps/data/",
+        "/usr/libexec/koa/third-party-store.py",
+        "/usr/share/applications/koali-store.desktop",
+        "/usr/share/applications/koali-essentials.desktop"
       ]
     },
     {
@@ -747,6 +750,24 @@
       "source": "host/recovery/",
       "destination": "/usr/share/koa/recovery/",
       "install_mode": "manifest_selected_recursive_copy",
+      "owner": "host"
+    },
+    {
+      "source": "host/store/third-party-store.py",
+      "destination": "/usr/libexec/koa/third-party-store.py",
+      "install_mode": "copy",
+      "owner": "host"
+    },
+    {
+      "source": "host/store/koali-store.desktop",
+      "destination": "/usr/share/applications/koali-store.desktop",
+      "install_mode": "copy",
+      "owner": "host"
+    },
+    {
+      "source": "host/store/koali-essentials.desktop",
+      "destination": "/usr/share/applications/koali-essentials.desktop",
+      "install_mode": "copy",
       "owner": "host"
     }
   ],

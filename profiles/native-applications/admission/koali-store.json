@@ -1,0 +1,54 @@
+{
+  "$schema": "contracts/artifact-contracts/native-application-admission-policy.schema.json",
+  "kind": "NativeApplicationAdmissionPolicy",
+  "version": "1.0.0",
+  "app_id": "koali-store",
+  "desktop_entry_refs": [
+    "koali-store.desktop"
+  ],
+  "enabled": true,
+  "runtime": {
+    "required_capability": "user.native_workspace",
+    "allowed_profile_ids": [
+      "user_lightweight"
+    ]
+  },
+  "security": {
+    "class": "files",
+    "network": "required",
+    "audio": "denied",
+    "gpu": "optional"
+  },
+  "resources": {
+    "resource_envelope_ref": "native.interactive-office",
+    "workload_class": "interactive_office",
+    "resource_request": {
+      "cpu": {
+        "unit": "millicores",
+        "reservation": 100,
+        "limit": 2500
+      },
+      "memory": {
+        "unit": "MiB",
+        "reservation": 256,
+        "limit": 3072
+      },
+      "processes": {
+        "unit": "processes",
+        "reservation": 1,
+        "limit": 128
+      }
+    },
+    "criticality": "interactive",
+    "priority": 70
+  },
+  "offline_behavior": "unavailable",
+  "data_policy_ref": "data/koali-store.json",
+  "launch": {
+    "allowed_actions": [
+      "launch"
+    ],
+    "allowed_uri_schemes": [],
+    "allowed_resource_scopes": []
+  }
+}

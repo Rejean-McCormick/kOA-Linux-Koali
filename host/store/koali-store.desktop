@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Store — applications tierces
+Comment=Applications tierces via Flatpak et Flathub
+Exec=/usr/bin/python3 /usr/libexec/koa/third-party-store.py store
+Icon=system-software-install
+Terminal=false
+Categories=System;PackageManager;
+StartupNotify=false
