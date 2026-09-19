@@ -3,8 +3,8 @@
   "authority_ref": "docs/02-system/code-and-filesystem-architecture/33-path-ownership-and-change-rules.md",
   "coverage": {
     "ambiguous_paths": [],
-    "frozen_inventory_count": 1144,
-    "inventory_sha256": "6fcfc9e0f493dd873b3ad517aec677eae192722d05400e63579ec9613cd14ae1",
+    "frozen_inventory_count": 1145,
+    "inventory_sha256": "4c452002e19cd08d4e3b184b050a1abf042da67e37b6a0f5db55bb4073280805",
     "owner_counts": {
       "ariane": 29,
       "ariane-voice": 6,
@@ -31,7 +31,7 @@
       "publication_gateway": 44,
       "release_engineering": 21,
       "repository_architecture_governance": 8,
-      "repository_governance": 20,
+      "repository_governance": 21,
       "repository_legal": 4,
       "repository_tooling": 42,
       "resource_governor": 45,
@@ -42,7 +42,7 @@
       "transport_and_binding_maintainers": 28,
       "uckk_integration_boundary": 31
     },
-    "resolved_path_count": 1144,
+    "resolved_path_count": 1145,
     "unresolved_paths": []
   },
   "kind": "path_ownership",
@@ -517,6 +517,11 @@
       "match": "exact",
       "owner_id": "repository_tooling",
       "path": ".rustfmt.toml"
+    },
+    {
+      "match": "exact",
+      "owner_id": "repository_governance",
+      "path": ".smartignore"
     },
     {
       "match": "prefix",

@@ -212,6 +212,13 @@
       "source_document": "docs/02-system/code-and-filesystem-architecture/24-repository-root-and-documentation.md"
     },
     {
+      "owner_id": "repository_governance",
+      "path": ".smartignore",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "d68ca4ed8d705fbde35542b8f4c1f39f7e6f1cce8596ce683b3d08693518a92c",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/24-repository-root-and-documentation.md"
+    },
+    {
       "owner_id": "system_assembly",
       "path": "assembly/pyproject.toml",
       "path_class": "frozen_structural_file",
@@ -8034,11 +8041,11 @@
   "inventory_scope": "implementation_only",
   "inventory_summary": {
     "class_counts": {
-      "frozen_structural_file": 436,
+      "frozen_structural_file": 437,
       "registered_implementation_file": 708
     },
-    "file_count": 1144,
-    "inventory_sha256": "6fcfc9e0f493dd873b3ad517aec677eae192722d05400e63579ec9613cd14ae1",
+    "file_count": 1145,
+    "inventory_sha256": "4c452002e19cd08d4e3b184b050a1abf042da67e37b6a0f5db55bb4073280805",
     "owner_count": 35,
     "owner_registry_sha256": "6712abe85510eb1487035293001ddf2735ca72d0ff95f898011ac774a4b92e11"
   },
@@ -8063,7 +8070,7 @@
       "path_class": "registered_implementation_file"
     }
   ],
-  "projection_sha256": "53e3719a1cbf636f39d0d596527519ca939d874f62e7ce155a4f50409281957d",
+  "projection_sha256": "39fd56b6802b054b541702aebd34fb173bcf0f38ca93610f83b225616be1f91a",
   "projection_version": "1.0.0",
   "repository_id": "koa_linux_operating_system",
   "schema_version": "1.0.0",
@@ -8074,7 +8081,7 @@
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/24-repository-root-and-documentation.md",
-      "sha256": "30034d623a362de064b1fbe35375cea6af20ea75c255bf97504c1bc79acaa0a0"
+      "sha256": "7c5261e402f8326b17de02b2058ecf5ad4fbf918fb30d6e33f0c68d37e14f186"
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md",
@@ -8122,30 +8129,31 @@
     ".pre-commit-config.yaml",
     ".python-version",
     ".rustfmt.toml",
-    "CHANGELOG.md",
-    "CONTRIBUTING.md",
+    ".smartignore",
+    "assembly",
     "Cargo.lock",
     "Cargo.toml",
-    "LICENSES",
-    "NOTICE.md",
-    "README.md",
-    "REUSE.toml",
-    "SECURITY.md",
-    "assembly",
+    "CHANGELOG.md",
     "ci",
     "components",
+    "CONTRIBUTING.md",
     "dev",
     "docs",
     "generated",
     "host",
     "integrations",
     "interfaces",
+    "LICENSES",
+    "NOTICE.md",
     "operations",
     "packaging",
     "profiles",
     "pyproject.toml",
+    "README.md",
     "release",
+    "REUSE.toml",
     "rust-toolchain.toml",
+    "SECURITY.md",
     "tests",
     "tools",
     "uv.lock"

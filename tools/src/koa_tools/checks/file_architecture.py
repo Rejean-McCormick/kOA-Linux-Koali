@@ -104,6 +104,10 @@ def _path_values(data: Mapping[str, Any]) -> tuple[list[str], list[Finding]]:
 def _repository_allowlist(data: Mapping[str, Any] | None) -> tuple[set[str], set[str]]:
     if data is None:
         return set(DEFAULT_TOP_LEVEL_ROOTS), set(DEFAULT_ROOT_FILES)
+    entries = data.get("allowed_top_level_entries")
+    if isinstance(entries, list) and all(isinstance(item, str) for item in entries):
+        allowed = set(entries)
+        return allowed, allowed
     root_values = data.get("allowed_top_level_roots") or data.get("top_level_roots") or data.get("roots")
     file_values = data.get("allowed_root_files") or data.get("root_files")
     roots = set(root_values) if isinstance(root_values, list) and all(isinstance(item, str) for item in root_values) else set(DEFAULT_TOP_LEVEL_ROOTS)

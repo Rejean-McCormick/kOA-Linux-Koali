@@ -59,6 +59,7 @@ The complete existing documentation file inventory remains the generated `docs/g
 .editorconfig
 .gitattributes
 .gitignore
+.smartignore
 .pre-commit-config.yaml
 .python-version
 .rustfmt.toml
