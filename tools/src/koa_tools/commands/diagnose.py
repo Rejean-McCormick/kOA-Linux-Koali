@@ -140,11 +140,15 @@ def _effective_profile(base: Path, profile: str) -> tuple[dict[str, Any], Mappin
         _block(stage, blockers, "pipeline_effective_profile_stale", f"effective-profile projection is invalid: {exc}", path=relative)
         return {"stage": stage, "blockers": blockers}, None
 
+    primary_profile = declaration.get("primary_profile")
+    declared_primary_profile_id = (
+        primary_profile.get("profile_id") if isinstance(primary_profile, dict) else None
+    )
     if (
         declaration.get("format") != "koa.effective-profile"
         or declaration.get("authority") != "derived_projection"
         or declaration.get("manual_edits") != "prohibited"
-        or declaration.get("primary_profile_id") != profile_id
+        or declared_primary_profile_id != profile_id
         or declaration.get("result") != "pass"
     ):
         _block(stage, blockers, "pipeline_effective_profile_stale", "effective-profile identity or derived-authority markers do not match", path=relative)

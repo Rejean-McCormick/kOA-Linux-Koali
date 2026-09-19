@@ -3,31 +3,31 @@
   "authority_ref": "docs/02-system/code-and-filesystem-architecture/33-path-ownership-and-change-rules.md",
   "coverage": {
     "ambiguous_paths": [],
-    "frozen_inventory_count": 1123,
-    "inventory_sha256": "2832d5a72484fd9f47fae318895709051557235ac85a6173cf419c68a1dc46e8",
+    "frozen_inventory_count": 1144,
+    "inventory_sha256": "6fcfc9e0f493dd873b3ad517aec677eae192722d05400e63579ec9613cd14ae1",
     "owner_counts": {
       "ariane": 29,
       "ariane-voice": 6,
       "audit_broker": 43,
       "chatgpt": 6,
-      "ci_orchestration": 16,
-      "cross_system_conformance": 88,
+      "ci_orchestration": 20,
+      "cross_system_conformance": 89,
       "documentation_governance": 15,
       "gamma": 6,
       "generators": 2,
       "governance_policy_runtime": 42,
-      "host_platform_integration": 100,
-      "identity_and_trust": 45,
+      "host_platform_integration": 105,
+      "identity_and_trust": 51,
       "koa_mediatheque": 51,
       "koa_node_agent": 44,
-      "koa_spaces": 58,
+      "koa_spaces": 59,
       "konnaxion": 29,
       "kristal_runtime": 45,
       "local_development": 17,
       "operations_implementation": 41,
       "orgo": 28,
       "packaging": 38,
-      "profile_implementation_settings": 28,
+      "profile_implementation_settings": 32,
       "publication_gateway": 44,
       "release_engineering": 21,
       "repository_architecture_governance": 8,
@@ -42,7 +42,7 @@
       "transport_and_binding_maintainers": 28,
       "uckk_integration_boundary": 31
     },
-    "resolved_path_count": 1123,
+    "resolved_path_count": 1144,
     "unresolved_paths": []
   },
   "kind": "path_ownership",
@@ -519,14 +519,9 @@
       "path": ".rustfmt.toml"
     },
     {
-      "match": "exact",
-      "owner_id": "repository_governance",
-      "path": "CHANGELOG.md"
-    },
-    {
-      "match": "exact",
-      "owner_id": "repository_governance",
-      "path": "CONTRIBUTING.md"
+      "match": "prefix",
+      "owner_id": "system_assembly",
+      "path": "assembly/"
     },
     {
       "match": "exact",
@@ -539,39 +534,19 @@
       "path": "Cargo.toml"
     },
     {
-      "match": "prefix",
-      "owner_id": "repository_legal",
-      "path": "LICENSES/"
-    },
-    {
-      "match": "exact",
-      "owner_id": "repository_legal",
-      "path": "NOTICE.md"
-    },
-    {
       "match": "exact",
       "owner_id": "repository_governance",
-      "path": "README.md"
-    },
-    {
-      "match": "exact",
-      "owner_id": "repository_legal",
-      "path": "REUSE.toml"
-    },
-    {
-      "match": "exact",
-      "owner_id": "repository_governance",
-      "path": "SECURITY.md"
-    },
-    {
-      "match": "prefix",
-      "owner_id": "system_assembly",
-      "path": "assembly/"
+      "path": "CHANGELOG.md"
     },
     {
       "match": "prefix",
       "owner_id": "ci_orchestration",
       "path": "ci/"
+    },
+    {
+      "match": "exact",
+      "owner_id": "repository_governance",
+      "path": "CODE_SNAPSHOT_MANIFEST.md"
     },
     {
       "match": "prefix",
@@ -614,6 +589,11 @@
       "path": "components/resource-governor/"
     },
     {
+      "match": "exact",
+      "owner_id": "repository_governance",
+      "path": "CONTRIBUTING.md"
+    },
+    {
       "match": "prefix",
       "owner_id": "local_development",
       "path": "dev/"
@@ -622,6 +602,11 @@
       "match": "prefix",
       "owner_id": "documentation_governance",
       "path": "docs/"
+    },
+    {
+      "match": "exact",
+      "owner_id": "repository_governance",
+      "path": "ENGINEERING_PROFILE.md"
     },
     {
       "match": "prefix",
@@ -695,6 +680,16 @@
     },
     {
       "match": "prefix",
+      "owner_id": "repository_legal",
+      "path": "LICENSES/"
+    },
+    {
+      "match": "exact",
+      "owner_id": "repository_legal",
+      "path": "NOTICE.md"
+    },
+    {
+      "match": "prefix",
       "owner_id": "operations_implementation",
       "path": "operations/"
     },
@@ -714,9 +709,19 @@
       "path": "pyproject.toml"
     },
     {
+      "match": "exact",
+      "owner_id": "repository_governance",
+      "path": "README.md"
+    },
+    {
       "match": "prefix",
       "owner_id": "release_engineering",
       "path": "release/"
+    },
+    {
+      "match": "exact",
+      "owner_id": "repository_legal",
+      "path": "REUSE.toml"
     },
     {
       "match": "exact",
@@ -725,8 +730,18 @@
     },
     {
       "match": "exact",
+      "owner_id": "repository_governance",
+      "path": "SECURITY.md"
+    },
+    {
+      "match": "prefix",
       "owner_id": "cross_system_conformance",
-      "path": "tests/system/qemu_harness.py"
+      "path": "tests/"
+    },
+    {
+      "match": "exact",
+      "owner_id": "cross_system_conformance",
+      "path": "tests/offline/test_qemu_offline_navigation.py"
     },
     {
       "match": "exact",
@@ -736,7 +751,7 @@
     {
       "match": "exact",
       "owner_id": "cross_system_conformance",
-      "path": "tests/system/test_qemu_boot.py"
+      "path": "tests/system/qemu_harness.py"
     },
     {
       "match": "exact",
@@ -746,7 +761,7 @@
     {
       "match": "exact",
       "owner_id": "cross_system_conformance",
-      "path": "tests/system/test_qemu_navigation.py"
+      "path": "tests/system/test_qemu_boot.py"
     },
     {
       "match": "exact",
@@ -756,17 +771,12 @@
     {
       "match": "exact",
       "owner_id": "cross_system_conformance",
-      "path": "tests/system/test_qemu_semantik_architect.py"
+      "path": "tests/system/test_qemu_navigation.py"
     },
     {
       "match": "exact",
       "owner_id": "cross_system_conformance",
-      "path": "tests/offline/test_qemu_offline_navigation.py"
-    },
-    {
-      "match": "prefix",
-      "owner_id": "cross_system_conformance",
-      "path": "tests/"
+      "path": "tests/system/test_qemu_semantik_architect.py"
     },
     {
       "match": "prefix",

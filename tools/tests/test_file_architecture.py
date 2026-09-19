@@ -229,7 +229,7 @@ def _pipeline_fixture(root: Path, *, ready: bool) -> None:
             "format": "koa.effective-profile",
             "authority": "derived_projection",
             "manual_edits": "prohibited",
-            "primary_profile_id": "sovereign_linux_node",
+            "primary_profile": {"profile_id": "sovereign_linux_node", "version": "1.0.0"},
             "result": "pass",
             "source_digests": {profile_ref: profile_digest},
         },
@@ -314,3 +314,17 @@ def test_pipeline_diagnose_passes_only_when_observed_chain_is_closed(tmp_path: P
     assert payload["readiness"] == "ready"
     assert payload["blockers"] == []
     assert all(stage["status"] == "pass" for stage in payload["stages"])
+
+
+def test_pipeline_diagnose_rejects_legacy_root_primary_profile_id(tmp_path: Path) -> None:
+    _pipeline_fixture(tmp_path, ready=True)
+    path = tmp_path / "generated/profiles/sovereign_linux_node/effective-profile.json"
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload.pop("primary_profile", None)
+    payload["primary_profile_id"] = "sovereign_linux_node"
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+    result = diagnose.collect_pipeline(tmp_path, "sovereign-linux-node")
+
+    assert result["readiness"] == "blocked"
+    assert "pipeline_effective_profile_stale" in {item["code"] for item in result["blockers"]}

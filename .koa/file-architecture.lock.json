@@ -17,7 +17,9 @@
   "generated": true,
   "generated_by": "deterministic projection of the frozen code and filesystem architecture series",
   "ignored_paths": [
-    "docs"
+    "CODE_SNAPSHOT_MANIFEST.md",
+    "docs",
+    "ENGINEERING_PROFILE.md"
   ],
   "inventory": [
     {
@@ -575,6 +577,13 @@
     },
     {
       "owner_id": "ci_orchestration",
+      "path": "ci/scripts/gate_scope.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "a5c048fba1a2831e1626df5af6114469ceae7630d2119e4773ef717df4a50679",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/31-operations-tests-tools-development-and-ci.md"
+    },
+    {
+      "owner_id": "ci_orchestration",
       "path": "ci/scripts/publish-evidence.py",
       "path_class": "registered_implementation_file",
       "path_identifier_sha256": "a6b39b61464d0929e533f4b25cac32819d2eea37f81928841dd9ef91427d32db",
@@ -620,6 +629,27 @@
       "path": "ci/scripts/run-system-tests.py",
       "path_class": "registered_implementation_file",
       "path_identifier_sha256": "db29ecf931fd3bdf6c88d01ad75051503cd8fef9619c5cdee658ef01d8725d90",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/31-operations-tests-tools-development-and-ci.md"
+    },
+    {
+      "owner_id": "ci_orchestration",
+      "path": "ci/tests/test_gate_scopes.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "ed560d1228d57a46af89bd8377d80d0a872d679eec5a7821a5f2377db747c599",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/31-operations-tests-tools-development-and-ci.md"
+    },
+    {
+      "owner_id": "ci_orchestration",
+      "path": "ci/UPDATE_20260919.md",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "1cce8a6f5c94fdb080c5b713d806bb4e1fb701dcb047d2dc323554f93c2e585e",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/31-operations-tests-tools-development-and-ci.md"
+    },
+    {
+      "owner_id": "ci_orchestration",
+      "path": "ci/UPDATE_FILES_20260919.json",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "956c1e4bf253372ac8c24375c274236d886a8cfebe43690ac71600855e77cab9",
       "source_document": "docs/02-system/code-and-filesystem-architecture/31-operations-tests-tools-development-and-ci.md"
     },
     {
@@ -1233,6 +1263,13 @@
     },
     {
       "owner_id": "identity_and_trust",
+      "path": "components/identity-and-trust/migrations/0002_external_identity_bindings.sql",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "3fd44fd85338a9f45417cf1ecf7cce604591e05cf4f546a1068b7e2aa1c3d269",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md"
+    },
+    {
+      "owner_id": "identity_and_trust",
       "path": "components/identity-and-trust/migrations/README.md",
       "path_class": "frozen_structural_file",
       "path_identifier_sha256": "20ae9198436ad51e3785eb7e5f92bd7c43ec0f470fd88d0c0dc3827ef57b9d7f",
@@ -1345,6 +1382,13 @@
     },
     {
       "owner_id": "identity_and_trust",
+      "path": "components/identity-and-trust/src/koa_identity_and_trust/application/external_identity.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "b98f7b12b7f7ab084cce813412f520c8fb28a9b9bffd25018395ca5658ee59e9",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md"
+    },
+    {
+      "owner_id": "identity_and_trust",
       "path": "components/identity-and-trust/src/koa_identity_and_trust/application/issue_local_identity.py",
       "path_class": "registered_implementation_file",
       "path_identifier_sha256": "38b4cd208f4fa2e52729ff7c263fca12f0331f1fe243f4eef84dcec9fdb14b82",
@@ -1408,6 +1452,13 @@
     },
     {
       "owner_id": "identity_and_trust",
+      "path": "components/identity-and-trust/src/koa_identity_and_trust/domain/external_identity.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "51380f133241d757d4fac524336df6684d05734d5a2c1c5e3643f40c46bf6d07",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md"
+    },
+    {
+      "owner_id": "identity_and_trust",
       "path": "components/identity-and-trust/src/koa_identity_and_trust/domain/identity.py",
       "path_class": "registered_implementation_file",
       "path_identifier_sha256": "e81be26513a9ea2749ae5e26acaae88fc07bf75f76e40156704cba43f1fd34b8",
@@ -1464,6 +1515,13 @@
     },
     {
       "owner_id": "identity_and_trust",
+      "path": "components/identity-and-trust/src/koa_identity_and_trust/ports/external_identity_store.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "e2b8fc6b77b839e61b81d7e60fdb0d16d08b7ccb7695fbf5b613780b9cf324b2",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md"
+    },
+    {
+      "owner_id": "identity_and_trust",
       "path": "components/identity-and-trust/src/koa_identity_and_trust/ports/identity_store.py",
       "path_class": "registered_implementation_file",
       "path_identifier_sha256": "85bbe91b4005a83281c2412e9c50d0f9e0c7e10d4a03c9a091ced55491883ece",
@@ -1513,6 +1571,13 @@
     },
     {
       "owner_id": "identity_and_trust",
+      "path": "components/identity-and-trust/tests/integration/test_external_identity_store.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "a0c9c9277f8f25e7d097b968cd31343bd9f7cf0b42af061e6a25db1f5c671446",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md"
+    },
+    {
+      "owner_id": "identity_and_trust",
       "path": "components/identity-and-trust/tests/integration/test_service.py",
       "path_class": "registered_implementation_file",
       "path_identifier_sha256": "067a4cfc5d9833b3dc3eba84ed9445e97db18871b538cfa8821dcd4bc2e99d22",
@@ -1530,6 +1595,13 @@
       "path": "components/identity-and-trust/tests/unit/test_domain.py",
       "path_class": "registered_implementation_file",
       "path_identifier_sha256": "d543a33dad2fac98b96481fdca65e0cb0068322ce033f70975cf518cb04bb421",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md"
+    },
+    {
+      "owner_id": "identity_and_trust",
+      "path": "components/identity-and-trust/tests/unit/test_external_identity_binding.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "cfe88249fd3b5fd39aba39ec043a48a7041108db140279168fbb943536a951e7",
       "source_document": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md"
     },
     {
@@ -3879,6 +3951,41 @@
     },
     {
       "owner_id": "host_platform_integration",
+      "path": "host/store/koali-essentials.desktop",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "602e8ebdf186cd4a45a74840c552cd598a4f5f0952f1258894952c9115fc6c24",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/29-host-platform-files.md"
+    },
+    {
+      "owner_id": "host_platform_integration",
+      "path": "host/store/koali-store.desktop",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "d1ec6b89ee5d80e4840ba85cd8cac710e020ae5c91dd3962b8d3d99d60c89d29",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/29-host-platform-files.md"
+    },
+    {
+      "owner_id": "host_platform_integration",
+      "path": "host/store/README.md",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "ddc3eb82875d9498775554d29291d2ae6a3faeda7aa7f77276fdb95ff1f88140",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/29-host-platform-files.md"
+    },
+    {
+      "owner_id": "host_platform_integration",
+      "path": "host/store/setup-user.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "89a507a461ba7f8baadfdcaf37e9888cda1fab343445f1212d9faaf900614938",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/29-host-platform-files.md"
+    },
+    {
+      "owner_id": "host_platform_integration",
+      "path": "host/store/third-party-store.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "b6ac288486fa08dc9ea44987898fcd40ae918c85d82dad3983f0b972220424a2",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/29-host-platform-files.md"
+    },
+    {
+      "owner_id": "host_platform_integration",
       "path": "host/systemd/sysusers/koa-components.conf",
       "path_class": "frozen_structural_file",
       "path_identifier_sha256": "28c3cc3dc0ebeedf6f4c6add4159cb454241ba0a6f45529567120ed68c643be1",
@@ -4561,6 +4668,13 @@
       "path": "integrations/koa-spaces/adapter/src/koa_spaces_adapter/space_activation.py",
       "path_class": "registered_implementation_file",
       "path_identifier_sha256": "85c4f25813921929dec704a2ddc736c3f04a82614103a30b450bb3d481157107",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/27-independent-subsystem-integrations.md"
+    },
+    {
+      "owner_id": "koa_spaces",
+      "path": "integrations/koa-spaces/adapter/src/koa_spaces_adapter/unix_transport.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "3aa55778260e0f74ab29fb9313fe3a6848f65c9878f91ec05cb655e7b994976d",
       "source_document": "docs/02-system/code-and-filesystem-architecture/27-independent-subsystem-integrations.md"
     },
     {
@@ -6721,6 +6835,20 @@
     },
     {
       "owner_id": "profile_implementation_settings",
+      "path": "profiles/native-applications/admission/koali-essentials.json",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "ac0be6074c6209e2cf1daa1a65968abb29bf677396e4f70e747f48a99ac1cc07",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/30-assembly-profiles-packaging-and-release.md"
+    },
+    {
+      "owner_id": "profile_implementation_settings",
+      "path": "profiles/native-applications/admission/koali-store.json",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "fe7f68892e707e3ef81cce60ade4aa47246a023f2d8dc81c1fd9826a15bf3d88",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/30-assembly-profiles-packaging-and-release.md"
+    },
+    {
+      "owner_id": "profile_implementation_settings",
       "path": "profiles/native-applications/admission/libreoffice.json",
       "path_class": "frozen_structural_file",
       "path_identifier_sha256": "2377489482adc81bcdf51b59e23feb618759968a485ad66761313579d5e23f64",
@@ -6745,6 +6873,20 @@
       "path": "profiles/native-applications/data/firefox.json",
       "path_class": "frozen_structural_file",
       "path_identifier_sha256": "ca9803a13d53f01092a0c3438537a870f904ebd9dbf2f3412e5d07b03a1de656",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/30-assembly-profiles-packaging-and-release.md"
+    },
+    {
+      "owner_id": "profile_implementation_settings",
+      "path": "profiles/native-applications/data/koali-essentials.json",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "b9e9d0657ba2181ae3f3e86a616aa5520e1aa2ffaf2e2d069c74d7ebdc11f788",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/30-assembly-profiles-packaging-and-release.md"
+    },
+    {
+      "owner_id": "profile_implementation_settings",
+      "path": "profiles/native-applications/data/koali-store.json",
+      "path_class": "frozen_structural_file",
+      "path_identifier_sha256": "779f758855cf288595363d605fb69bd1e24fc4aa0b84a5deb486642c2bb43c90",
       "source_document": "docs/02-system/code-and-filesystem-architecture/30-assembly-profiles-packaging-and-release.md"
     },
     {
@@ -7637,6 +7779,13 @@
       "source_document": "docs/02-system/code-and-filesystem-architecture/31-operations-tests-tools-development-and-ci.md"
     },
     {
+      "owner_id": "cross_system_conformance",
+      "path": "tests/system/test_third_party_store.py",
+      "path_class": "registered_implementation_file",
+      "path_identifier_sha256": "b35a6010cc7df97665dd5f23078e4e20f4e92e139d38abfbdf1da2f668858dac",
+      "source_document": "docs/02-system/code-and-filesystem-architecture/31-operations-tests-tools-development-and-ci.md"
+    },
+    {
       "owner_id": "repository_tooling",
       "path": "tools/README.md",
       "path_class": "frozen_structural_file",
@@ -7885,11 +8034,11 @@
   "inventory_scope": "implementation_only",
   "inventory_summary": {
     "class_counts": {
-      "frozen_structural_file": 426,
-      "registered_implementation_file": 697
+      "frozen_structural_file": 436,
+      "registered_implementation_file": 708
     },
-    "file_count": 1123,
-    "inventory_sha256": "2832d5a72484fd9f47fae318895709051557235ac85a6173cf419c68a1dc46e8",
+    "file_count": 1144,
+    "inventory_sha256": "6fcfc9e0f493dd873b3ad517aec677eae192722d05400e63579ec9613cd14ae1",
     "owner_count": 35,
     "owner_registry_sha256": "6712abe85510eb1487035293001ddf2735ca72d0ff95f898011ac774a4b92e11"
   },
@@ -7914,7 +8063,7 @@
       "path_class": "registered_implementation_file"
     }
   ],
-  "projection_sha256": "47da856ac2e527df121b4e901192541afd2c286a4b0b8c309064b7ea5b949469",
+  "projection_sha256": "53e3719a1cbf636f39d0d596527519ca939d874f62e7ce155a4f50409281957d",
   "projection_version": "1.0.0",
   "repository_id": "koa_linux_operating_system",
   "schema_version": "1.0.0",
