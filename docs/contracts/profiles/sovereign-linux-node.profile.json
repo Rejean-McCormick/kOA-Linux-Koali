@@ -321,11 +321,13 @@
       "failure_behavior": "Orgo-owned workflow and orchestration."
     },
     "semantik_architect": {
-      "state": "required",
-      "activation": "always_on",
-      "conditions": [],
-      "data_authority": "component_owned",
-      "failure_behavior": "SemantiK Architect-owned planner-first multilingual generation runtime; kOA-Linux owns only deployment, trust, resources, health, and artifact admission at the local boundary."
+      "state": "excluded",
+      "activation": "not_installed",
+      "conditions": [
+        "SemantiK Architect is intentionally deferred and retained as an integration stub for a future profile or release."
+      ],
+      "data_authority": "none",
+      "failure_behavior": "SemantiK Architect is not activated by sovereign-linux-node; its unresolved source lock remains fail-closed until a future profile explicitly admits it."
     },
     "sentient": {
       "state": "excluded",
