@@ -83,4 +83,8 @@ Desktop.ini
 /_delivery/
 /evidence/
 /validation-support/
+
+# Transient lock created by running the standalone assembly UV project.
+/assembly/uv.lock
+
 GitSink.bat

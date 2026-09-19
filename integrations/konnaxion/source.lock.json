@@ -1,16 +1,21 @@
 {
   "schema_version": "1.0.0",
   "subsystem_id": "konnaxion",
-  "lock_status": "blocked_missing_authoritative_source",
-  "activation_allowed": false,
+  "lock_status": "resolved",
+  "activation_allowed": true,
   "source": {
-    "repository": null,
-    "revision_kind": null,
-    "revision": null,
-    "content_digest": null,
-    "license_expression": null,
-    "license_files": [],
-    "reason": "The authoritative kOA corpus does not provide a Konnaxion source repository, immutable revision, digest, or license declaration."
+    "repository": "https://github.com/Rejean-McCormick/Konnaxion.git",
+    "revision_kind": "git_commit",
+    "revision": "da6e2f08be7b5ebfbbe3f6d0eb598d59029b9b96",
+    "content_digest": "sha256:8ceb8dc77445c83a4b12cd367b99a40a949f1184c02f1d252f8a98aa4804ab81",
+    "license_expression": "AGPL-3.0-or-later",
+    "license_files": [
+      {
+        "path": "LICENSE",
+        "sha256": "705e70aee7acc3f4ab4c946c9d03cfb66cadf55de5be16716cbb9f9adcd3238a"
+      }
+    ],
+    "reason": "Pinned to the authoritative origin repository at an immutable Git commit with a deterministic git-archive SHA-256 and verified LICENSE digest."
   },
   "authoritative_contract_pin": {
     "path": "docs/contracts/subsystems/konnaxion.subsystem.json",
@@ -21,7 +26,7 @@
     "mount_path": "subsystems/konnaxion",
     "required_for_final_alignment": true,
     "mounted": false,
-    "expected_release": null
+    "expected_release": "git:da6e2f08be7b5ebfbbe3f6d0eb598d59029b9b96"
   },
   "admission_policy": {
     "require_repository": true,

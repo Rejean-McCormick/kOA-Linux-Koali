@@ -1,0 +1,41 @@
+# Local/generated runtime output
+generated/
+_delivery/
+evidence/
+validation-support/
+.levelupdiag/
+.workspace/run/
+.workspace/tmp/
+.koa/runtime/
+
+# Build and dependency caches
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.pyright/
+.ruff_cache/
+target/
+node_modules/
+.cache/
+.uv-cache/
+
+# Reproducible documentation projections that add little snapshot context
+docs/generated/ai-context/
+docs/generated/document-index.json
+docs/generated/document-index.md
+docs/generated/requirements-index.json
+docs/generated/requirements-index.md
+docs/generated/traceability.json
+docs/generated/traceability-matrix.md
+
+# Transient standalone UV state
+assembly/uv.lock
+
+# Local temporary output
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup

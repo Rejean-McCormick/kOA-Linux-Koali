@@ -2,7 +2,7 @@
   "lock_format_version": "1.0.0",
   "source_id": "orgo",
   "source_kind": "independent_subsystem",
-  "pin_state": "blocked",
+  "pin_state": "resolved",
   "boundary_pin": {
     "subsystem_contract": {
       "path": "docs/contracts/subsystems/orgo.subsystem.json",
@@ -15,36 +15,29 @@
     }
   },
   "implementation_source": {
-    "repository_url": null,
+    "repository_url": "https://github.com/Rejean-McCormick/Orgo.git",
     "release": null,
-    "commit": null,
+    "commit": "30ef38de3b6f591236625a4b22bc5ebbdb1ec40d",
     "source_digest": {
       "algorithm": "sha256",
-      "value": null
+      "value": "22ae223f47c034d97130b8e6073809ccdb429020b690d29efa265cbd6a304aeb"
     }
   },
   "license": {
-    "spdx_expression": null,
-    "notice_digest": null,
-    "verification_state": "not_available_from_mounted_authority"
+    "spdx_expression": "AGPL-3.0-or-later",
+    "notice_digest": "sha256:bb30f23173e348305d859db33908e7d7334241af72e18a4f0e201fc671eff354",
+    "verification_state": "verified"
   },
   "official_documentation": {
     "mount_path": "subsystems/orgo",
     "required_for_final_alignment": true,
     "mount_state": "absent",
-    "expected_release": null,
-    "release_digest": null
+    "expected_release": "git:30ef38de3b6f591236625a4b22bc5ebbdb1ec40d",
+    "release_digest": "sha256:22ae223f47c034d97130b8e6073809ccdb429020b690d29efa265cbd6a304aeb"
   },
   "activation": {
-    "allowed": false,
-    "blockers": [
-      "official_documentation_absent",
-      "repository_not_pinned",
-      "revision_not_pinned",
-      "source_digest_not_pinned",
-      "license_not_verified",
-      "expected_documentation_release_not_pinned"
-    ]
+    "allowed": true,
+    "blockers": []
   },
   "rules": {
     "allow_floating_ref": false,
