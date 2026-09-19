@@ -32,77 +32,126 @@ This is the living technical-status page for kOA-Linux. Dated assessments remain
 
 **Advanced Beta — System Closure & Qualification**
 
-**Evidence basis updated:** 2026-09-15  
+**Evidence basis updated:** 2026-09-19  
+**Primary application-runtime target:** Koali + Konnaxion + Orgo  
 **Release state:** not pre-RC and not Release Candidate
 
-The living status no longer publishes one scalar engineering-maturity percentage. Specification/contract completeness, functional implementation, integration, runtime qualification, and release readiness move independently and are reported separately below. Historical percentage estimates remain in their dated reports as historical engineering estimates only.
+The living status does not publish one scalar engineering-maturity percentage. Specification/contract completeness, functional implementation, integration, runtime qualification, and release readiness move independently and are reported separately below. Historical percentage estimates remain in their dated reports as historical engineering estimates only.
 
 ## Current evidence by dimension
 
 | Dimension | Current status | Evidence / interpretation |
 | --- | --- | --- |
-| Diagnostic environment and repository | **PASS for current checks** | LevelUpDiag `audit-total` N00, N01, and N02 passed under WSL2; the frozen `uv` environment synchronized successfully and the audited worktree was clean. |
-| Contracts | **PASS for current checks** | N04 passed; the contract gate reported 19 contract/profile/release binding tests passing. |
-| First-party component implementation | **Substantial; alignment correction applied** | N05 ran 682 component/integration tests: 681 passed and one Koali Spaces boundary test failed only because the implemented `unix_transport.py` path was missing from the test allowlist. The alignment overlay adds that path. A fresh post-change run is still required before recording N05 as PASS. |
-| Profiles | **PASS for current checks** | N07 passed with 40 profile tests. |
-| Documentation conformance | **Alignment correction applied; post-change LevelUpDiag run pending** | N03 exposed deterministic validator drift: the non-authoritative `docs/KOALI_MAJOR_UPDATE_SPEC_2026-09/` was still scanned by canonical/greenfield checks even though generated navigation excluded it, and the generated-Markdown checker rejected the marker format emitted by `build_indexes.py`. The overlay aligns these validator boundaries. |
-| Security architecture | **Static/contract checks pass; machine qualification incomplete** | In N08, security architecture, AI-boundary, and component-boundary checks passed. The gate then failed on the same canonical-document ownership drift as N03. QEMU confinement evidence is still unavailable and is not counted as passed. |
-| Integration | **Partial / not freshly aggregated by N06** | N06 is intentionally unconfigured in the current LevelUpDiag configuration and therefore skipped. The 2026-09-08 Koali Spaces ⇄ Konnaxion browser-integration result remains a demonstrated historical milestone, not a fresh N06 verdict from the 2026-09-15 audit. |
-| Offline qualification | **BLOCKED** | N09 requires a qualified QEMU image and explicit offline navigation/profile inputs. No offline-machine PASS is claimed. |
-| System/appliance qualification | **BLOCKED** | N10 requires a QEMU image, expected release identity, compositor readiness, and session readiness evidence. No complete appliance PASS is claimed. |
-| Release readiness | **Not qualified** | Reproducible release artifact, complete machine-observed security/offline/system qualification, recovery/rollback evidence, and final Release Set evidence remain prerequisites to pre-RC/RC classification. |
+| Repository architecture / conformance | **PASS** | `file-architecture`, `path-ownership`, `dependencies`, and `generated-content` all pass with zero findings. Frozen architecture inventory: 1,145 actual / 1,145 expected paths. |
+| Profile contract | **PASS** | `sovereign-linux-node` profile contract passes under `DEBUG PRINCIPAL`. |
+| Effective profile | **PASS** | Koali Control Panel 4.1.1 generates `generated/profiles/sovereign_linux_node/effective-profile.json`; the corrected diagnostic accepts the generated nested primary-profile identity. |
+| First-party component bundles | **PASS** | All eight declared component build targets build successfully through the Control Panel and the `component_bundles` pipeline stage passes. |
+| Active subsystem sources | **PASS for current base scope** | Konnaxion and Orgo are the active required application subsystems. Ariane and SemantiK Architect are retained as deferred `excluded / not_installed` stubs and do not block the current base profile. |
+| Koali application integration | **Current development focus** | Konnaxion and Orgo both expose `koali.integration.json` manifests with local Web/API processes and readiness probes. The next target is simultaneous Koali-hosted navigation and repeatable E2E qualification. |
+| Package resolution | **BLOCKED / not materialized** | No generated `package-resolution.json` exists. |
+| Resolved deployment plan | **BLOCKED / not materialized** | `generated/profiles/sovereign_linux_node/resolved-plan.json` is absent. |
+| B-0092 / image projection | **BLOCKED** | B-0092 assembly bundle and final image inputs are not yet available. |
+| Security/offline/system machine qualification | **Not yet qualified** | Final image/QEMU prerequisites remain unavailable; no machine-level PASS is claimed. |
+| Release readiness | **Not qualified** | Complete Release Set, image qualification, recovery evidence, SBOM/provenance/signatures, and compatibility closure remain outstanding. |
 
 ## Latest diagnostic snapshot
 
-The latest full-target diagnostic evidence reviewed for this status is the LevelUpDiag-Koali 2.4.1 `audit-total` run `20260915T145602Z-6818af57` in DEBUG/non-blocking mode. The diagnostic machinery completed successfully (`execution_verdict: PASS`), while testability remained partial because qualification prerequisites were unavailable.
+The latest `DEBUG PRINCIPAL` evidence for `sovereign-linux-node` reports:
 
 ```text
-N00  PASS      Diagnostic Integrity
-N01  PASS      Environment
-N02  PASS      Repository / Structure
-N03  FAIL      Documentation              known canonical-source exclusion drift
-N04  PASS      Contracts
-N05  FAIL      Components                 681 passed / 1 allowlist-drift failure
-N06  SKIP      Integrations               command not configured
-N07  PASS      Profiles                   40 passed
-N08  FAIL      Security Runtime           same canonical-ownership drift before QEMU qualification
-N09  BLOCKED   Offline Runtime            QEMU image/profile/navigation inputs unavailable
-N10  BLOCKED   System Runtime             QEMU image/release/session inputs unavailable
+Architecture/conformance: ready
+
+file-architecture      PASS
+path-ownership         PASS
+dependencies           PASS
+generated-content      PASS
+
+profile_contract       PASS
+effective_profile      PASS
+component_bundles      PASS
+subsystem_sources      PASS
+package_resolution     BLOCKED
+resolved_plan          BLOCKED
+b0092_and_image        BLOCKED
+release_prerequisites  BLOCKED
 ```
 
-These local FAIL states must not be inflated into missing implementation when the evidence identifies a narrower cause. Conversely, correcting documentation or allowlist drift must not be inflated into QEMU, offline, security-confinement, recovery, or release qualification.
+Current blockers:
 
-## Alignment corrections represented by the current repository update
+```text
+pipeline_package_resolution_missing
+pipeline_resolved_plan_missing
+pipeline_b0092_not_renderable
+pipeline_image_inputs_missing
+pipeline_release_evidence_missing
+```
 
-The current alignment update addresses documentation/code drift that made implemented layers appear absent:
+These blockers are downstream system-assembly/release boundaries. They must not be interpreted as failures of the current Konnaxion + Orgo application-development target.
 
-- Audit Broker README: domain, application, persistence, API, migration, packaging, and tests are documented as present.
-- Governance Policy Runtime README and package metadata: policy evaluation, bundle lifecycle, stores, routes, packaging, and tests are documented as present.
-- Identity and Trust README/package metadata: domain, use cases, stores/key adapters, API, migrations, and tests are documented as present.
-- Resource Governor README/package metadata: domain, admission/application, probes/adapters, API, packaging, and tests are documented as present; durable queue/allocation persistence remains explicitly unclaimed.
-- kOA Node Agent README/library description: request validation, broker, fixed backends, socket transport, packaging, and tests are documented as present while production `serve` wiring remains fail-closed.
-- kOA Mediatheque README/package metadata: domain, application, stores/queues, API, migration, workers, and tests are documented as present while bootstrap remains observational.
-- the non-authoritative `KOALI_MAJOR_UPDATE_SPEC_2026-09` package is excluded consistently from documentation-source scanners until explicit adoption;
-- generated-Markdown validation now accepts the `KOA:GENERATED` marker + heading format emitted by `build_indexes.py`;
-- the Koali Spaces boundary allowlist includes its implemented Unix transport source.
+## Current base-system scope
 
-## Versioning note
+```text
+ACTIVE
+  Konnaxion
+  Orgo
 
-Audit Broker and Governance Policy Runtime currently expose different numeric values across implementation/package metadata and contract/interface/payload metadata (`0.1.0` and `1.0.0`). This status does not silently reinterpret or renumber those fields. Their READMEs record the distinction; any convergence requires an explicit versioning decision.
+DEFERRED / STUB
+  Ariane
+  SemantiK Architect
+```
+
+The deferred integrations remain in the repository without fabricated authority metadata. Their source locks may remain unresolved while the profile excludes them from the current base composition.
+
+## Current application-development topology
+
+```text
+Koali shell
+├── Konnaxion Web  127.0.0.1:4301
+│   └── API         127.0.0.1:8301
+└── Orgo Web        127.0.0.1:4302
+    └── API         127.0.0.1:4303
+```
+
+The next development milestone is to start both product stacks through their declared Koali integration manifests, admit both applications into Koali, navigate their real interfaces, improve shell/layout/design behavior, and add repeatable browser E2E journeys.
+
+## Koali Control Panel baseline
+
+Current validated development baseline:
+
+**Koali Control Panel 4.1.1**
+
+Supported current workflow:
+
+```text
+Refresh Workspace
+Generate Effective Profile
+Discover Components
+Use Git Commit Epoch
+Build All Components
+DEBUG PRINCIPAL
+```
+
+The pipeline is now clean through `subsystem_sources` for the selected base scope.
 
 ## What remains before pre-RC
 
-The principal remaining boundary is qualification rather than basic component scaffolding:
+The principal remaining release boundary is still system materialization and machine qualification:
 
-1. produce/select the reproducible system image that will actually be qualified;
-2. execute QEMU boot/session and confinement validation against that image;
-3. execute the declared offline navigation/media scenarios with network disabled;
-4. demonstrate recovery, last-known-good, rollback or forward-repair behavior against the qualified artifact;
-5. complete SBOM/provenance/signature and Release Set evidence;
-6. record a strict validation/release run after these prerequisites exist.
+1. implement or expose authoritative package-resolution materialization;
+2. implement or expose authority-derived resolved-plan materialization;
+3. produce B-0092 and final image inputs;
+4. build/select the reproducible system image that will actually be qualified;
+5. execute QEMU boot/session and confinement validation against that image;
+6. execute declared offline navigation/media scenarios with network disabled;
+7. demonstrate recovery, last-known-good, rollback or forward-repair behavior against the qualified artifact;
+8. complete SBOM/provenance/signature and Release Set evidence;
+9. record a strict validation/release run after these prerequisites exist.
+
+Application-runtime E2E work for Koali + Konnaxion + Orgo can proceed before those final image/release stages are complete.
 
 ## Assessment history
 
+- [2026-09-19 — Technical Progress and Runtime Integration Status](./2026-09-19-technical-progress-and-runtime-integration-status.md) — architecture clean; effective profile, component bundles, and selected subsystem sources PASS; Konnaxion + Orgo established as current base; next focus Koali-hosted UX/E2E
 - [2026-09-08 — Technical Progress and Maturity Assessment](./2026-09-08-technical-progress-and-maturity-assessment.md) — integrated Koali Spaces ⇄ Konnaxion runtime and browser navigation; historical engineering-maturity estimates
 - [2026-09-04 — Technical Progress and Maturity Assessment](./2026-09-04-technical-progress-and-maturity-assessment.md) — first-party component build closure and development-environment automation
 - [2026-08-28 — Technical Maturity Assessment](./2026-08-28-technical-maturity-assessment.md) — system closure and qualification
