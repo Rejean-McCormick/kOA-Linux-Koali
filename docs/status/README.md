@@ -32,7 +32,7 @@ This is the living technical-status page for kOA-Linux. Dated assessments remain
 
 **Advanced Beta — System Closure & Qualification**
 
-**Evidence basis updated:** 2026-09-19  
+**Evidence basis updated:** 2026-09-21  
 **Primary application-runtime target:** Koali + Konnaxion + Orgo  
 **Release state:** not pre-RC and not Release Candidate
 
@@ -47,7 +47,8 @@ The living status does not publish one scalar engineering-maturity percentage. S
 | Effective profile | **PASS** | Koali Control Panel 4.1.1 generates `generated/profiles/sovereign_linux_node/effective-profile.json`; the corrected diagnostic accepts the generated nested primary-profile identity. |
 | First-party component bundles | **PASS** | All eight declared component build targets build successfully through the Control Panel and the `component_bundles` pipeline stage passes. |
 | Active subsystem sources | **PASS for current base scope** | Konnaxion and Orgo are the active required application subsystems. Ariane and SemantiK Architect are retained as deferred `excluded / not_installed` stubs and do not block the current base profile. |
-| Koali application integration | **Current development focus** | Konnaxion and Orgo both expose `koali.integration.json` manifests with local Web/API processes and readiness probes. The next target is simultaneous Koali-hosted navigation and repeatable E2E qualification. |
+| Konnaxion ↔ Orgo application integration | **PASS for selected IK boundary** | Integrated local runtime qualification passed on 2026-09-21 for `governance.decision.execute/1.0.0` and `accountability.impact.publish/1.0.0`, including Signal→Workflow→Case→Task, impact return, idempotent replay and divergent replay conflict. Canonical evidence is owned by `kOA_Digital_Ecosystem/docs/status/2026-09-21-konnaxion-orgo-ik-e2e-qualification.md`. |
+| Koali-hosted application UX | **Current development focus** | Konnaxion and Orgo both expose `koali.integration.json` manifests with local Web/API processes and readiness probes. The remaining application target is simultaneous Koali-hosted navigation and repeatable browser E2E journeys; the direct Konnaxion↔Orgo backend IK boundary is no longer an open qualification gap. |
 | Package resolution | **BLOCKED / not materialized** | No generated `package-resolution.json` exists. |
 | Resolved deployment plan | **BLOCKED / not materialized** | `generated/profiles/sovereign_linux_node/resolved-plan.json` is absent. |
 | B-0092 / image projection | **BLOCKED** | B-0092 assembly bundle and final image inputs are not yet available. |
@@ -108,11 +109,15 @@ The deferred integrations remain in the repository without fabricated authority 
 Koali shell
 ├── Konnaxion Web  127.0.0.1:4301
 │   └── API         127.0.0.1:8301
-└── Orgo Web        127.0.0.1:4302
-    └── API         127.0.0.1:4303
+│       └── qualified IK boundary ─────┐
+└── Orgo Web        127.0.0.1:4302     │
+    └── API         127.0.0.1:4303 ◀───┘
+
+Konnaxion ↔ Orgo backend IK E2E: QUALIFIED 2026-09-21
+Koali-hosted browser E2E: still pending
 ```
 
-The next development milestone is to start both product stacks through their declared Koali integration manifests, admit both applications into Koali, navigate their real interfaces, improve shell/layout/design behavior, and add repeatable browser E2E journeys.
+The direct Konnaxion↔Orgo backend interaction is now qualified independently of Koali. The next development milestone is to start both product stacks through their declared Koali integration manifests, admit both applications into Koali, navigate their real interfaces, improve shell/layout/design behavior, and add repeatable browser E2E journeys.
 
 ## Koali Control Panel baseline
 
@@ -133,6 +138,17 @@ DEBUG PRINCIPAL
 
 The pipeline is now clean through `subsystem_sources` for the selected base scope.
 
+## Cross-product qualification reference
+
+The selected Konnaxion↔Orgo Interaction Kernel boundary passed integrated local E2E qualification on 2026-09-21. kOA-Linux records that result as subsystem-integration evidence only; product behavior remains owned by Konnaxion and Orgo, and the canonical cross-product qualification record is maintained in:
+
+```text
+kOA_Digital_Ecosystem/docs/status/
+2026-09-21-konnaxion-orgo-ik-e2e-qualification.md
+```
+
+This qualification does not convert kOA-Linux package-resolution, resolved-plan, image, machine-security, offline, recovery, or Release Set stages into PASS.
+
 ## What remains before pre-RC
 
 The principal remaining release boundary is still system materialization and machine qualification:
@@ -151,6 +167,7 @@ Application-runtime E2E work for Koali + Konnaxion + Orgo can proceed before tho
 
 ## Assessment history
 
+- **2026-09-21 — Konnaxion↔Orgo IK E2E qualification** — selected backend boundary qualified; canonical cross-product evidence is maintained in `kOA_Digital_Ecosystem/docs/status/2026-09-21-konnaxion-orgo-ik-e2e-qualification.md`
 - [2026-09-19 — Technical Progress and Runtime Integration Status](./2026-09-19-technical-progress-and-runtime-integration-status.md) — architecture clean; effective profile, component bundles, and selected subsystem sources PASS; Konnaxion + Orgo established as current base; next focus Koali-hosted UX/E2E
 - [2026-09-08 — Technical Progress and Maturity Assessment](./2026-09-08-technical-progress-and-maturity-assessment.md) — integrated Koali Spaces ⇄ Konnaxion runtime and browser navigation; historical engineering-maturity estimates
 - [2026-09-04 — Technical Progress and Maturity Assessment](./2026-09-04-technical-progress-and-maturity-assessment.md) — first-party component build closure and development-environment automation

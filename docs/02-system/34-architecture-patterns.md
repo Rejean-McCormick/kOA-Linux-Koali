@@ -240,3 +240,36 @@ This document is interpreted with the Koali product-interface portability rule:
 - a surface profile is a projection of the same product routes, capabilities, commands, and contextual views, not a separately implemented frontend;
 - removing one product removes only that product's admitted presentation contributions and SHALL NOT require source changes to unrelated products;
 - ordinary shell behavior SHALL NOT require private UI imports from another product; cross-product journeys use explicit public routes, commands, capabilities, or integration contracts.
+
+## 12. Senior Architecture Patterns reference alignment
+
+This subsection is an explanatory cross-reference to the separate **Senior Architecture Patterns** catalog used during architectural review. It does not create additional requirements or override the canonical policy in `contracts/architecture-patterns.contract.json`.
+
+| Senior Architecture Patterns name | kOA-Linux application | Alignment |
+| --- | --- | --- |
+| Circuit Breaker | Canonical circuit policy for qualifying network/process boundaries | Direct |
+| Exponential Backoff + Jitter | Bounded transient-failure retry; full jitter is part of the canonical resilience envelope | Direct |
+| Graceful Degradation | System-wide safe-degradation rule preserves independent local/offline capabilities and labels partial/unavailable state | Direct |
+| Rate Limiting / Throttling | Resource Governor admission/envelopes and bounded expensive/external work | Selective |
+| Timeout Budgets | Attempt and total-request budgets bound fallible remote work before retry | Direct |
+| Hexagonal Architecture / Ports & Adapters | Internal components separate domain/application logic from ports and concrete adapters | Structural alignment |
+| Anti-Corruption Layer | External and independent-system integrations translate at explicit adapter/boundary layers rather than leaking foreign authority models inward | Selective |
+| Backend for Frontend (BFF) | Implemented as the narrower **experience view adapter**, which may shape/aggregate presentation data but owns no business authority | Direct equivalent |
+| CQRS | Read-optimized projections are explicitly non-authoritative and rebuildable; commands remain owner-directed | Direct |
+| Saga | Implemented as an explicit **distributed workflow** with owner-local transactions, compensation, forward repair, terminal states, and evidence | Direct equivalent |
+| Idempotency | Required for replay-safe workflow steps and asynchronous/control operations where semantics permit | Direct |
+| Transactional Outbox | Used when a local authoritative commit must emit asynchronous work | Selective composition |
+| Cache-Aside / Lazy Loading | Canonical cache policy with owner source of truth, TTL, invalidation, staleness bounds, and safe empty-cache behavior | Direct |
+| Dead-Letter Queue (DLQ) | Canonical dead-letter/quarantine behavior with bounded retry, alerting, authorized redrive, and receipted discard | Direct |
+| Claim Check | Implemented as **large payload reference**: owner-controlled object storage plus bounded reference and digest verification | Direct equivalent |
+| Blue-Green Deployment | Supported as a service-update strategy where the active profile/deployment model makes it appropriate | Selective |
+| Canary Release | Supported as a bounded service-update strategy rather than a universal endpoint requirement | Selective |
+| Immutable Infrastructure | Signed immutable OS/system-image architecture and controlled release activation | Direct |
+| Distributed Tracing | Correlation/causal tracing across distributed boundaries and receipts | Selective |
+| Health Check API | Explicit health/readiness contracts and per-component health implementations | Direct |
+| Metrics and Alerting | Operational observability and alerts for breakers, queues, workflows, projections, caches, readiness, and SLO-sensitive failure | Direct |
+
+The following catalog patterns are **not system-wide kOA-Linux defaults merely because they exist in the reference**: Event Sourcing, Sharding/Partitioning, Pub/Sub, CDN offloading, Sidecar or service-mesh architecture, Cell-Based Architecture, Modular Monolith, and Data Mesh. They require a separate applicability decision if a concrete subsystem needs them.
+
+The important distinction is that kOA-Linux adopts patterns **by applicability and authority boundary**, not by checklist. A pattern may improve resilience, delivery, deployment, or presentation, but it does not transfer canonical ownership of data, authorization, policy, or business transitions.
+

@@ -90,6 +90,9 @@ AI-assisted work starts at [`docs/AI_CONTEXT.md`](docs/AI_CONTEXT.md).
 
 ## Architecture
 
+Senior architecture pattern alignment is documented in [`docs/02-system/34-architecture-patterns.md`](docs/02-system/34-architecture-patterns.md#12-senior-architecture-patterns-reference-alignment). That mapping is explanatory; the canonical policy remains `docs/contracts/architecture-patterns.contract.json`.
+
+
 ```text
 ┌──────────────────────────────────────────────────────────────────┐
 │                         user surfaces                            │
