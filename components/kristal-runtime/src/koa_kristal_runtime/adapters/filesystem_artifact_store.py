@@ -20,8 +20,11 @@ from pathlib import Path, PurePosixPath
 from types import MappingProxyType
 from typing import Any, Mapping
 
+from ..application import ApplicationError, kristal_state_content_digest
+
 _RUNTIME_ID = re.compile(r"^runtime-pack:[A-Za-z0-9][A-Za-z0-9._:/+-]*$")
 _KRISTAL_ID = re.compile(r"^kristal-artifact\.[A-Za-z0-9][A-Za-z0-9._-]*$")
+_KRISTAL_STATE_ID = re.compile(r"^sha256:[0-9a-f]{64}$")
 _VERSION = re.compile(
     r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)"
     r"(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$"
@@ -56,6 +59,7 @@ class ArtifactStorageUnavailableError(ArtifactStoreError):
 
 class ArtifactClass(StrEnum):
     RUNTIME_PACK = "runtime_pack"
+    KRISTAL_STATE = "kristal_state"
     KRISTAL_ARTIFACT = "kristal_artifact"
 
 
@@ -155,6 +159,28 @@ def _descriptor(document: Mapping[str, Any]) -> _Descriptor:
         manifest = document.get("manifest")
         digest_key = "digest"
         size_key = "size_bytes"
+    elif document.get("artifact_type") == ArtifactClass.KRISTAL_STATE.value:
+        artifact_class = ArtifactClass.KRISTAL_STATE.value
+        identity = _text(document.get("state_id"), "state_id")
+        if not _KRISTAL_STATE_ID.fullmatch(identity):
+            raise InvalidArtifactError("state_id is not a Kristal v6 sha256 identity")
+        version = _text(document.get("schema_version"), "schema_version")
+        if version != "6.0":
+            raise InvalidArtifactError("Kristal State schema_version must be 6.0")
+        content_hash = document.get("content_hash")
+        if not isinstance(content_hash, Mapping) or content_hash.get("alg") != "sha256":
+            raise InvalidArtifactError("Kristal State content_hash must use sha256")
+        raw_digest = _text(content_hash.get("value"), "content_hash.value")
+        digest = f"sha256:{raw_digest}"
+        if identity != digest or not _KRISTAL_STATE_ID.fullmatch(digest):
+            raise InvalidArtifactError("Kristal State identity and content_hash must match")
+        try:
+            computed = kristal_state_content_digest(document)
+        except ApplicationError as exc:
+            raise InvalidArtifactError(str(exc)) from exc
+        if raw_digest != computed:
+            raise InvalidArtifactError("Kristal State content hash does not match RFC 8785 canonical content")
+        return _Descriptor(ArtifactClass.KRISTAL_STATE, identity, version, digest, MappingProxyType({}))
     elif artifact_class == ArtifactClass.KRISTAL_ARTIFACT.value:
         identity = _text(document.get("artifact_id"), "artifact_id")
         if not _KRISTAL_ID.fullmatch(identity):

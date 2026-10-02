@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import hashlib
 import json
 import tomllib
 
@@ -34,6 +35,11 @@ def test_payload_interfaces_and_runtime_paths_are_canonical() -> None:
     payload = tomllib.loads((root / "components/kristal-runtime/packaging/payload.toml").read_text())
     assert payload["component_id"] == "kristal_runtime"
     assert payload["component_contract"] == "docs/contracts/components/kristal-runtime.component.json"
+    assert payload["component_version"] == "2.0.0"
+    assert payload["kristal_state_schema"] == "docs/contracts/artifact-contracts/kristal-state.schema.json"
+    assert payload["kristal_reader_policy_schema"] == "docs/contracts/artifact-contracts/kristal-reader-policy.schema.json"
+    assert payload["kristal_standard_version"] == "6.0.0"
+    assert payload["kristal_canonicalization_profile"] == "kristal.v6:jcs-rfc8785"
     assert [item["interface_id"] for item in payload["interface"]] == list(INTERFACE_IDS)
     assert payload["installation"] == {
         "code_root": "/usr/lib/koa/active/services/kristal-runtime",
@@ -102,3 +108,26 @@ def test_unknown_interface_is_rejected_without_service_call(service) -> None:
     assert response.status == "rejected"
     assert response.error.code == "unregistered_interface"
     assert service.calls == []
+
+
+def test_kristal_v6_pin_and_ik_profiles_are_exact() -> None:
+    root = repository_root()
+    lock = json.loads((root / "docs/contracts/integrations/kristal-v6.0.0.consumer-lock.json").read_text())
+    assert lock["version"] == "6.0.0"
+    assert lock["canonicalization_profile"] == "kristal.v6:jcs-rfc8785"
+    assert lock["canonicalization_version"] == "1"
+    manifest_path = root / "docs/contracts/integrations/kristal-v6.0.0.standard-manifest.sha256.json"
+    assert "sha256:" + hashlib.sha256(manifest_path.read_bytes()).hexdigest() == lock["standard_manifest_sha256"]
+    manifest = json.loads(manifest_path.read_text())
+    assert manifest["standard_version"] == "6.0.0"
+    checks = {
+        "schemas/kristal-state.schema.json": root / "docs/contracts/artifact-contracts/kristal-state.schema.json",
+        "schemas/reader-policy.schema.json": root / "docs/contracts/artifact-contracts/kristal-reader-policy.schema.json",
+    }
+    for key, path in checks.items():
+        digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+        assert digest == lock["contract_digests"][key]
+    for profile in ("kristal.build.request", "kristal.artifact.ready", "kristal.revision.request"):
+        path = root / f"docs/contracts/integrations/interaction-kernel/kristal/{profile}/2.0.0/profile.json"
+        data = json.loads(path.read_text())
+        assert data["version"] == "2.0.0"

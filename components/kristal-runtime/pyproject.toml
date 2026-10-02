@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "koa-kristal-runtime"
 version = "0.1.0"
-description = "Bounded startup, health, configuration, and receipts for kOA Kristal Runtime"
+description = "Kristal v6 content-addressed state and Runtime Pack boundary for kOA"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Proprietary" }

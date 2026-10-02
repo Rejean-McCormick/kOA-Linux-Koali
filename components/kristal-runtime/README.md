@@ -1,5 +1,8 @@
 # Kristal Runtime
 
+> **Kristal v6 baseline (2026-10-01):** the canonical structured artifact is `kristal_state` (`schema_version: 6.0`) pinned to standard `6.0.0` and `kristal.v6:jcs-rfc8785`. Exact schemas and the consumer lock live under `docs/contracts/`. Interaction Kernel Kristal boundary profiles are pinned at `2.0.0`. The historical `kristal_artifact` wrapper remains compatibility-only. `record_role` and `actionability` are preserved as data and never transfer execution authority.
+
+
 This package provides the bounded startup surface for the kOA Kristal Runtime.
 It owns configuration validation, bootstrap state, health/readiness projection,
 and machine-readable receipts for Runtime Pack verification, activation,

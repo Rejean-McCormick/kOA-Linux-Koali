@@ -181,6 +181,9 @@ def _validate_compatibility(
         raise ApplicationError("runtime_context_invalid", "kristal_runtime_version is required")
     if not isinstance(profile_id, str) or not profile_id:
         raise ApplicationError("runtime_context_invalid", "profile_id is required")
+    if artifact.get("artifact_type") == "kristal_state":
+        # record_role/actionability describe the record; neither grants runtime authority.
+        return False
     if artifact.get("artifact_class") == "kristal_artifact":
         compatibility = require_mapping(artifact, "compatibility")
         constraint = compatibility.get("kristal_runtime")

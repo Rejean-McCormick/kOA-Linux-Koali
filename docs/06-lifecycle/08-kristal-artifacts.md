@@ -251,7 +251,7 @@ These details belong to component, profile, artifact, security, toolchain, and r
 
 `text
 source or input
--> Structured Epistemic State
+-> Kristal State v6 (`kristal_state`)
 -> optional Claim-IR or SenTient candidate resolution
 -> Working Exchange
 -> review and validation decisions
@@ -276,7 +276,7 @@ A later state does not erase earlier source, review, decision, or provenance ide
 | Artifact family | Purpose | Typical authority state |
 | --- | --- | --- |
 | Source or input artifact | Preserve original evidence, source material, metadata, and provenance. | Source or candidate |
-| Structured Epistemic State | Represent normalized entities, claims, relations, evidence, uncertainty, and status. | Candidate or reviewed |
+| Kristal State v6 (`kristal_state`) | Represent assertions with typed `valuations[]`, statement `coordinates`, `applicability`, provenance, `record_role`, and `actionability` without transferring execution authority. | Draft, working, reviewed, recognized, or reference according to the v6 state contract |
 | Claim-IR | Represent optional extracted or intermediate claims. | Non-authoritative candidate |
 | SenTient candidate | Represent optional isolated reconciliation or enrichment output. | Non-authoritative candidate |
 | Working Exchange | Carry reviewable and revisable epistemic content between tools or parties. | Working |
@@ -288,6 +288,12 @@ A later state does not erase earlier source, review, decision, or provenance ide
 | Runtime Pack | Package verified query-ready artifacts, indexes, metadata, and contracts for offline runtime use. | Published or active candidate |
 | Revocation or supersession record | Change use, distribution, activation, or predecessor status without erasing identity. | Lifecycle authority |
 | Federation manifest | Identify interoperable artifacts, authorities, scopes, endpoints, and compatibility. | Distribution metadata |
+
+### 4.2.1 Kristal v6 contract boundary
+
+The active structured-state contract is Kristal `6.0.0`, pinned by `contracts/integrations/kristal-v6.0.0.consumer-lock.json`. Canonicalization is `kristal.v6:jcs-rfc8785` version `1`. State mutation requires recomputing the content identity; projections are rebuildable and do not replace the canonical state. Reader Policy is a separate v6 artifact and does not rewrite state truth or authority.
+
+The v6 semantic migration is explicit: `certainty_level`/`uncertainty` become typed `valuations[]`, `qualifiers` become statement `coordinates`, and `scope` becomes `applicability`. `record_role` and `actionability` remain separate concerns, and neither is interpreted as an implicit execution grant.
 
 ### 4.3 Responsibility domains
 

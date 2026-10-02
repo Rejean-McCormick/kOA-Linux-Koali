@@ -166,7 +166,7 @@ A validator/generator disagreement is documentation-tooling drift, not evidence 
 
 The current kOA-Linux contracts already provide the canonical local model for Runtime Pack identity, Release Sets, critical-transition receipts, subsystem ownership, and Kristal Runtime activation state. Ecosystem-level documentation should reference those contracts rather than create competing release or activation authorities.
 
-The remaining cross-system clarification is Interaction Kernel adoption. Interaction Kernel may be used as the target/adopted protocol at subsystem boundaries, but it is not globally normative in kOA-Linux merely because another ecosystem document names it. Until a change-controlled integration contract registers an IK Profile and its mapping, the canonical kOA-Linux communication, subsystem, integration, receipt, and artifact contracts remain authoritative.
+Interaction Kernel adoption is now concrete for the Kristal v6 boundary only. kOA-Linux vendors the `kristal.build.request`, `kristal.artifact.ready`, and `kristal.revision.request` profiles at version `2.0.0`, while the canonical local component, receipt, authority, and Runtime Pack contracts remain authoritative. No global IK replacement is implied outside that registered Kristal integration.
 
 Activation terminology is also now explicit:
 

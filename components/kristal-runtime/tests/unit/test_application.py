@@ -19,6 +19,8 @@ from koa_kristal_runtime.application import (  # noqa: E402
     RenderArtifact,
     RevokeArtifact,
     VerifyArtifact,
+    canonical_json,
+    kristal_state_content_digest,
 )
 from koa_kristal_runtime.ports import (  # noqa: E402
     IndexQueryPage,
@@ -166,10 +168,63 @@ def runtime_pack(*, channel: str = "knowledge") -> dict[str, Any]:
     }
 
 
+
+def kristal_state() -> dict[str, Any]:
+    state: dict[str, Any] = {
+        "schema_version": "6.0",
+        "artifact_type": "kristal_state",
+        "state_id": "sha256:" + ("0" * 64),
+        "artifact_status": "recognized",
+        "created_at": "2026-10-01T12:00:00Z",
+        "created_by": {"agent_id": "system:koa-linux", "agent_type": "system"},
+        "canonicalization_profile": "kristal.v6:jcs-rfc8785",
+        "canonicalization_version": "1",
+        "content_hash": {"alg": "sha256", "value": "0" * 64},
+        "hash_target_policy": {
+            "exclude_fields": ["state_id", "content_hash", "signatures"]
+        },
+        "applicability": {"domain": "technology", "environment": "test", "language": "en"},
+        "assertions": [{
+            "assertion_id": "sha256:" + ("c" * 64),
+            "statement": {
+                "subject": {"label": "kOA Linux"},
+                "predicate": {"label": "kristal.alignment"},
+                "object": {"kind": "string", "value": "v6"},
+                "coordinates": [{
+                    "predicate": {"label": "platform"},
+                    "object": {"kind": "string", "value": "linux"}
+                }],
+            },
+            "assertion_status": "hypothesis",
+            "applicability": {"domain": "technology"},
+            "valuations": [{
+                "dimension": "assertion_support",
+                "value_semantics": "ordinal",
+                "value_state": "known",
+                "value": "supported",
+                "scale_ref": "kristal.ordinal.support.v1"
+            }],
+            "record_role": "reference_knowledge",
+            "actionability": {"mode": "automatic"},
+        }],
+        "provenance": [{
+            "provenance_id": "prov:koa-linux:v6",
+            "event_type": "validated",
+            "created_at": "2026-10-01T12:00:01Z",
+            "agent": {"agent_id": "system:koa-linux", "agent_type": "system"}
+        }],
+        "signatures": [],
+    }
+    digest = kristal_state_content_digest(state)
+    state["state_id"] = "sha256:" + digest
+    state["content_hash"]["value"] = digest
+    return state
+
 def test_contract_fixtures_validate_against_canonical_schemas():
     repository_root = Path(__file__).resolve().parents[4]
     cases = (
         (artifact(), repository_root / "docs/contracts/artifact-contracts/kristal-artifact.schema.json"),
+        (kristal_state(), repository_root / "docs/contracts/artifact-contracts/kristal-state.schema.json"),
         (runtime_pack(), repository_root / "docs/contracts/artifact-contracts/runtime-pack.schema.json"),
     )
     for instance, schema_path in cases:
@@ -191,14 +246,18 @@ class MemoryArtifactStore:
     def find_by_content_digest(self, content_digest: str):
         for value in self.artifacts.values():
             digest = value.get("artifact_digest")
-            if value.get("artifact_class") == "kristal_artifact":
+            if value.get("artifact_type") == "kristal_state":
+                digest = value["state_id"]
+            elif value.get("artifact_class") == "kristal_artifact":
                 digest = "sha256:" + value["content_identity"]["digest"]
             if digest == content_digest:
                 return deepcopy(value)
         return None
 
     def admit_artifact(self, artifact_value, admission_record):
-        if artifact_value["artifact_class"] == "runtime_pack":
+        if artifact_value.get("artifact_type") == "kristal_state":
+            key = (artifact_value["state_id"], artifact_value["schema_version"])
+        elif artifact_value["artifact_class"] == "runtime_pack":
             key = (artifact_value["artifact_identity"], artifact_value["artifact_version"])
         else:
             key = (artifact_value["artifact_id"], artifact_value["artifact_version"])
@@ -728,3 +787,80 @@ def test_policy_and_audit_transport_failures_are_closed(actor):
             artifact(), actor_context=actor, request_id="request:audit:transport"
         )
     assert audit_failure.value.code == "audit_unavailable"
+
+
+def test_kristal_v6_jcs_matches_normative_vectors():
+    assert canonical_json({}) == b"{}"
+    value = {"z": "last", "a": {"b": 2, "a": 1}, "m": [{"y": True, "x": False}, None, "text"]}
+    expected = b'{"a":{"a":1,"b":2},"m":[{"x":false,"y":true},null,"text"],"z":"last"}'
+    assert canonical_json(value) == expected
+    assert __import__("hashlib").sha256(expected).hexdigest() == "f45ed16183caf10d3a60b77fe6b2db8cae797c847bd81391b43887abd68fe7c2"
+
+
+def test_kristal_v6_state_admission_is_content_addressed(actor):
+    state = kristal_state()
+    store = MemoryArtifactStore()
+    result = AdmitArtifact(store, AllowPolicy(), MemoryAudit())(
+        state, actor_context=actor, request_id="request:v6:admit"
+    )
+    assert result.artifact.artifact_class == "kristal_state"
+    assert result.artifact.artifact_id == state["state_id"]
+    assert result.artifact.artifact_version == "6.0"
+    assert result.artifact.content_digest == state["state_id"]
+
+
+def test_kristal_v6_rejects_mutation_without_rehash(actor):
+    state = kristal_state()
+    state["assertions"][0]["valuations"][0]["value"] = "changed"
+    with pytest.raises(ApplicationError) as exc:
+        AdmitArtifact(MemoryArtifactStore(), AllowPolicy(), MemoryAudit())(
+            state, actor_context=actor, request_id="request:v6:tamper"
+        )
+    assert exc.value.code == "content_identity_invalid"
+
+
+def test_kristal_v6_rejects_legacy_semantics_and_invalid_unknown_value(actor):
+    legacy = kristal_state()
+    legacy["assertions"][0]["uncertainty"] = 0.2
+    digest = kristal_state_content_digest(legacy)
+    legacy["state_id"] = "sha256:" + digest
+    legacy["content_hash"]["value"] = digest
+    with pytest.raises(ApplicationError) as exc:
+        AdmitArtifact(MemoryArtifactStore(), AllowPolicy(), MemoryAudit())(
+            legacy, actor_context=actor, request_id="request:v6:legacy"
+        )
+    assert exc.value.code == "kristal_v5_field_forbidden"
+
+    invalid = kristal_state()
+    valuation = invalid["assertions"][0]["valuations"][0]
+    valuation["value_state"] = "unknown"
+    digest = kristal_state_content_digest(invalid)
+    invalid["state_id"] = "sha256:" + digest
+    invalid["content_hash"]["value"] = digest
+    with pytest.raises(ApplicationError) as exc2:
+        AdmitArtifact(MemoryArtifactStore(), AllowPolicy(), MemoryAudit())(
+            invalid, actor_context=actor, request_id="request:v6:valuation"
+        )
+    assert exc2.value.code == "kristal_v6_valuation_invalid"
+
+
+def test_kristal_v6_automatic_actionability_never_grants_activation(actor, runtime_context):
+    state = kristal_state()
+    store = MemoryArtifactStore()
+    AdmitArtifact(store, AllowPolicy(), MemoryAudit())(state, actor_context=actor, request_id="request:v6:admit")
+    result = VerifyArtifact(store, Verifier(), AllowPolicy(), MemoryAudit())(
+        state["state_id"], "6.0", actor_context=actor, runtime_context=runtime_context, request_id="request:v6:verify"
+    )
+    assert result.activation_eligible is False
+
+
+def test_kristal_v6_filesystem_store_accepts_document_only_state(tmp_path):
+    from koa_kristal_runtime.adapters.filesystem_artifact_store import FilesystemArtifactStore
+    from datetime import datetime, timezone
+    state = kristal_state()
+    store = FilesystemArtifactStore(tmp_path / "artifacts")
+    stored = store.store(state, {}, stored_at=datetime(2026, 10, 1, tzinfo=timezone.utc))
+    assert stored.artifact_class.value == "kristal_state"
+    assert stored.artifact_identity == state["state_id"]
+    assert stored.manifest_entries == ()
+    assert dict(store.read_document(stored.artifact_ref))["artifact_type"] == "kristal_state"

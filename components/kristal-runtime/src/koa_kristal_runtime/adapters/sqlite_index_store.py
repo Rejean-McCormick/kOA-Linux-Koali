@@ -205,7 +205,7 @@ class SQLiteIndexStore:
         registered_at: datetime,
         disposition: ArtifactDisposition = ArtifactDisposition.STAGED,
     ) -> ArtifactIndexRecord:
-        if artifact_class not in {"runtime_pack", "kristal_artifact"}:
+        if artifact_class not in {"runtime_pack", "kristal_state", "kristal_artifact"}:
             raise InvalidIndexRecord("unsupported artifact_class")
         if not isinstance(byte_length, int) or isinstance(byte_length, bool) or byte_length < 0:
             raise InvalidIndexRecord("byte_length must be a non-negative integer")

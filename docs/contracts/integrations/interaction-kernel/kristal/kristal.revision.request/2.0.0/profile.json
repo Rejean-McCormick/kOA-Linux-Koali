@@ -1,0 +1,40 @@
+{
+  "id": "kristal.revision.request",
+  "version": "2.0.0",
+  "class": "command",
+  "description": "Request a new Kristal v6 revision/fork; never mutate an Exchange in place.",
+  "source_systems": [
+    "konnaxion",
+    "orgo"
+  ],
+  "target_systems": [
+    "daat"
+  ],
+  "target_capability": "kristal-build",
+  "payload_schema": "payload.schema.json",
+  "authority": {
+    "required": true,
+    "accepted_kinds": [
+      "knowledge-revision-request",
+      "governance-mandate",
+      "operational-workflow"
+    ]
+  },
+  "artifacts": {
+    "base_artifact": {
+      "requirement": "required"
+    }
+  },
+  "delivery": {
+    "durability": "durable",
+    "idempotency": "required",
+    "ordering": "subject"
+  },
+  "response": {
+    "acceptance_receipt": "required",
+    "final_receipt": "required",
+    "outcome_events": [
+      "kristal.artifact.ready"
+    ]
+  }
+}

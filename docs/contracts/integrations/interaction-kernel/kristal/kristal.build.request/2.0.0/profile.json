@@ -1,0 +1,40 @@
+{
+  "id": "kristal.build.request",
+  "version": "2.0.0",
+  "class": "command",
+  "description": "Request Da’at to compile/build Kristal v6 artifacts from pinned exports/artifact references.",
+  "source_systems": [
+    "konnaxion",
+    "orgo"
+  ],
+  "target_systems": [
+    "daat"
+  ],
+  "target_capability": "kristal-build",
+  "payload_schema": "payload.schema.json",
+  "authority": {
+    "required": true,
+    "accepted_kinds": [
+      "knowledge-build-request",
+      "governance-mandate",
+      "operational-workflow"
+    ]
+  },
+  "artifacts": {
+    "source_exports": {
+      "requirement": "required"
+    }
+  },
+  "delivery": {
+    "durability": "durable",
+    "idempotency": "required",
+    "ordering": "none"
+  },
+  "response": {
+    "acceptance_receipt": "required",
+    "final_receipt": "required",
+    "outcome_events": [
+      "kristal.artifact.ready"
+    ]
+  }
+}

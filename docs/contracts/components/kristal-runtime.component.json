@@ -4,10 +4,10 @@
   "contract_type": "component_contract",
   "component_id": "kristal_runtime",
   "display_name": "Kristal Runtime",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "status": "active",
   "language": "en",
-  "effective_at": "2026-08-03T16:27:00-04:00",
+  "effective_at": "2026-10-01T00:00:00-04:00",
   "canonical_owner": "contracts/components/kristal-runtime.component.json",
   "component_registry_ref": "generated/component-catalog.json#/components/kristal_runtime",
   "documentation_ref": "04-components/kristal-runtime.md",
@@ -50,7 +50,7 @@
     "LOCK-LIFE-003",
     "LOCK-LIFE-004"
   ],
-  "purpose": "Provide a transversal runtime for verified Kristal epistemic artifacts while preserving content-derived identity independently from tenant workflow, interface state, and component operational state.",
+  "purpose": "Provide a transversal runtime for Kristal v6 content-addressed states and verified Runtime Packs while preserving identity independently from workflow, interface state, and component operational state.",
   "responsibility_boundary": {
     "owns": [
       "kristal_content_identity_resolution",
@@ -79,7 +79,7 @@
   },
   "authority_model": {
     "identity_rule": {
-      "canonical_basis": "canonical_epistemic_content",
+      "canonical_basis": "kristal.v6:jcs-rfc8785 content after hash_target_policy exclusions",
       "independent_from": [
         "tenant_workflow_state",
         "interface_state",
@@ -143,6 +143,35 @@
         ]
       },
       {
+        "artifact_class": "kristal_state",
+        "schema_ref": "contracts/artifact-contracts/kristal-state.schema.json",
+        "release_channel": "knowledge",
+        "standard_version": "6.0.0",
+        "canonicalization_profile": "kristal.v6:jcs-rfc8785",
+        "canonicalization_version": "1",
+        "consumer_lock_ref": "contracts/integrations/kristal-v6.0.0.consumer-lock.json",
+        "required_claims": [
+          "state_id",
+          "schema_version",
+          "artifact_status",
+          "created_by",
+          "applicability",
+          "assertions",
+          "provenance",
+          "canonicalization_profile",
+          "content_hash",
+          "hash_target_policy"
+        ],
+        "verification": [
+          "schema_validation",
+          "jcs_content_identity_validation",
+          "typed_valuation_validation",
+          "applicability_validation",
+          "provenance_validation",
+          "actionability_authority_separation"
+        ]
+      },
+      {
         "artifact_class": "kristal_artifact",
         "schema_ref": "contracts/artifact-contracts/kristal-artifact.schema.json",
         "release_channel": "knowledge",
@@ -157,7 +186,9 @@
           "content_identity_validation",
           "digest_validation",
           "provenance_validation"
-        ]
+        ],
+        "status": "legacy_compatibility_only",
+        "superseded_by": "kristal_state@6.0"
       }
     ],
     "rejected_conditions": [
@@ -168,7 +199,11 @@
       "wrong_release_channel",
       "unauthorized_downgrade",
       "unauthorized_substitution",
-      "missing_provenance"
+      "missing_provenance",
+      "kristal_v6_pin_mismatch",
+      "kristal_v6_content_hash_mismatch",
+      "legacy_v5_semantic_fields_in_kristal_state",
+      "actionability_interpreted_as_execution_authority"
     ]
   },
   "data_ownership": {

@@ -156,7 +156,10 @@ class ExecuteQuery:
         digest = "sha256:" + sha256(canonical_json({"items": [thaw(x) for x in ordered]})).hexdigest()
         lifecycle_status = _artifact_status(artifact)
         provenance_raw = artifact.get("provenance", {})
-        provenance = as_mapping(provenance_raw, name="provenance")
+        if isinstance(provenance_raw, (list, tuple)):
+            provenance = freeze_mapping({"records": thaw(provenance_raw)})
+        else:
+            provenance = as_mapping(provenance_raw, name="provenance")
         event = {
             "event_id": deterministic_id("query", request_id, ref.as_mapping(), {"digest": digest}),
             "event_type": "kristal.query.completed",
@@ -313,6 +316,9 @@ def _sortable(value: Any) -> tuple[int, Any]:
 
 
 def _artifact_status(artifact: Mapping[str, Any]) -> str:
+    artifact_status = artifact.get("artifact_status")
+    if isinstance(artifact_status, str):
+        return artifact_status
     lifecycle = artifact.get("lifecycle")
     if isinstance(lifecycle, Mapping):
         status = lifecycle.get("status")

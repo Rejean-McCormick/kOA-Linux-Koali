@@ -152,6 +152,7 @@ def _thaw_json(value: FrozenJson) -> object:
 class ArtifactClass(StrEnum):
     """Artifact classes admitted by Kristal Runtime."""
 
+    KRISTAL_STATE = "kristal_state"
     KRISTAL_ARTIFACT = "kristal_artifact"
     RUNTIME_PACK = "runtime_pack"
 

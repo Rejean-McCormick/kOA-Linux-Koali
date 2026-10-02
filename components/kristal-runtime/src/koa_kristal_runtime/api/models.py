@@ -17,7 +17,11 @@ API_VERSION = "1.0.0"
 COMPONENT_ID = "kristal_runtime"
 COMPONENT_CONTRACT = "contracts/components/kristal-runtime.component.json"
 RUNTIME_PACK_SCHEMA = "docs/contracts/artifact-contracts/runtime-pack.schema.json"
-KRISTAL_ARTIFACT_SCHEMA = "docs/contracts/artifact-contracts/kristal-artifact.schema.json"
+KRISTAL_STATE_SCHEMA = "docs/contracts/artifact-contracts/kristal-state.schema.json"
+KRISTAL_READER_POLICY_SCHEMA = "docs/contracts/artifact-contracts/kristal-reader-policy.schema.json"
+KRISTAL_ARTIFACT_SCHEMA = "docs/contracts/artifact-contracts/kristal-artifact.schema.json"  # legacy
+KRISTAL_STANDARD_VERSION = "6.0.0"
+KRISTAL_CANONICALIZATION_PROFILE = "kristal.v6:jcs-rfc8785"
 KNOWLEDGE_RELEASE_CHANNEL = "knowledge"
 
 INTERFACE_IDS = (
@@ -68,7 +72,7 @@ RECEIPT_OUTCOMES = (
 )
 DIGEST_RE = re.compile(r"^(?:sha256:[0-9a-f]{64}|sha384:[0-9a-f]{96}|sha512:[0-9a-f]{128})$")
 RUNTIME_PACK_ID_RE = re.compile(r"^runtime-pack:[A-Za-z0-9][A-Za-z0-9._:/+-]*$")
-KRISTAL_ID_RE = re.compile(r"^kristal(?:-artifact)?[.:/][A-Za-z0-9][A-Za-z0-9._:/@+-]*$")
+KRISTAL_ID_RE = re.compile(r"^(?:sha256:[0-9a-f]{64}|kristal(?:-artifact)?[.:/][A-Za-z0-9][A-Za-z0-9._:/@+-]*)$")
 SENSITIVE_KEY_RE = re.compile(
     r"(?:^|[_-])(password|passwd|secret|private[_-]?key|access[_-]?token|refresh[_-]?token|api[_-]?key)(?:$|[_-])",
     re.IGNORECASE,

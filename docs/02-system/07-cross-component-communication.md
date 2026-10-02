@@ -351,7 +351,7 @@ A transport owns delivery mechanics only. It does not own business authority, da
 
 ### 4.3.1 Interaction Kernel adoption boundary
 
-Interaction Kernel (IK) can be used as a system-of-systems interoperability protocol at declared subsystem boundaries, but it is **not implicitly activated by this document** and it does not replace the canonical kOA-Linux component/subsystem contracts.
+Interaction Kernel (IK) can be used as a system-of-systems interoperability protocol at declared subsystem boundaries, but it does not replace the canonical kOA-Linux component/subsystem contracts. The Kristal v6 integration is an explicit adopted boundary: `kristal.build.request`, `kristal.artifact.ready`, and `kristal.revision.request` are pinned at IK profile version `2.0.0` under `contracts/integrations/interaction-kernel/kristal/`. This adoption is limited to the Kristal boundary and is not a global IK replacement.
 
 When an accepted integration contract explicitly adopts an IK Profile:
 

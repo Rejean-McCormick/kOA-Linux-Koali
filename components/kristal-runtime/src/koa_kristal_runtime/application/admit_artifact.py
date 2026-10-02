@@ -89,7 +89,9 @@ class AdmitArtifact:
         if existing is not None:
             existing_mapping = as_mapping(existing, name="stored artifact")
             existing_ref = validate_artifact_structure(existing_mapping)
-            if existing_ref != ref or canonical_json(existing_mapping) != canonical_json(candidate):
+            same_document = canonical_json(existing_mapping) == canonical_json(candidate)
+            same_content_address = ref.artifact_class == "kristal_state" and existing_ref.content_digest == ref.content_digest
+            if existing_ref != ref or not (same_document or same_content_address):
                 raise ApplicationError(
                     "artifact_identity_conflict",
                     "the artifact identity and version already contain different content",

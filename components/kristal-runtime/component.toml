@@ -4,7 +4,7 @@ schema_version = "1.0.0"
 id = "kristal_runtime"
 name = "Kristal Runtime"
 contract_ref = "docs/contracts/components/kristal-runtime.component.json"
-contract_version = "1.0.0"
+contract_version = "2.0.0"
 component_kind = "transversal_runtime"
 system_role = "epistemic_artifact_runtime"
 native = true
@@ -24,7 +24,7 @@ selected_mode_owner = "docs/contracts/profiles/*.profile.json"
 
 [authority]
 primary_responsibility = "verified_kristal_identity_and_runtime_pack_lifecycle_state"
-identity_basis = "canonical_epistemic_content"
+identity_basis = "kristal_v6_rfc8785_content_address"
 identity_independent_from = ["deployment_topology", "interface_state", "runtime_cache_state", "tenant_workflow_state"]
 owned_state = ["active_runtime_pack_record", "kristal_runtime_health_state", "runtime_pack_activation_record", "runtime_pack_verification_record"]
 workflow_authority = false
@@ -101,9 +101,18 @@ authority_retained = ["release_channel_identity", "release_channel_membership"]
 direct_data_write_allowed = false
 
 [artifacts]
-accepted_classes = ["kristal_artifact", "runtime_pack"]
+accepted_classes = ["kristal_state", "runtime_pack", "kristal_artifact"]
 runtime_pack_schema_ref = "docs/contracts/artifact-contracts/runtime-pack.schema.json"
+kristal_state_schema_ref = "docs/contracts/artifact-contracts/kristal-state.schema.json"
+kristal_reader_policy_schema_ref = "docs/contracts/artifact-contracts/kristal-reader-policy.schema.json"
+kristal_standard_version = "6.0.0"
+kristal_canonicalization_profile = "kristal.v6:jcs-rfc8785"
+kristal_canonicalization_version = "1"
+kristal_consumer_lock_ref = "docs/contracts/integrations/kristal-v6.0.0.consumer-lock.json"
+kristal_standard_manifest_ref = "docs/contracts/integrations/kristal-v6.0.0.standard-manifest.sha256.json"
+kristal_ik_profile_version = "2.0.0"
 kristal_artifact_schema_ref = "docs/contracts/artifact-contracts/kristal-artifact.schema.json"
+legacy_compatibility_classes = ["kristal_artifact"]
 release_channel = "knowledge"
 secrets_in_runtime_pack_allowed = false
 
