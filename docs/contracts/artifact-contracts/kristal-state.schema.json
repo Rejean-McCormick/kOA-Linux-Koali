@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://kristal.org/schemas/v6/kristal-state.schema.json",
+  "$id": "https://schemas.koa.local/artifact-contracts/kristal-state.schema.json",
+  "x-upstream-id": "https://kristal.org/schemas/v6/kristal-state.schema.json",
   "title": "Kristal State v6",
   "description": "Kristal v6 canonical state. It preserves atomic assertions, provenance and validation while generalizing domain semantics through typed valuations, coordinates, applicability, record roles, and actionability. Valuation meaning is domain-defined; measurement form is explicit.",
   "type": "object",

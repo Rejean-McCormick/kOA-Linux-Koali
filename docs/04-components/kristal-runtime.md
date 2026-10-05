@@ -182,7 +182,7 @@ This ownership is scoped to Kristal Runtime Packs. It does not make Kristal Runt
 
 For the active Kristal v6 baseline, the canonical structured artifact is `kristal_state` (`schema_version: 6.0`). Its identity is content-addressed as `sha256:<digest>` over `kristal.v6:jcs-rfc8785` canonical bytes using canonicalization version `1`; `state_id`, `content_hash`, and `signatures` are excluded from the state hash target. The exact upstream pin is recorded in `contracts/integrations/kristal-v6.0.0.consumer-lock.json`.
 
-The historical `kristal_artifact` wrapper remains a legacy compatibility input only; it is not the canonical Kristal v6 shape.
+The historical `kristal_artifact` wrapper remains a compatibility input for existing consumers only; it is not the canonical Kristal v6 shape.
 
 The identity model is independent from:
 
@@ -211,9 +211,9 @@ Kristal Runtime accepts:
 
 - Runtime Packs through the Runtime Pack artifact contract;
 - Kristal v6 States through `contracts/artifact-contracts/kristal-state.schema.json`;
-- legacy `kristal_artifact` wrappers only for compatibility with existing consumers.
+- historical `kristal_artifact` wrappers only for compatibility with existing consumers.
 
-Kristal v6 preserves typed `valuations[]`, statement `coordinates`, `applicability`, `record_role`, and `actionability`. Legacy v5 fields such as `certainty_level`, `uncertainty`, `qualifiers`, and `scope` are not admitted inside a v6 state. `actionability.mode = automatic` never grants execution authority; activation remains governed by the Runtime Pack, policy, authorization, and resource boundaries.
+Kristal v6 preserves typed `valuations[]`, statement `coordinates`, `applicability`, `record_role`, and `actionability`. Pre-v6 fields such as `certainty_level`, `uncertainty`, `qualifiers`, and `scope` are not admitted inside a v6 state. `actionability.mode = automatic` never grants execution authority; activation remains governed by the Runtime Pack, policy, authorization, and resource boundaries.
 
 A candidate Runtime Pack is rejected when its identity, digest, provenance, required trust, compatibility, release channel, downgrade policy, or substitution policy fails validation.
 

@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://kristal.org/schemas/v6/reader-policy.schema.json",
+  "$id": "https://schemas.koa.local/artifact-contracts/kristal-reader-policy.schema.json",
+  "x-upstream-id": "https://kristal.org/schemas/v6/reader-policy.schema.json",
   "title": "Reader Policy v6",
   "description": "Reader Policy v6 filters Kristal states by status, typed valuations, applicability, authority, validation and traceability.",
   "type": "object",

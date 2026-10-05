@@ -1,0 +1,39 @@
+{
+  "context_package_type": "generated_ai_context",
+  "version": "1.0.0",
+  "status": "active",
+  "language": "en",
+  "generated": true,
+  "authority": {
+    "authority_class": "derived_projection",
+    "independent_authority": false,
+    "authority_activation_claim": false
+  },
+  "generator": {
+    "generator_id": "build_ai_context",
+    "generator_version": "1.3.1",
+    "manual_editing": "prohibited"
+  },
+  "source_state": "sha256:10f1c500ace091f0489d5a1fa99e977b623153e14f5f020449cc0e2e89e90128",
+  "context_package_id": "subsystem-uckk",
+  "scope": {
+    "kind": "subsystem_boundary",
+    "included": [
+      "uckk",
+      "kOA operating boundary"
+    ],
+    "excluded": [
+      "internal subsystem behavior"
+    ]
+  },
+  "sources": [
+    "contracts/subsystems/uckk.subsystem.json",
+    "04-components/subsystems/uckk.md",
+    "subsystems/uckk"
+  ],
+  "read_order": [
+    "contracts/subsystems/uckk.subsystem.json",
+    "subsystems/uckk",
+    "04-components/subsystems/uckk.md"
+  ]
+}

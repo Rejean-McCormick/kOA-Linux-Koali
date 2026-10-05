@@ -41,7 +41,7 @@
       "path": "contracts/components/kristal-runtime.component.json",
       "title": "Kristal Runtime",
       "status": "active",
-      "version": "1.0.0"
+      "version": "2.0.0"
     },
     {
       "id": "publication_gateway",

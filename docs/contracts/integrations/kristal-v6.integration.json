@@ -34,5 +34,7 @@
   "legacy_compatibility": {
     "kristal_artifact": "read/admit compatibility only; not canonical Kristal v6"
   },
-  "standard_manifest_ref": "contracts/integrations/kristal-v6.0.0.standard-manifest.sha256.json"
+  "standard_manifest_ref": "contracts/integrations/kristal-v6.0.0.standard-manifest.sha256.json",
+  "authority": "non_authoritative",
+  "undeclared_substitution": "prohibited"
 }

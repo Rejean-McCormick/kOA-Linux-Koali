@@ -1,0 +1,75 @@
+{
+  "generated": true,
+  "records": [
+    {
+      "id": "appliance_shell",
+      "path": "contracts/profiles/appliance-shell.profile.json",
+      "title": "Appliance Shell Overlay",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "build_farm",
+      "path": "contracts/profiles/build-farm.profile.json",
+      "title": "Build Farm",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "control_plane",
+      "path": "contracts/profiles/control-plane.profile.json",
+      "title": "Control Plane",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "developer_linux_workstation",
+      "path": "contracts/profiles/developer-linux-workstation.profile.json",
+      "title": "Developer Linux Workstation",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "developer_windows_wsl",
+      "path": "contracts/profiles/developer-windows-wsl.profile.json",
+      "title": "Developer Windows WSL",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "high_assurance",
+      "path": "contracts/profiles/high-assurance.profile.json",
+      "title": "High Assurance",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "sovereign_hub",
+      "path": "contracts/profiles/sovereign-hub.profile.json",
+      "title": "Sovereign Hub",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "sovereign_linux_node",
+      "path": "contracts/profiles/sovereign-linux-node.profile.json",
+      "title": "Sovereign Linux Node",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "sovereign_offline",
+      "path": "contracts/profiles/sovereign-offline.profile.json",
+      "title": "Sovereign Offline Overlay",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "user_lightweight",
+      "path": "contracts/profiles/user-lightweight.profile.json",
+      "title": "User Lightweight",
+      "status": "active",
+      "version": "1.0.0"
+    }
+  ]
+}

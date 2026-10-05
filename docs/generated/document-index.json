@@ -15533,6 +15533,24 @@
       "decision_ids": []
     },
     {
+      "path": "status/2026-09-19-technical-progress-and-runtime-integration-status.md",
+      "doc_id": "DOC-STATUS-005",
+      "document_class": "explanatory_markdown",
+      "status": "active",
+      "requirement_ids": [],
+      "assertion_ids": [],
+      "decision_ids": []
+    },
+    {
+      "path": "status/2026-10-01-kristal-v6-alignment.md",
+      "doc_id": "DOC-STATUS-006",
+      "document_class": "explanatory_markdown",
+      "status": "active",
+      "requirement_ids": [],
+      "assertion_ids": [],
+      "decision_ids": []
+    },
+    {
       "path": "status/README.md",
       "doc_id": "DOC-STATUS-000",
       "document_class": "explanatory_markdown",

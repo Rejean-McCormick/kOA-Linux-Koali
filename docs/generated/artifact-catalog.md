@@ -19,6 +19,8 @@
 | https://schemas.koa.local/artifact-contracts/interface-theme.schema.json | contracts/artifact-contracts/interface-theme.schema.json | None |  |
 | https://schemas.koa.local/artifact-contracts/koa-media-record.schema.json | contracts/artifact-contracts/koa-media-record.schema.json | None |  |
 | https://schemas.koa.local/artifact-contracts/kristal-artifact.schema.json | contracts/artifact-contracts/kristal-artifact.schema.json | None |  |
+| https://schemas.koa.local/artifact-contracts/kristal-reader-policy.schema.json | contracts/artifact-contracts/kristal-reader-policy.schema.json | None |  |
+| https://schemas.koa.local/artifact-contracts/kristal-state.schema.json | contracts/artifact-contracts/kristal-state.schema.json | None |  |
 | https://schemas.koa.local/artifact-contracts/language-pack.schema.json | contracts/artifact-contracts/language-pack.schema.json | None |  |
 | https://schemas.koa.local/artifact-contracts/large-payload-reference.schema.json | contracts/artifact-contracts/large-payload-reference.schema.json | None |  |
 | https://schemas.koa.local/artifact-contracts/module-interface-manifest.schema.json | contracts/artifact-contracts/module-interface-manifest.schema.json | None |  |

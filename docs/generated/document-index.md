@@ -294,4 +294,6 @@
 | DOC-STATUS-002 | status/2026-08-28-technical-maturity-assessment.md | active | explanatory_markdown |
 | DOC-STATUS-003 | status/2026-09-04-technical-progress-and-maturity-assessment.md | active | explanatory_markdown |
 | DOC-STATUS-004 | status/2026-09-08-technical-progress-and-maturity-assessment.md | active | explanatory_markdown |
+| DOC-STATUS-005 | status/2026-09-19-technical-progress-and-runtime-integration-status.md | active | explanatory_markdown |
+| DOC-STATUS-006 | status/2026-10-01-kristal-v6-alignment.md | active | explanatory_markdown |
 | DOC-STATUS-000 | status/README.md | active | explanatory_markdown |

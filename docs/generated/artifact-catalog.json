@@ -107,6 +107,20 @@
       "version": null
     },
     {
+      "id": "https://schemas.koa.local/artifact-contracts/kristal-reader-policy.schema.json",
+      "path": "contracts/artifact-contracts/kristal-reader-policy.schema.json",
+      "title": "Reader Policy v6",
+      "status": null,
+      "version": null
+    },
+    {
+      "id": "https://schemas.koa.local/artifact-contracts/kristal-state.schema.json",
+      "path": "contracts/artifact-contracts/kristal-state.schema.json",
+      "title": "Kristal State v6",
+      "status": null,
+      "version": null
+    },
+    {
       "id": "https://schemas.koa.local/artifact-contracts/language-pack.schema.json",
       "path": "contracts/artifact-contracts/language-pack.schema.json",
       "title": "kOA SemantiK Architect Language Pack Artifact Contract",

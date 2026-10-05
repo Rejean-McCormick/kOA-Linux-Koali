@@ -1,0 +1,39 @@
+{
+  "context_package_type": "generated_ai_context",
+  "version": "1.0.0",
+  "status": "active",
+  "language": "en",
+  "generated": true,
+  "authority": {
+    "authority_class": "derived_projection",
+    "independent_authority": false,
+    "authority_activation_claim": false
+  },
+  "generator": {
+    "generator_id": "build_ai_context",
+    "generator_version": "1.3.1",
+    "manual_editing": "prohibited"
+  },
+  "source_state": "sha256:289e39dad5fe406bccff37b017ccd64dda03dfb9ec81e7529ab0f8d991e230cb",
+  "context_package_id": "subsystem-orgo",
+  "scope": {
+    "kind": "subsystem_boundary",
+    "included": [
+      "orgo",
+      "kOA operating boundary"
+    ],
+    "excluded": [
+      "internal subsystem behavior"
+    ]
+  },
+  "sources": [
+    "contracts/subsystems/orgo.subsystem.json",
+    "04-components/subsystems/orgo.md",
+    "subsystems/orgo"
+  ],
+  "read_order": [
+    "contracts/subsystems/orgo.subsystem.json",
+    "subsystems/orgo",
+    "04-components/subsystems/orgo.md"
+  ]
+}

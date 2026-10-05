@@ -1,0 +1,332 @@
+{
+  "generated": true,
+  "records": [
+    {
+      "id": "DEC-AI-001"
+    },
+    {
+      "id": "DEC-ARI-001"
+    },
+    {
+      "id": "DEC-ARIANE-001"
+    },
+    {
+      "id": "DEC-ART-001"
+    },
+    {
+      "id": "DEC-ASSURANCE-001"
+    },
+    {
+      "id": "DEC-AUD-001"
+    },
+    {
+      "id": "DEC-AUDIT-001"
+    },
+    {
+      "id": "DEC-AUTH-001"
+    },
+    {
+      "id": "DEC-BFF-001"
+    },
+    {
+      "id": "DEC-CACHE-001"
+    },
+    {
+      "id": "DEC-COMP-001"
+    },
+    {
+      "id": "DEC-COMP-CONTRACT-001"
+    },
+    {
+      "id": "DEC-COMP-NODE-001"
+    },
+    {
+      "id": "DEC-CONF-AICTX-001"
+    },
+    {
+      "id": "DEC-CONF-GATE-001"
+    },
+    {
+      "id": "DEC-CONF-PROFILE-001"
+    },
+    {
+      "id": "DEC-CONST-001"
+    },
+    {
+      "id": "DEC-CONST-002"
+    },
+    {
+      "id": "DEC-CONST-COMP-001"
+    },
+    {
+      "id": "DEC-CONTAINER-001"
+    },
+    {
+      "id": "DEC-CQRS-001"
+    },
+    {
+      "id": "DEC-CULT-001"
+    },
+    {
+      "id": "DEC-CULT-002"
+    },
+    {
+      "id": "DEC-CULT-003"
+    },
+    {
+      "id": "DEC-CULT-004"
+    },
+    {
+      "id": "DEC-CULT-005"
+    },
+    {
+      "id": "DEC-DATA-001"
+    },
+    {
+      "id": "DEC-DATA-DISCLOSURE-001"
+    },
+    {
+      "id": "DEC-DEV-001"
+    },
+    {
+      "id": "DEC-DEV-002"
+    },
+    {
+      "id": "DEC-DEV-MODEL-001"
+    },
+    {
+      "id": "DEC-DEV-PAR-001"
+    },
+    {
+      "id": "DEC-DOC-001"
+    },
+    {
+      "id": "DEC-DOC-002"
+    },
+    {
+      "id": "DEC-DOC-003"
+    },
+    {
+      "id": "DEC-DOC-004"
+    },
+    {
+      "id": "DEC-DOC-005"
+    },
+    {
+      "id": "DEC-DOC-CHANGE-001"
+    },
+    {
+      "id": "DEC-DOC-EXC-001"
+    },
+    {
+      "id": "DEC-DOC-GEN-001"
+    },
+    {
+      "id": "DEC-GATE-001"
+    },
+    {
+      "id": "DEC-GOV-001"
+    },
+    {
+      "id": "DEC-HUB-001"
+    },
+    {
+      "id": "DEC-HW-001"
+    },
+    {
+      "id": "DEC-IDENT-001"
+    },
+    {
+      "id": "DEC-IMAGE-001"
+    },
+    {
+      "id": "DEC-INT-001"
+    },
+    {
+      "id": "DEC-INTEGRATION-001"
+    },
+    {
+      "id": "DEC-K8S-001"
+    },
+    {
+      "id": "DEC-KERNEL-001"
+    },
+    {
+      "id": "DEC-KRISTAL-001"
+    },
+    {
+      "id": "DEC-LANG-001"
+    },
+    {
+      "id": "DEC-LIFE-001"
+    },
+    {
+      "id": "DEC-LIFE-ACT-001"
+    },
+    {
+      "id": "DEC-LIFE-CHANNEL-001"
+    },
+    {
+      "id": "DEC-LINUX-001"
+    },
+    {
+      "id": "DEC-MEDIATHEQUE-001"
+    },
+    {
+      "id": "DEC-MSG-001"
+    },
+    {
+      "id": "DEC-OFFLINE-001"
+    },
+    {
+      "id": "DEC-OPS-DR-001"
+    },
+    {
+      "id": "DEC-OPS-INC-001"
+    },
+    {
+      "id": "DEC-OPS-OBS-001"
+    },
+    {
+      "id": "DEC-OPS-SLO-001"
+    },
+    {
+      "id": "DEC-OS-001"
+    },
+    {
+      "id": "DEC-PAYLOAD-001"
+    },
+    {
+      "id": "DEC-PORT-001"
+    },
+    {
+      "id": "DEC-PRIV-001"
+    },
+    {
+      "id": "DEC-PROFILE-001"
+    },
+    {
+      "id": "DEC-PROFILE-002"
+    },
+    {
+      "id": "DEC-PROFILE-BASELINE-001"
+    },
+    {
+      "id": "DEC-PROFILE-BUILD-FARM-001"
+    },
+    {
+      "id": "DEC-PROFILE-INHERIT-001"
+    },
+    {
+      "id": "DEC-PROFILE-SOFF-001"
+    },
+    {
+      "id": "DEC-PROFILE-SOV-LINUX-001"
+    },
+    {
+      "id": "DEC-PROFILE-USER-LIGHT-001"
+    },
+    {
+      "id": "DEC-RECEIPT-001"
+    },
+    {
+      "id": "DEC-REL-001"
+    },
+    {
+      "id": "DEC-RES-001"
+    },
+    {
+      "id": "DEC-SEC-001"
+    },
+    {
+      "id": "DEC-SEC-BROKER-001"
+    },
+    {
+      "id": "DEC-SEC-EVIDENCE-001"
+    },
+    {
+      "id": "DEC-SEC-PRIV-001"
+    },
+    {
+      "id": "DEC-SENT-001"
+    },
+    {
+      "id": "DEC-SHELL-001"
+    },
+    {
+      "id": "DEC-SYS-001"
+    },
+    {
+      "id": "DEC-SYS-003"
+    },
+    {
+      "id": "DEC-SYS-004"
+    },
+    {
+      "id": "DEC-SYS-AI-001"
+    },
+    {
+      "id": "DEC-SYS-AUDIT-001"
+    },
+    {
+      "id": "DEC-SYS-CAP-001"
+    },
+    {
+      "id": "DEC-SYS-COMP-001"
+    },
+    {
+      "id": "DEC-SYS-DATA-001"
+    },
+    {
+      "id": "DEC-SYS-DATA-002"
+    },
+    {
+      "id": "DEC-SYS-DATA-003"
+    },
+    {
+      "id": "DEC-SYS-DATA-004"
+    },
+    {
+      "id": "DEC-SYS-GATE-001"
+    },
+    {
+      "id": "DEC-SYS-GOV-001"
+    },
+    {
+      "id": "DEC-SYS-KRISTAL-001"
+    },
+    {
+      "id": "DEC-SYS-OFFLINE-001"
+    },
+    {
+      "id": "DEC-SYS-RECOURSE-001"
+    },
+    {
+      "id": "DEC-SYS-RES-001"
+    },
+    {
+      "id": "DEC-SYS-RES-002"
+    },
+    {
+      "id": "DEC-SYS-RES-003"
+    },
+    {
+      "id": "DEC-SYS-RES-004"
+    },
+    {
+      "id": "DEC-SYS-RESOURCE-001"
+    },
+    {
+      "id": "DEC-SYS-SENT-001"
+    },
+    {
+      "id": "DEC-UCKK-EXT-001"
+    },
+    {
+      "id": "DEC-USER-001"
+    },
+    {
+      "id": "DEC-WF-001"
+    }
+  ]
+}

@@ -23,6 +23,13 @@
       "version": "1.0.0"
     },
     {
+      "id": "kristal-v6",
+      "path": "contracts/integrations/kristal-v6.integration.json",
+      "title": "kristal-v6",
+      "status": "active",
+      "version": "6.0.0"
+    },
+    {
       "id": "suno",
       "path": "contracts/integrations/suno.integration.json",
       "title": "Suno",

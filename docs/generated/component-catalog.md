@@ -9,6 +9,6 @@
 | identity_and_trust | contracts/components/identity-and-trust.component.json | active | 1.0.0 |
 | koa_mediatheque | contracts/components/koa-mediatheque.component.json | active | 1.0.0 |
 | koa_node_agent | contracts/components/koa-node-agent.component.json | active | 1.0.0 |
-| kristal_runtime | contracts/components/kristal-runtime.component.json | active | 1.0.0 |
+| kristal_runtime | contracts/components/kristal-runtime.component.json | active | 2.0.0 |
 | publication_gateway | contracts/components/publication-gateway.component.json | active | 1.0.0 |
 | resource_governor | contracts/components/resource-governor.component.json | active | 1.0.0 |

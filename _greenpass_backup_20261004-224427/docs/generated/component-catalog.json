@@ -1,0 +1,61 @@
+{
+  "generated": true,
+  "records": [
+    {
+      "id": "audit_broker",
+      "path": "contracts/components/audit-broker.component.json",
+      "title": "Audit Broker",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "governance_policy_runtime",
+      "path": "contracts/components/governance-policy-runtime.component.json",
+      "title": "Governance Policy Runtime Component Contract",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "identity_and_trust",
+      "path": "contracts/components/identity-and-trust.component.json",
+      "title": "Identity and Trust",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "koa_mediatheque",
+      "path": "contracts/components/koa-mediatheque.component.json",
+      "title": "kOA Mediatheque",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "koa_node_agent",
+      "path": "contracts/components/koa-node-agent.component.json",
+      "title": "kOA Node Agent",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "kristal_runtime",
+      "path": "contracts/components/kristal-runtime.component.json",
+      "title": "Kristal Runtime",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "publication_gateway",
+      "path": "contracts/components/publication-gateway.component.json",
+      "title": "Publication Gateway",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "resource_governor",
+      "path": "contracts/components/resource-governor.component.json",
+      "title": "Resource Governor",
+      "status": "active",
+      "version": "1.0.0"
+    }
+  ]
+}

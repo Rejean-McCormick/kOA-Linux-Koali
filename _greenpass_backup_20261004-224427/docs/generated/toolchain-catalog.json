@@ -1,0 +1,12 @@
+{
+  "generated": true,
+  "records": [
+    {
+      "id": "python_uv",
+      "path": "contracts/toolchains/python-uv.toolchain.json",
+      "title": "Python with UV",
+      "status": "active",
+      "version": "1.0.0"
+    }
+  ]
+}

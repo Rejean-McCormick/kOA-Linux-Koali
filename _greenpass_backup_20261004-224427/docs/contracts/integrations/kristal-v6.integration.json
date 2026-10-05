@@ -1,0 +1,38 @@
+{
+  "version": "6.0.0",
+  "status": "active",
+  "integration_id": "kristal-v6",
+  "canonical_artifact_type": "kristal_state",
+  "consumer_lock_ref": "contracts/integrations/kristal-v6.0.0.consumer-lock.json",
+  "canonicalization": {
+    "profile": "kristal.v6:jcs-rfc8785",
+    "version": "1",
+    "hash_algorithm": "sha256",
+    "state_hash_exclusions": [
+      "state_id",
+      "content_hash",
+      "signatures"
+    ]
+  },
+  "schemas": {
+    "kristal_state": "contracts/artifact-contracts/kristal-state.schema.json",
+    "reader_policy": "contracts/artifact-contracts/kristal-reader-policy.schema.json"
+  },
+  "interaction_kernel_profiles": {
+    "version": "2.0.0",
+    "kristal.build.request": "contracts/integrations/interaction-kernel/kristal/kristal.build.request/2.0.0/profile.json",
+    "kristal.artifact.ready": "contracts/integrations/interaction-kernel/kristal/kristal.artifact.ready/2.0.0/profile.json",
+    "kristal.revision.request": "contracts/integrations/interaction-kernel/kristal/kristal.revision.request/2.0.0/profile.json"
+  },
+  "semantic_migrations": {
+    "certainty_level_and_uncertainty": "valuations[]",
+    "qualifiers": "statement.coordinates[]",
+    "scope": "applicability",
+    "record_role": "preserved",
+    "actionability": "preserved_without_authority_transfer"
+  },
+  "legacy_compatibility": {
+    "kristal_artifact": "read/admit compatibility only; not canonical Kristal v6"
+  },
+  "standard_manifest_ref": "contracts/integrations/kristal-v6.0.0.standard-manifest.sha256.json"
+}

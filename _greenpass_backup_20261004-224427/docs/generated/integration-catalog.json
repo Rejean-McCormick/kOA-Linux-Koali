@@ -1,0 +1,47 @@
+{
+  "generated": true,
+  "records": [
+    {
+      "id": "ariane-voice",
+      "path": "contracts/integrations/ariane-voice.integration.json",
+      "title": "Ariane Voice",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "chatgpt",
+      "path": "contracts/integrations/chatgpt.integration.json",
+      "title": "ChatGPT",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "gamma",
+      "path": "contracts/integrations/gamma.integration.json",
+      "title": "Gamma",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "suno",
+      "path": "contracts/integrations/suno.integration.json",
+      "title": "Suno",
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "id": "uckk-import",
+      "path": "contracts/integrations/uckk-import.integration.json",
+      "title": "UCKK Import",
+      "status": "active",
+      "version": "1.1.0"
+    },
+    {
+      "id": "uckk-publication",
+      "path": "contracts/integrations/uckk-publication.integration.json",
+      "title": "UCKK Publication",
+      "status": "active",
+      "version": "1.1.0"
+    }
+  ]
+}
