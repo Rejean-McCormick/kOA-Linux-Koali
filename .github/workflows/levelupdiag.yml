@@ -1,0 +1,127 @@
+name: CI / LevelUpDiag Qualification
+
+"on":
+  merge_group:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-levelupdiag-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONHASHSEED: "0"
+  UV_NO_PROGRESS: "1"
+  LEVELUPDIAG_REF: "1faa39727347fe91935894ccfff456b09d956feb"
+
+jobs:
+  validation:
+    name: LevelUpDiag validation N00-N10
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+
+    steps:
+      - name: Check out kOA-Linux event revision
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # pinned checkout
+        with:
+          path: koa-linux
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check out pinned LevelUpDiag-Koali
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # pinned checkout
+        with:
+          repository: Rejean-McCormick/LevelUpDiag-kOA-Linux
+          ref: ${{ env.LEVELUPDIAG_REF }}
+          path: LevelUpDiag-Koali
+          persist-credentials: false
+
+      - name: Provision Python 3.13
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # pinned setup-python
+        with:
+          python-version: "3.13"
+
+      - name: Provision UV
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # pinned setup-uv v6
+        with:
+          enable-cache: false
+
+      - name: Provision repository Rust toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.85.1 --profile minimal
+          rustup component add --toolchain 1.85.1 clippy rustfmt
+          rustup default 1.85.1
+          rustc --version
+          cargo --version
+          cc --version | head -n 1
+
+      - name: Test LevelUpDiag before trusting it
+        working-directory: LevelUpDiag-Koali
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Warm frozen Python environment
+        working-directory: koa-linux
+        run: uv sync --frozen --all-groups
+
+      - name: Warm locked Rust dependency cache
+        working-directory: koa-linux
+        run: cargo fetch --locked
+
+      - name: Record exact qualification subject
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qualification-metadata
+          {
+            echo "kOA-Linux=$(git -C koa-linux rev-parse HEAD)"
+            echo "LevelUpDiag-Koali=$(git -C LevelUpDiag-Koali rev-parse HEAD)"
+            echo "runner=${{ runner.os }}/${{ runner.arch }}"
+            echo "python=$(python --version 2>&1)"
+            echo "uv=$(uv --version)"
+            echo "rustc=$(rustc --version)"
+            echo "cargo=$(cargo --version)"
+            echo "uv.lock.sha256=$(sha256sum koa-linux/uv.lock | awk '{print $1}')"
+            echo "Cargo.lock.sha256=$(sha256sum koa-linux/Cargo.lock | awk '{print $1}')"
+          } | tee qualification-metadata/components.txt
+
+      - name: Run authoritative LevelUpDiag validation campaign
+        run: >-
+          python LevelUpDiag-Koali/levelupdiag.py
+          --target "$GITHUB_WORKSPACE/koa-linux"
+          run validation
+          --mode validation
+          --jobs 1
+
+      - name: Verify generated campaign summary structure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          summary="koa-linux/.levelupdiag/latest/summary.json"
+          if [[ -f "$summary" ]]; then
+            python LevelUpDiag-Koali/levelupdiag.py verify-run "$summary"
+          else
+            echo "No LevelUpDiag summary was produced."
+          fi
+
+      - name: Upload LevelUpDiag evidence
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # pinned upload-artifact
+        with:
+          name: levelupdiag-validation-${{ github.sha }}
+          path: |
+            koa-linux/.levelupdiag/
+            qualification-metadata/components.txt
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: true
