@@ -2,12 +2,33 @@
 
 > Sovereign, local-first, offline-capable, and governable operating system for kOA ecosystem workloads.
 
+[![Components](https://github.com/Rejean-McCormick/kOA-Linux-Koali/actions/workflows/components.yml/badge.svg)](https://github.com/Rejean-McCormick/kOA-Linux-Koali/actions/workflows/components.yml)
+[![Contracts](https://github.com/Rejean-McCormick/kOA-Linux-Koali/actions/workflows/contracts.yml/badge.svg)](https://github.com/Rejean-McCormick/kOA-Linux-Koali/actions/workflows/contracts.yml)
+[![Documentation](https://github.com/Rejean-McCormick/kOA-Linux-Koali/actions/workflows/documentation.yml/badge.svg)](https://github.com/Rejean-McCormick/kOA-Linux-Koali/actions/workflows/documentation.yml)
+[![LevelUpDiag](https://github.com/Rejean-McCormick/kOA-Linux-Koali/actions/workflows/levelupdiag.yml/badge.svg)](https://github.com/Rejean-McCormick/kOA-Linux-Koali/actions/workflows/levelupdiag.yml)
+[![LevelUpDiag Self-Test](https://github.com/Rejean-McCormick/LevelUpDiag-kOA-Linux/actions/workflows/ci.yml/badge.svg)](https://github.com/Rejean-McCormick/LevelUpDiag-kOA-Linux/actions/workflows/ci.yml)
+
 **Version:** `v0.8.0-beta.2`  
 **Documentation architecture:** contract-first  
 **Status:** **Advanced Beta — System Closure & Qualification**  
 **Estimated engineering maturity:** **~88–90%**  
 **Estimated Release Candidate readiness:** **~65–70%**  
 **Latest validated integration milestone:** September 8, 2026
+
+## Public verification
+
+kOA-Linux is continuously exercised on clean GitHub-hosted runners.
+
+- **Components** validates the frozen workspace and first-party component layer.
+- **Contracts** executes the repository's machine-readable contract and boundary validation.
+- **Documentation** validates the contract-first documentation architecture, generated projections, ownership, traceability, and cross-document consistency.
+- **LevelUpDiag-kOA-Linux** independently evaluates the checked-out kOA-Linux revision through the N00–N10 validation campaign and retains qualification evidence.
+- **LevelUpDiag self-test** tests the diagnostic engine independently on Linux and Windows before that engine is trusted as a qualification source.
+- Qualification artifacts retain the exact kOA-Linux revision, LevelUpDiag revision, lockfile digests, runner identity, and relevant toolchain versions.
+
+Hosted repository qualification is deliberately separated from appliance qualification. Machine-observed Security Runtime, Offline Runtime, and complete System Runtime validation require a real kOA system image plus QEMU evidence. Those gates are not converted into PASS merely to make hosted CI green.
+
+A green repository-level qualification therefore means that the declared repository, documentation, contracts, components, profiles, and diagnostic checks were reproduced on an independent GitHub runner. It is not a release declaration and does not replace image, recovery, offline, security-confinement, or Release Set evidence.
 
 ## Overview
 
@@ -72,7 +93,6 @@ Current maturity checkpoint:
 - [`docs/status/README.md`](docs/status/README.md)
 - [`docs/status/2026-09-08-technical-progress-and-maturity-assessment.md`](docs/status/2026-09-08-technical-progress-and-maturity-assessment.md)
 
-
 ## Core statement
 
 > kOA-Linux owns the local operating boundary. Each component or independent system owns its declared domain. Koali Spaces owns the optional integrated presentation and navigation frame only when selected as the composition host; product standalone interfaces remain product-owned. The kOA Mediatheque is the private offline media authority. UCKK is the online Moodle learning and dissemination platform. Interface composition and controlled interchange never merge authority.
@@ -92,16 +112,15 @@ AI-assisted work starts at [`docs/AI_CONTEXT.md`](docs/AI_CONTEXT.md).
 
 Senior architecture pattern alignment is documented in [`docs/02-system/34-architecture-patterns.md`](docs/02-system/34-architecture-patterns.md#12-senior-architecture-patterns-reference-alignment). That mapping is explanatory; the canonical policy remains `docs/contracts/architecture-patterns.contract.json`.
 
-
 ```text
 ┌──────────────────────────────────────────────────────────────────┐
 │                         user surfaces                            │
 │ local work • guidance • private instructions • offline learning │
 ├──────────────────────────────────────────────────────────────────┤
-│             optional Koali Spaces experience layer                 │
+│             optional Koali Spaces experience layer              │
 │ module selector • sidebar • top bar • shared page surface       │
 ├──────────────────────────────────────────────────────────────────┤
-│                 profile-selected kOA systems                     │
+│                 profile-selected kOA systems                    │
 │ Ariane • Konnaxion • Orgo • Kristal • language runtimes         │
 ├──────────────────────────────────────────────────────────────────┤
 │                    internal kOA components                       │
@@ -336,5 +355,5 @@ Koali product interfaces are autonomous and composable. Orgo, Konnaxion, and oth
 
 ## Optional third-party application store
 
-The Linux user profile offers GNOME Software / Flatpak and an opt-in essentials installer.
+The Linux user profile offers GNOME Software / Flatpak and an opt-in essentials installer.  
 See [setup, package requirements and validation limits](host/store/README.md).
