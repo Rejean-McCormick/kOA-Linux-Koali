@@ -129,7 +129,7 @@ jobs:
       CANDIDATE_OUTPUT: generated/release-candidate
     steps:
       - name: Check out immutable source revision
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
           fetch-depth: 1
@@ -275,7 +275,7 @@ jobs:
       PUBLICATION_DIRECTORY: generated/published-release-evidence
     steps:
       - name: Check out the same immutable source revision
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
           fetch-depth: 1
