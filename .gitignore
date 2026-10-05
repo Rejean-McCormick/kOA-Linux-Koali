@@ -89,3 +89,13 @@ Desktop.ini
 
 GitSink.bat
 /SmartSnap.pyw
+
+# One-off local qualification/repair backups must not enter repository history.
+/_greenpass_backup_*/
+
+# Additional local backup trees
+*.bak_*
+*.bak-*
+*.bak.*
+*.backup-*
+*.backup_*

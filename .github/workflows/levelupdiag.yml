@@ -1,18 +1,17 @@
 name: CI / LevelUpDiag Qualification
 
+# DEEP independent qualification. Keep it out of the normal development push
+# loop, while still exercising the default branch automatically each week.
 "on":
-  merge_group:
-  pull_request:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+  schedule:
+    - cron: "17 7 * * 0"
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-levelupdiag-${{ github.event.pull_request.number || github.ref }}
+  group: ci-levelupdiag-${{ github.ref }}
   cancel-in-progress: true
 
 env:

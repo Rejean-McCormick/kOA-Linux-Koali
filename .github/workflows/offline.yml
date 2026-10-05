@@ -1,18 +1,17 @@
 name: CI / Offline
 
+# DEEP gate: offline/reproducibility checks are valuable, but too heavy for
+# every development push. Run weekly and on demand instead.
 "on":
-  merge_group:
-  pull_request:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+  schedule:
+    - cron: "47 5 * * 0"
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-offline-${{ github.event.pull_request.number || github.ref }}
+  group: ci-offline-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
