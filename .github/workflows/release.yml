@@ -286,7 +286,7 @@ jobs:
           python-version: '3.13'
 
       - name: Download the verified candidate from this workflow
-        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
         with:
           name: ${{ env.CANDIDATE_ARTIFACT_NAME }}
           path: generated/release-candidate
