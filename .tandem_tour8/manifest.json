@@ -1,0 +1,15 @@
+{
+  "label": "KOA LINUX",
+  "suite": "koa",
+  "backup_id": "koa_linux_tour8",
+  "root_markers": [
+    "components/koa-node-agent/Cargo.toml",
+    ".koa/file-architecture.lock.json"
+  ],
+  "files": {
+    "components/koa-node-agent/README.md": {
+      "base_sha256": "e5125eeac886b788b7bd500a151b829988be9c622c5684cabd887a57ce7d772b",
+      "sha256": "c060691887280027c036860f8090dcf8f2f547748bff30d5f4ac43f135d5a100"
+    }
+  }
+}

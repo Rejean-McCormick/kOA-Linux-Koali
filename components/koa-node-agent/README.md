@@ -97,3 +97,26 @@ cargo test --manifest-path components/koa-node-agent/Cargo.toml
 ```
 
 The crate declares B-0018 through the public `interfaces/rust` Cargo package and contains no private component dependency. Request, transport, broker, and fixed backend layers are present in the current crate; cross-component authority still flows only through registered public interfaces and production activation remains subject to system qualification.
+
+## Tandem 1.0 VPS boundary (October 2026)
+
+For the initial **Linux VPS + Docker + Capsule Agent** demonstration, the **Konnaxion
+Capsule Agent** remains the sole local authority for admitting and starting the
+Konnaxion/Orgo Docker capsules. Its `ReleaseSet` authorization, independently
+measured artifact/image digests, Ed25519 verification through KonnaxionDiag,
+activation and recovery controls must be qualified in that Agent's own deployment.
+
+The **kOA Node Agent** is a separate, narrow host broker for kOA-owned privileged
+operations. It is not a drop-in Capsule Agent, must not infer Docker release
+admission from a successful node operation, and must not translate a Capsule
+Agent request into `activate_service_bundle` merely because names look similar.
+An explicit, reviewed cross-owner protocol, identity and policy binding would
+be needed before kOA Node Agent performs any related host operation.
+
+This repository snapshot's `koa-node-agent serve` entry point **refuses to start**
+(the authenticated transport/fixed adapter production wiring is not complete).
+Neither this documentation nor a passing local component test means that the
+VPS has been modified, that Docker images were measured, or that a signed
+ReleaseSet has been admitted. The first-demo VPS profile therefore leaves
+this optional host broker unexposed and unactivated. Node Agent readiness and
+recovery remain a separate qualification gate.
