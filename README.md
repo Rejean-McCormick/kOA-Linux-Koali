@@ -359,3 +359,8 @@ Koali product interfaces are autonomous and composable. Orgo, Konnaxion, and oth
 
 The Linux user profile offers GNOME Software / Flatpak and an opt-in essentials installer.  
 See [setup, package requirements and validation limits](host/store/README.md).
+
+## Vérification des intégrations satellites (27 octobre 2026)
+
+Voir [le contrôle de compatibilité et les limites de qualification](docs/Integration-Verification-2026-10-27.md). Les versions et statuts externes doivent être vérifiés avant tout déploiement.
+

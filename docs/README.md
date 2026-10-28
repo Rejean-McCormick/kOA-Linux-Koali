@@ -161,3 +161,7 @@ The documentation validators remain the executable consistency check for this co
 ## Product UI architecture
 
 The canonical UI rule is product autonomy plus optional composition. Product interfaces own their standalone entry points and business-facing route implementations. Shared Koali UI contracts and shell primitives provide reusable layout, navigation, command, context, inspector, responsive, and accessibility behavior. kOA Spaces may compose admitted product manifests when selected, but it is not the mandatory runtime of product UIs.
+
+## Vérification des dépôts satellites
+
+- [Contrats, versions et limites de qualification (27 octobre 2026)](Integration-Verification-2026-10-27.md)
