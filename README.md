@@ -11,9 +11,9 @@
 **Version:** `v0.8.0-beta.2`  
 **Documentation architecture:** contract-first  
 **Status:** **Advanced Beta — System Closure & Qualification**  
-**Estimated engineering maturity:** **~88–90%**  
-**Estimated Release Candidate readiness:** **~65–70%**  
-**Latest validated integration milestone:** September 8, 2026
+**Current evidence-led qualification:** [living technical status](docs/status/README.md) (evidence basis updated 2026-09-21; latest recorded integration milestone: Konnaxion ↔ Orgo IK boundary).  
+**Overall maturity / Release Candidate percentage:** not published as a current scalar; historical September 8 estimates remain in their dated assessment.  
+**Release state:** not pre-RC and not Release Candidate; system image, QEMU, offline, recovery and complete Release Set evidence remain outstanding.
 
 ## Public verification
 
@@ -51,7 +51,7 @@ The repository defines:
 
 Koali is currently classified as **Advanced Beta — System Closure & Qualification**. The project has moved beyond prototype and early-beta integration work, but it has not yet reached pre-RC or Release Candidate status.
 
-The September 8, 2026 integration milestone established a working browser-level Koali experience with Konnaxion:
+The **historical** September 8, 2026 integration milestone established a working browser-level Koali experience with Konnaxion:
 
 ```text
 kOA-Linux core stabilization       PASS
@@ -70,6 +70,8 @@ Koali ⇄ Konnaxion navigation       VERIFIED IN BROWSER
 ```
 
 This milestone proves integrated development-runtime navigation. It does **not** by itself prove the complete kOA-Linux appliance as releasable.
+
+**Later selected integration evidence (2026-09-21):** the Konnaxion ↔ Orgo Interaction Kernel local boundary passed its selected scenarios (Signal→Workflow→Case→Task and accountability return, including idempotent replay), as recorded in [`docs/status/README.md`](docs/status/README.md). This qualifies the stated application boundary only: it does **not** establish image/QEMU, system security, offline operation, recovery, or release readiness.
 
 The remaining release-critical path is:
 
