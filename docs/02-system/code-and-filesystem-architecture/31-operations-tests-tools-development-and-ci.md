@@ -310,3 +310,15 @@ ci/scripts/publish-evidence.py
 ## 8. Tooling Rules
 
 The root `pyproject.toml` exposes the `koa` command and includes `tools/src`. CI workflows call these same commands. Scripts in `ci/` and `.github/workflows/` are thin orchestration layers. No release, signing, path-ownership, or architecture-validation logic may exist only in hosted CI.
+
+## November 2026 inventory reconciliation — registered additions
+
+The following implementation paths were already registered in the non-authoritative `.koa/file-architecture.lock.json` projection and are present in this checkout. They are recorded here to restore the correspondence between the normative source inventory and its machine projection. This registration does not authorize a release, privileged execution, or a change of ownership.
+
+```text
+ci/scripts/gate_scope.py
+ci/tests/test_gate_scopes.py
+ci/UPDATE_20260919.md
+ci/UPDATE_FILES_20260919.json
+tests/system/test_third_party_store.py
+```

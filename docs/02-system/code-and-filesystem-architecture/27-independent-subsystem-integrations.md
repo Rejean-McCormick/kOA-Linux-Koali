@@ -312,3 +312,11 @@ This document is interpreted with the Koali product-interface portability rule:
 - a surface profile is a projection of the same product routes, capabilities, commands, and contextual views, not a separately implemented frontend;
 - removing one product removes only that product's admitted presentation contributions and SHALL NOT require source changes to unrelated products;
 - ordinary shell behavior SHALL NOT require private UI imports from another product; cross-product journeys use explicit public routes, commands, capabilities, or integration contracts.
+
+## November 2026 inventory reconciliation — registered additions
+
+The following implementation paths were already registered in the non-authoritative `.koa/file-architecture.lock.json` projection and are present in this checkout. They are recorded here to restore the correspondence between the normative source inventory and its machine projection. This registration does not authorize a release, privileged execution, or a change of ownership.
+
+```text
+integrations/koa-spaces/adapter/src/koa_spaces_adapter/unix_transport.py
+```

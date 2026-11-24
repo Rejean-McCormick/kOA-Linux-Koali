@@ -8085,7 +8085,7 @@
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/25-internal-components-node-trust-governance.md",
-      "sha256": "ce4784ad87f717759f6000ff81e0c85e30f62520308d11e416ba6cb0202ecb0c"
+      "sha256": "d0c0522dbb517281d15c0ec2ca20522dd2179619acda90c7fb349f2bd7feec64"
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/26-internal-components-data-publication-and-knowledge.md",
@@ -8093,7 +8093,7 @@
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/27-independent-subsystem-integrations.md",
-      "sha256": "034bb13a730905d60b999f1933757d8610a4c5a20c59e79bdc28adf7343ad707"
+      "sha256": "56d1539f1ace408d74618df5c5b59fa5120b24967fe14f136870ff482b10d8ee"
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/28-uckk-external-services-and-transport-interfaces.md",
@@ -8101,15 +8101,15 @@
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/29-host-platform-files.md",
-      "sha256": "4f97c302d634f41c7a877da7bd805c0bcaf92a1e45677d1b3cb596601d89c62c"
+      "sha256": "fede8887e82d8362e9b6294534b625deceb6821c5ff1b7637a3cb5fb4281a0ce"
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/30-assembly-profiles-packaging-and-release.md",
-      "sha256": "76d9b84a53fd9a596dc78f6d7b729ecb97d76409388ee5cc5fd678c6b2518e70"
+      "sha256": "c608c0bdfdf9fd3dfda7d27a58519fac87fc1c5662a97e5c516065169772d3e6"
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/31-operations-tests-tools-development-and-ci.md",
-      "sha256": "ea4e858515c11ca81d83d563d724b175b12fb253f425899630a634140e27d21f"
+      "sha256": "b9e80a7ac80f39ae9323cb2ee5bfc7ab320ba525f82e449bfcc4ee6d3fd16928"
     },
     {
       "path": "docs/02-system/code-and-filesystem-architecture/32-installed-runtime-filesystem.md",

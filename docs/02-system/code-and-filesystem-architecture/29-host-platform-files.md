@@ -174,3 +174,15 @@ host/adapters/koa_spaces_adapter_factory.py
 - network files expose only profile-admitted services.
 - storage files define mount, encryption, quota, and snapshot mechanisms; component ownership remains defined by contracts.
 - session files launch graphical, appliance, maintenance, or recovery sessions. kOA Spaces may be the configured navigation interface, but session launch does not grant it host authority.
+
+## November 2026 inventory reconciliation — registered additions
+
+The following implementation paths were already registered in the non-authoritative `.koa/file-architecture.lock.json` projection and are present in this checkout. They are recorded here to restore the correspondence between the normative source inventory and its machine projection. This registration does not authorize a release, privileged execution, or a change of ownership.
+
+```text
+host/store/koali-essentials.desktop
+host/store/koali-store.desktop
+host/store/README.md
+host/store/setup-user.py
+host/store/third-party-store.py
+```

@@ -56,9 +56,9 @@ def _lock_paths(value: Any, key: str = "") -> set[str]:
     return result
 
 
-def test_frozen_inventory_contains_1123_unique_paths() -> None:
+def test_frozen_inventory_contains_1145_unique_paths() -> None:
     paths = inventory_paths(ROOT)
-    assert len(paths) == 1123
+    assert len(paths) == 1145
     assert len(set(paths)) == len(paths)
 
 

@@ -1,3 +1,27 @@
+<!-- KOA:DOC-META:BEGIN GENERATED
+{
+  "doc_id": "DOC-INT-VER-20261027",
+  "document_class": "explanatory_markdown",
+  "status": "historical",
+  "language": "fr",
+  "layer": "integration_review",
+  "scope": [
+    "global"
+  ],
+  "canonical_refs": [],
+  "decision_ids": [],
+  "requirement_ids": [],
+  "lock_ids": [],
+  "exception_ids": [],
+  "depends_on": [],
+  "tags": [
+    "lot7",
+    "non-authoritative",
+    "historical-source"
+  ]
+}
+KOA:DOC-META:END -->
+
 # Vérification des intégrations satellites — 27 octobre 2026
 
 **Portée :** vérification statique des instantanés de code et de documentation datés du 27 octobre 2026. **Aucune qualification runtime, CI distante, publication ni autorisation de production n’est déduite de cet audit.**

@@ -266,3 +266,16 @@ components/governance-policy-runtime/tests/failure/test_safe_degradation.py
 - `migrations/` is owned only by the component whose state is migrated.
 - `packaging/` contains component package inputs, not release policy.
 - tests SHALL address domain behavior, contract compatibility, service integration, and safe degradation separately.
+
+## November 2026 inventory reconciliation — registered additions
+
+The following implementation paths were already registered in the non-authoritative `.koa/file-architecture.lock.json` projection and are present in this checkout. They are recorded here to restore the correspondence between the normative source inventory and its machine projection. This registration does not authorize a release, privileged execution, or a change of ownership.
+
+```text
+components/identity-and-trust/migrations/0002_external_identity_bindings.sql
+components/identity-and-trust/src/koa_identity_and_trust/application/external_identity.py
+components/identity-and-trust/src/koa_identity_and_trust/domain/external_identity.py
+components/identity-and-trust/src/koa_identity_and_trust/ports/external_identity_store.py
+components/identity-and-trust/tests/integration/test_external_identity_store.py
+components/identity-and-trust/tests/unit/test_external_identity_binding.py
+```
