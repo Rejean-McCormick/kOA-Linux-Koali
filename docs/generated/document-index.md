@@ -284,11 +284,14 @@
 | DOC-RECIPE-USER-002 | 11-recipes/user-lightweight/service-activation.md | active | recipe |
 | DOC-REC-UCKK-IMPORT-001 | 11-recipes/user-lightweight/uckk-learning-package-import.md | active | recipe |
 | DOC-RECIPE-USER-ZRAM-001 | 11-recipes/user-lightweight/zram-and-cgroup-limits.md | active | recipe |
+| DOC-AI-LOT7-CONTEXT | ai/AI_CONTEXT.md | draft | explanatory_markdown |
+| DOC-AI-LOT7-INDEX | ai/INDEX.md | draft | explanatory_markdown |
 | DOC-AI-CONTEXT | AI_CONTEXT.md | active | explanatory_markdown |
 | DOC-ROOT-CHANGELOG-001 | CHANGELOG.md | active | explanatory_markdown |
 | DOC-ROOT-CODE-ALIGNMENT | CODE_ALIGNMENT_NOTES.md | active | explanatory_markdown |
 | DOC-ARTIFACT-EXAMPLES-README | contracts/examples/README.md | active | non_normative_readme |
 | DOC-CONTRIBUTING | CONTRIBUTING.md | active | explanatory_markdown |
+| DOC-INT-VER-20261027 | Integration-Verification-2026-10-27.md | historical | explanatory_markdown |
 | DOC-ROOT-README | README.md | active | explanatory_markdown |
 | DOC-STATUS-001 | status/2026-08-27-technical-maturity-assessment.md | active | explanatory_markdown |
 | DOC-STATUS-002 | status/2026-08-28-technical-maturity-assessment.md | active | explanatory_markdown |

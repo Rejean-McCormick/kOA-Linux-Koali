@@ -15410,6 +15410,24 @@
       ]
     },
     {
+      "path": "ai/AI_CONTEXT.md",
+      "doc_id": "DOC-AI-LOT7-CONTEXT",
+      "document_class": "explanatory_markdown",
+      "status": "draft",
+      "requirement_ids": [],
+      "assertion_ids": [],
+      "decision_ids": []
+    },
+    {
+      "path": "ai/INDEX.md",
+      "doc_id": "DOC-AI-LOT7-INDEX",
+      "document_class": "explanatory_markdown",
+      "status": "draft",
+      "requirement_ids": [],
+      "assertion_ids": [],
+      "decision_ids": []
+    },
+    {
       "path": "AI_CONTEXT.md",
       "doc_id": "DOC-AI-CONTEXT",
       "document_class": "explanatory_markdown",
@@ -15474,6 +15492,15 @@
       "decision_ids": [
         "DEC-DOC-001"
       ]
+    },
+    {
+      "path": "Integration-Verification-2026-10-27.md",
+      "doc_id": "DOC-INT-VER-20261027",
+      "document_class": "explanatory_markdown",
+      "status": "historical",
+      "requirement_ids": [],
+      "assertion_ids": [],
+      "decision_ids": []
     },
     {
       "path": "README.md",
